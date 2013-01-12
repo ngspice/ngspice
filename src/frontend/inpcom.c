@@ -2332,12 +2332,12 @@ inp_determine_libraries(struct line *deck, char *lib_name)
 
             /* .lib <lib name> */
             if (!*y) {
-                char keep_char1 = *t;
+                char keep_char = *t;
                 *t = '\0';
 
                 if (lib_name != NULL && strcmp(lib_name, s) == 0)
                     read_line = TRUE;
-                *t = keep_char1;
+                *t = keep_char;
             }
             /* .lib <file name> <lib name> */
             else if (read_line == TRUE) {
