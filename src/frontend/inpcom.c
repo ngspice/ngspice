@@ -2309,7 +2309,7 @@ inp_remove_excess_ws(struct line *deck)
 static void
 inp_determine_libraries(struct line *deck, char *lib_name)
 {
-    struct line *c = deck;
+    struct line *c;
     char *z, keep_char1, keep_char2;
     int i;
     bool read_line = FALSE;
@@ -2317,7 +2317,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
     if (lib_name == NULL)
         read_line = TRUE;
 
-    while (c != NULL) {
+    for (c = deck; c; c = c->li_next) {
         char *line = c->li_line;
 
         if (ciprefix(".endl", line) && lib_name != NULL)
@@ -2374,7 +2374,6 @@ inp_determine_libraries(struct line *deck, char *lib_name)
                 /* FIXME, copys not freed ?! */
             }
         }
-        c = c->li_next;
     }
 }
 
