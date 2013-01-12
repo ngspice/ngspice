@@ -2309,8 +2309,9 @@ inp_remove_excess_ws(struct line *deck)
 static void
 inp_determine_libraries(struct line *deck, char *lib_name)
 {
-    struct line *c;
     bool read_line = (lib_name == NULL);
+
+    struct line *c;
 
     for (c = deck; c; c = c->li_next) {
         char *line = c->li_line;
