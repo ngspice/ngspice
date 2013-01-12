@@ -2310,10 +2310,7 @@ static void
 inp_determine_libraries(struct line *deck, char *lib_name)
 {
     struct line *c;
-    bool read_line = FALSE;
-
-    if (lib_name == NULL)
-        read_line = TRUE;
+    bool read_line = (lib_name == NULL);
 
     for (c = deck; c; c = c->li_next) {
         char *line = c->li_line;
