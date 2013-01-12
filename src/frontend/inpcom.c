@@ -2310,8 +2310,7 @@ static void
 inp_determine_libraries(struct line *deck, char *lib_name)
 {
     struct line *c;
-    char *z, keep_char1, keep_char2;
-    int i;
+    char keep_char1, keep_char2;
     bool read_line = FALSE;
 
     if (lib_name == NULL)
@@ -2346,7 +2345,8 @@ inp_determine_libraries(struct line *deck, char *lib_name)
             /* .lib <file name> <lib name> */
             else if (read_line == TRUE) {
 
-                char *copys = NULL;
+                char *z, *copys = NULL;
+                int i;
 
                 for (z = y; *z && !isspace(*z) && !isquote(*z); z++)
                     ;
