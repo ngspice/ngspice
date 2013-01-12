@@ -2310,7 +2310,7 @@ static void
 inp_determine_libraries(struct line *deck, char *lib_name)
 {
     struct line *c = deck;
-    char *s, *t, *y, *z, keep_char1, keep_char2;
+    char *z, keep_char1, keep_char2;
     int i;
     bool read_line = FALSE;
 
@@ -2324,6 +2324,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
             read_line = FALSE;
 
         if (ciprefix("*lib", line) || ciprefix(".lib", line)) {
+            char *s, *t, *y;
             s = skip_non_ws(line);
             while (isspace(*s) || isquote(*s))
                 s++;
