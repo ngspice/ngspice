@@ -2310,7 +2310,7 @@ static void
 inp_determine_libraries(struct line *deck, char *lib_name)
 {
     struct line *c = deck;
-    char *line, *s, *t, *y, *z, keep_char1, keep_char2;
+    char *s, *t, *y, *z, keep_char1, keep_char2;
     int i;
     bool read_line = FALSE;
 
@@ -2318,7 +2318,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
         read_line = TRUE;
 
     while (c != NULL) {
-        line = c->li_line;
+        char *line = c->li_line;
 
         if (ciprefix(".endl", line) && lib_name != NULL)
             read_line = FALSE;
