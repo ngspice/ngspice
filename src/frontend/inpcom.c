@@ -317,7 +317,10 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
         /* gtri - end - 12/12/90 */
 #else
-    while ((buffer = readline(fp)) != NULL) {
+    for (;;} [
+        buffer = readline(fp);
+        if(!buffer)
+            break;
 #endif
 
 #ifdef TRACE
