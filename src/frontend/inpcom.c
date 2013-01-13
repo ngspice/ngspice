@@ -623,7 +623,13 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                 }
             } /* end while */
         } /* end for */
+    }
 
+    /*
+      add a terminal ".end" card
+    */
+
+    if (call_depth == 0) {
         if (found_end == TRUE) {
             end->li_next = alloc(struct line);    /* create next card */
             end = end->li_next;                   /* point to next card */
