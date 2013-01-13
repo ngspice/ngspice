@@ -184,7 +184,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     struct line *tmp_ptr1 = NULL;
 
     int i;
-    bool found_lib_name, found_end = FALSE, shell_eol_continuation = FALSE;
+    bool found_end = FALSE, shell_eol_continuation = FALSE;
 
     if (call_depth == 0) {
         num_subckt_w_params = 0;
@@ -537,9 +537,9 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     /*
        add libraries
     */
-    found_lib_name = FALSE;
     if (call_depth == 0) {
         struct line *tmp_ptr = NULL;
+        bool found_lib_name = FALSE;
         for (i = 0; i < num_libraries; i++) {
             working = libraries[i];
             while (working) {
