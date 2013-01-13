@@ -163,7 +163,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
    comfile: in, TRUE if command file (e.g. spinit, .spiceinit
 */
 {
-    struct line *end = NULL, *cc = NULL, *prev = NULL, *working, *newcard, *global_card;
+    struct line *end = NULL, *cc = NULL, *prev, *working, *newcard, *global_card;
     char *buffer = NULL, c;
     /* segfault fix */
 #ifdef XSPICE
@@ -520,6 +520,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     }
 
     if (call_depth == 0 && found_end == TRUE) {
+        struct line *prev;
         if (global == NULL) {
             global = TMALLOC(char, strlen(".global gnd") + 1);
             sprintf(global, ".global gnd");
@@ -542,7 +543,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
        add libraries
     */
     if (call_depth == 0) {
-        struct line *tmp_ptr = NULL;
+        struct line *tmp_ptr = NULL, *prev;
         bool found_lib_name = FALSE;
         int i;
         for (i = 0; i < num_libraries; i++) {
