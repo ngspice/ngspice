@@ -125,13 +125,16 @@ expand_libs(int line_number)
     struct line *tmp_ptr = NULL, *prev;
     bool found_lib_name = FALSE;
     int i;
+
     for (i = 0; i < num_libraries; i++) {
         struct line *working = libraries[i];
         while (working) {
             char *buffer = working->li_line;
 
             if (found_lib_name && ciprefix(".endl", buffer)) {
+
                 struct line *tmp_ptr2;
+
                 /* Make the .endl a comment */
                 *buffer = '*';
                 found_lib_name = FALSE;
@@ -159,11 +162,11 @@ expand_libs(int line_number)
                     controlled_exit(EXIT_FAILURE);
                 }
 
-                s = skip_non_ws(buffer);       /* skip over .lib                        */
+                s = skip_non_ws(buffer);           /* skip over .lib */
                 while (isspace(*s) || isquote(*s))
-                    s++;    /* advance past space chars              */
+                    s++;                           /* advance past space chars */
                 for (t = s; *t && !isspace(*t) && !isquote(*t); t++)
-                    ;       /* skip to end of word                   */
+                    ;                              /* skip to end of word */
                 keep_char = *t;
                 *t = '\0';
                 /* see if library we want to copy */
@@ -173,6 +176,7 @@ expand_libs(int line_number)
                 found_lib_name = (j >= 0);
 
                 if (found_lib_name) {
+
                     struct line *start_lib = working;
                     int line_number_lib;
 
@@ -193,6 +197,7 @@ expand_libs(int line_number)
                 }
                 *t = keep_char;
             }
+
             prev = working;
             working = working->li_next;
 
@@ -200,8 +205,9 @@ expand_libs(int line_number)
                 tfree(prev->li_line);
                 tfree(prev);
             }
-        } /* end while */
-    } /* end for */
+
+        }
+    }
 
     return line_number;
 }
@@ -285,8 +291,8 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     /* First read in all lines & put them in the struct cc */
     for (;;) {
 
-    /*   gtri - modify - 12/12/90 - wbk - read from mailbox if ipc enabled   */
 #ifdef XSPICE
+        /* gtri - modify - 12/12/90 - wbk - read from mailbox if ipc enabled */
 
         /* If IPC is not enabled, do equivalent of what SPICE did before */
         if (! g_ipc.enabled) {
@@ -318,9 +324,11 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
         /* gtri - end - 12/12/90 */
 #else
+
         buffer = readline(fp);
         if(!buffer)
             break;
+
 #endif
 
 #ifdef TRACE
@@ -348,7 +356,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
         /* now handle .title statement */
         if (ciprefix(".title", buffer)) {
             char *s;
-            s = skip_non_ws(buffer);               /* skip over .title */
+            s = skip_non_ws(buffer);   /* skip over .title */
             s = skip_ws(s);            /* advance past space chars */
 
             /* only the last title line remains valid */
@@ -368,7 +376,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
             char *s, *t;
 
             inp_stripcomments_line(buffer);
-            s = skip_non_ws(buffer);               /* skip over .lib           */
+            s = skip_non_ws(buffer);   /* skip over .lib */
 
             s = strdup(s);
 
@@ -376,7 +384,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
             if (!y) {
                 fprintf(cp_err, "Error: .lib filename missing\n");
-                tfree(buffer);  /* was allocated by readline()           */
+                tfree(buffer);         /* was allocated by readline() */
                 controlled_exit(EXIT_FAILURE);
             }
 
@@ -633,6 +641,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     /*
        add libraries
     */
+
     if (call_depth == 0) {
         line_number = expand_libs(line_number);
     }
@@ -676,6 +685,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     prev = NULL;
     while (working) {
         char *s;
+
         for (s = working->li_line; (c = *s) != '\0' && c <= ' '; s++)
             ;
 
@@ -2314,13 +2324,16 @@ inp_determine_libraries(struct line *deck, char *lib_name)
     struct line *c;
 
     for (c = deck; c; c = c->li_next) {
+
         char *line = c->li_line;
 
         if (ciprefix(".endl", line) && lib_name != NULL)
             read_line = FALSE;
 
         if (ciprefix("*lib", line) || ciprefix(".lib", line)) {
+
             char *s, *t, *y;
+
             s = skip_non_ws(line);
             while (isspace(*s) || isquote(*s))
                 s++;
@@ -2372,6 +2385,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
                 /* FIXME, copys not freed ?! */
             }
         }
+
     }
 }
 
