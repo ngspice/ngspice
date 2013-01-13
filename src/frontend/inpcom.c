@@ -101,6 +101,17 @@ static char *skip_ws(char *d)          { while (isspace(*d))        d++; return 
 static void inp_poly_err(struct line *deck);
 #endif
 
+
+static int
+find_lib_name(int i, char *s) {
+    int j;
+    for (j = 0; j < num_lib_names[i]; j++)
+        if (strcmp(library_name[i][j], s) == 0)
+            break;
+    return -1;
+}
+
+
 /*-------------------------------------------------------------------------
  Read the entire input file and return  a pointer to the first line of
  the linked list of 'card' records in data.  The pointer is stored in
@@ -165,7 +176,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     FILE *fdo;
     struct line *tmp_ptr1 = NULL;
 
-    int i, j;
+    int i;
     bool found_lib_name, found_end = FALSE, shell_eol_continuation = FALSE;
 
     if (call_depth == 0) {
@@ -546,6 +557,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                 if (ciprefix(".lib", buffer)) {
 
                     char keep_char;
+                    int j;
 
                     if (found_lib_name == TRUE) {
                         fprintf(stderr, "ERROR: .lib is missing .endl!\n");
@@ -560,13 +572,11 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                     keep_char = *t;
                     *t = '\0';
                     /* see if library we want to copy */
-                    found_lib_name = FALSE;
-                    for (j = 0; j < num_lib_names[i]; j++) {
-                        if (strcmp(library_name[i][j], s) == 0) {
-                            found_lib_name = TRUE;
-                            break;
-                        }
-                    }
+
+                    j = find_lib_name(i, s);
+
+                    found_lib_name = (j >= 0);
+
                     if (found_lib_name) {
                             start_lib      = working;
 
@@ -2268,8 +2278,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
 {
     struct line *c = deck;
     char *line, *s, *t, *y, *z, keep_char1, keep_char2;
-    int i, j;
-    bool found_lib_name = FALSE;
+    int i;
     bool read_line = FALSE;
 
     if (lib_name == NULL)
@@ -2319,12 +2328,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
                 }
                 for (i = 0; i < num_libraries; i++)
                     if (cieq(library_file[i], s)) {
-                        found_lib_name = FALSE;
-                        for (j = 0; j < num_lib_names[i] && found_lib_name == FALSE; j++)
-                            if (strcmp(library_name[i][j], y) == 0)
-                                found_lib_name = TRUE;
-
-                        if (found_lib_name == FALSE) {
+                        if (find_lib_name(i, y) < 0) {
                             library_ll_ptr[i][num_lib_names[i]] = c;
                             library_name[i][num_lib_names[i]++] = strdup(y);
                             /* see if other libraries referenced */
