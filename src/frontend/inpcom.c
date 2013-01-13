@@ -634,14 +634,11 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
             end->li_next = alloc(struct line);    /* create next card */
             end = end->li_next;                   /* point to next card */
 
-            buffer = TMALLOC(char, strlen(".end") + 1);
-            sprintf(buffer, ".end");
-
             /* now put buffer into li */
             end->li_next = NULL;
             end->li_error = NULL;
             end->li_actual = NULL;
-            end->li_line = buffer;
+            end->li_line = copy(".end");
             end->li_linenum = end->li_linenum_orig = line_number++;
             end->li_linenum_orig = line_number_orig++;
         }
