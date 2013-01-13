@@ -549,7 +549,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
         for (i = 0; i < num_libraries; i++) {
             struct line *working = libraries[i];
             while (working) {
-                buffer = working->li_line;
+                char *buffer = working->li_line;
 
                 if (found_lib_name && ciprefix(".endl", buffer)) {
                     struct line *tmp_ptr2;
