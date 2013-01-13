@@ -183,7 +183,6 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     FILE *fdo;
     struct line *tmp_ptr1 = NULL;
 
-    int i;
     bool found_end = FALSE, shell_eol_continuation = FALSE;
 
     if (call_depth == 0) {
@@ -297,6 +296,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                       inp_compat_mode == COMPATMODE_NATIVE)) { /* .lib <file name> <lib name> */
 
                 char *copyy = NULL;
+                int i;
 
                 if (*y == '~') {
                     copyy = cp_tildexpand(y); /* allocates memory, but can also return NULL */
@@ -544,6 +544,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
     if (call_depth == 0) {
         struct line *tmp_ptr = NULL;
         bool found_lib_name = FALSE;
+        int i;
         for (i = 0; i < num_libraries; i++) {
             working = libraries[i];
             while (working) {
