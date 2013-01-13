@@ -175,7 +175,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 #endif
     char *new_title = NULL;
     int line_number = 1; /* sjb - renamed to avoid confusion with struct line */
-    int line_number_orig = 1, line_number_lib = 1, line_number_inc = 1;
+    int line_number_orig = 1, line_number_inc = 1;
     unsigned int no_braces = 0; /* number of '{' */
 
     size_t max_line_length; /* max. line length in input deck */
@@ -586,6 +586,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
                     if (found_lib_name) {
                             struct line *start_lib = working;
+                            int line_number_lib;
 
                             /* make the .lib a comment */
                             *buffer = '*';
