@@ -112,6 +112,13 @@ find_lib_name(int i, char *s) {
 }
 
 
+static void
+new_lib_name(int i, char *y, struct line *c) {
+    library_ll_ptr[i][num_lib_names[i]] = c;
+    library_name[i][num_lib_names[i]++] = strdup(y);
+}
+
+
 /*-------------------------------------------------------------------------
  Read the entire input file and return  a pointer to the first line of
  the linked list of 'card' records in data.  The pointer is stored in
@@ -2329,8 +2336,7 @@ inp_determine_libraries(struct line *deck, char *lib_name)
                 for (i = 0; i < num_libraries; i++)
                     if (cieq(library_file[i], s)) {
                         if (find_lib_name(i, y) < 0) {
-                            library_ll_ptr[i][num_lib_names[i]] = c;
-                            library_name[i][num_lib_names[i]++] = strdup(y);
+                            new_lib_name(i, y, c);
                             /* see if other libraries referenced */
                             inp_determine_libraries(libraries[i], y);
                         }
