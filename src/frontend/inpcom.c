@@ -282,11 +282,12 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
         inp_compat_mode = ngspice_compat_mode();
     }
 
+    /* First read in all lines & put them in the struct cc */
+    for (;;) {
+
     /*   gtri - modify - 12/12/90 - wbk - read from mailbox if ipc enabled   */
 #ifdef XSPICE
 
-    /* First read in all lines & put them in the struct cc */
-    for (;;) {
         /* If IPC is not enabled, do equivalent of what SPICE did before */
         if (! g_ipc.enabled) {
             if (call_depth == 0 && line_count == 0) {
@@ -317,7 +318,6 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
         /* gtri - end - 12/12/90 */
 #else
-    for (;;} [
         buffer = readline(fp);
         if(!buffer)
             break;
