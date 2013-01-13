@@ -164,7 +164,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 */
 {
     struct line *end = NULL, *cc = NULL, *prev = NULL, *working, *newcard, *global_card;
-    char *buffer = NULL, *t, c;
+    char *buffer = NULL, c;
     /* segfault fix */
 #ifdef XSPICE
     char big_buff[5000];
@@ -275,7 +275,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
             char *y = NULL;     /* filename */
             char *z = NULL;     /* libname */
-            char *s;
+            char *s, *t;
 
             inp_stripcomments_line(buffer);
             s = skip_non_ws(buffer);               /* skip over .lib           */
@@ -367,7 +367,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
             char *copyy = NULL;
             char *y = NULL;
-            char *s;
+            char *s, *t;
 
             inp_stripcomments_line(buffer);
 
@@ -571,7 +571,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
                     char keep_char;
                     int j;
-                    char *s;
+                    char *s, *t;
 
                     if (found_lib_name == TRUE) {
                         fprintf(stderr, "ERROR: .lib is missing .endl!\n");
