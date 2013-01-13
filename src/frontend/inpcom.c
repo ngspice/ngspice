@@ -564,6 +564,10 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                     for (j = 0; j < num_lib_names[i]; j++) {
                         if (strcmp(library_name[i][j], s) == 0) {
                             found_lib_name = TRUE;
+                            break;
+                        }
+                    }
+                    if (found_lib_name) {
                             start_lib      = working;
 
                             /* make the .lib a comment */
@@ -580,8 +584,6 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                             }
                             start_lib->li_linenum = line_number++;  // renumber endl line
                             start_lib->li_linenum_orig = line_number_lib++;
-                            break;
-                        }
                     }
                     *t = keep_char;
                 }
