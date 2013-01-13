@@ -119,6 +119,13 @@ new_lib_name(int i, char *y, struct line *c) {
 }
 
 
+static int
+expand_libs(int line_number)
+{
+    return line_number;
+}
+
+
 /*-------------------------------------------------------------------------
  Read the entire input file and return  a pointer to the first line of
  the linked list of 'card' records in data.  The pointer is stored in
@@ -543,86 +550,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
        add libraries
     */
     if (call_depth == 0) {
-        struct line *tmp_ptr = NULL, *prev;
-        bool found_lib_name = FALSE;
-        int i;
-        for (i = 0; i < num_libraries; i++) {
-            struct line *working = libraries[i];
-            while (working) {
-                char *buffer = working->li_line;
-
-                if (found_lib_name && ciprefix(".endl", buffer)) {
-                    struct line *tmp_ptr2;
-                    /* Make the .endl a comment */
-                    *buffer = '*';
-                    found_lib_name = FALSE;
-
-                    /* set pointer and continue to avoid deleting below */
-                    tmp_ptr2         = working->li_next;
-                    working->li_next = tmp_ptr;
-                    working          = tmp_ptr2;
-
-                    /* end          = working;
-                     * working      = working->li_next;
-                     * end->li_next = NULL; */
-
-                    continue;
-                }
-
-                if (ciprefix(".lib", buffer)) {
-
-                    char keep_char;
-                    int j;
-                    char *s, *t;
-
-                    if (found_lib_name == TRUE) {
-                        fprintf(stderr, "ERROR: .lib is missing .endl!\n");
-                        controlled_exit(EXIT_FAILURE);
-                    }
-
-                    s = skip_non_ws(buffer);       /* skip over .lib                        */
-                    while (isspace(*s) || isquote(*s))
-                        s++;    /* advance past space chars              */
-                    for (t = s; *t && !isspace(*t) && !isquote(*t); t++)
-                        ;       /* skip to end of word                   */
-                    keep_char = *t;
-                    *t = '\0';
-                    /* see if library we want to copy */
-
-                    j = find_lib_name(i, s);
-
-                    found_lib_name = (j >= 0);
-
-                    if (found_lib_name) {
-                            struct line *start_lib = working;
-                            int line_number_lib;
-
-                            /* make the .lib a comment */
-                            *buffer = '*';
-
-                            tmp_ptr = library_ll_ptr[i][j]->li_next;
-                            library_ll_ptr[i][j]->li_next = working;
-
-                            /* renumber lines */
-                            line_number_lib = 1;
-                            for (start_lib = working; !ciprefix(".endl", start_lib->li_line); start_lib = start_lib->li_next) {
-                                start_lib->li_linenum = line_number++;
-                                start_lib->li_linenum_orig = line_number_lib++;
-                            }
-                            start_lib->li_linenum = line_number++;  // renumber endl line
-                            start_lib->li_linenum_orig = line_number_lib++;
-                    }
-                    *t = keep_char;
-                }
-                prev = working;
-                working = working->li_next;
-
-                if (found_lib_name == FALSE) {
-                    tfree(prev->li_line);
-                    tfree(prev);
-                }
-            } /* end while */
-        } /* end for */
+        line_number = expand_libs(line_number);
     }
 
     /*
