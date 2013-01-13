@@ -546,7 +546,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
         bool found_lib_name = FALSE;
         int i;
         for (i = 0; i < num_libraries; i++) {
-            working = libraries[i];
+            struct line *working = libraries[i];
             while (working) {
                 buffer = working->li_line;
 
