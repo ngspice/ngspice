@@ -164,7 +164,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 */
 {
     struct line *end = NULL, *cc = NULL, *prev = NULL, *working, *newcard, *global_card;
-    char *buffer = NULL, *s, *t, c;
+    char *buffer = NULL, *t, c;
     /* segfault fix */
 #ifdef XSPICE
     char big_buff[5000];
@@ -257,6 +257,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
         /* now handle .title statement */
         if (ciprefix(".title", buffer)) {
+            char *s;
             s = skip_non_ws(buffer);               /* skip over .title */
             s = skip_ws(s);            /* advance past space chars */
 
@@ -274,6 +275,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
             char *y = NULL;     /* filename */
             char *z = NULL;     /* libname */
+            char *s;
 
             inp_stripcomments_line(buffer);
             s = skip_non_ws(buffer);               /* skip over .lib           */
@@ -365,6 +367,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
             char *copyy = NULL;
             char *y = NULL;
+            char *s;
 
             inp_stripcomments_line(buffer);
 
@@ -463,6 +466,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
          premature end.  If premature end is reached, spew
          error and zap the line. */
         if (!ciprefix("write", buffer)) {    // exclude 'write' command so filename case preserved
+            char *s;
             for (s = buffer; *s && (*s != '\n'); s++)
                 *s = (char) tolower(*s);
             if (!*s) {
@@ -567,6 +571,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
                     char keep_char;
                     int j;
+                    char *s;
 
                     if (found_lib_name == TRUE) {
                         fprintf(stderr, "ERROR: .lib is missing .endl!\n");
@@ -653,6 +658,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
 
     prev = NULL;
     while (working) {
+        char *s;
         for (s = working->li_line; (c = *s) != '\0' && c <= ' '; s++)
             ;
 
