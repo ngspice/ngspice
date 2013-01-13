@@ -566,7 +566,7 @@ inp_readall(FILE *fp, struct line **data, int call_depth, char *dir_name, bool c
                      * end->li_next = NULL; */
 
                     continue;
-                }   /* for ... */
+                }
 
                 if (ciprefix(".lib", buffer)) {
 
