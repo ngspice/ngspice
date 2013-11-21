@@ -1672,7 +1672,7 @@ modtranslate(struct line *c, char *subname, wordlist ** const modnames)
 
     for (; c; c = c->li_next)
         if (ciprefix(".model", c->li_line)) {
-            char *model_name, *translated_model_name;
+            char *model_name, *new_model_name;
             char *t = c->li_line;
 
 #ifdef TRACE
@@ -1685,21 +1685,21 @@ modtranslate(struct line *c, char *subname, wordlist ** const modnames)
 
             model_name = gettok(&t);
 
-            translated_model_name = tprintf("%s:%s", subname, model_name);
+            new_model_name = tprintf("%s:%s", subname, model_name);
 
             /* remember the translation */
             orig_modnames = wl_cons(model_name, orig_modnames);
-            *modnames = wl_cons(translated_model_name, *modnames);
+            *modnames = wl_cons(new_model_name, *modnames);
 
             /* perform the actual translation of this .model line */
-            t = tprintf(".model %s %s", translated_model_name, t);
+            t = tprintf(".model %s %s", new_model_name, t);
             tfree(c->li_line);
             c->li_line = t;
 
 #ifdef TRACE
             printf("  \"%s\"\n", t);
             printf("  mapped modelname \"%s\" --> \"%s\"\n",
-                   model_name, translated_model_name);
+                   model_name, new_model_name);
 #endif
 
         }
