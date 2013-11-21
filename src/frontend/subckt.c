@@ -93,7 +93,7 @@ static int settrans(char *formal, char *actual, char *subname);
 static char *gettrans(const char *name, const char *name_end);
 static int numnodes(char *name, struct subs *subs, wordlist const *modnames);
 static int  numdevs(char *s);
-static bool modtranslate(struct line *deck, char *subname, wordlist **submod, wordlist  **const modnames);
+static wordlist *modtranslate(struct line *deck, char *subname, wordlist  **const modnames);
 static void devmodtranslate(struct line *deck, char *subname, wordlist * const submod);
 static int inp_numnodes(char c);
 
@@ -397,7 +397,7 @@ doit(struct line *deck, wordlist *modnames) {
 
     /* Save all the old stuff... */
     struct subs *subs = NULL;
-    wordlist *submod = NULL;
+    wordlist *submod;
     wordlist *xmodnames = modnames;
 
 #ifdef TRACE
@@ -607,8 +607,9 @@ doit(struct line *deck, wordlist *modnames) {
                 lcc = inp_deckcopy(sss->su_def);
 
                 /* Change the names of .models found in .subckts . . .  */
-                submod = NULL;
-                if (modtranslate(lcc, scname, &submod, &modnames))    /* this translates the model name in the .model line */
+                /* this translates the model name in the .model line */
+                submod = modtranslate(lcc, scname, &modnames);
+                if (submod)
                     devmodtranslate(lcc, scname, submod); /* This translates the model name on all components in the deck */
                 wl_free(submod);
 
@@ -1660,15 +1661,14 @@ numdevs(char *s)
 /*----------------------------------------------------------------------*
  *  modtranslate --  translates .model lines found in subckt definitions.
  *  Calling arguments are:
- *  *deck = pointer to the .subckt definition (linked list)
+ *  *c = pointer to the .subckt definition (linked list)
  *  *subname = pointer to the subcircuit name used at the subcircuit invocation (string)
- *  Modtranslate returns TRUE if it translated a model name, FALSE
- *  otherwise.
+ *  modtranslate returns the list of model names which have been translated
  *----------------------------------------------------------------------*/
-static bool
-modtranslate(struct line *c, char *subname, wordlist **submod, wordlist ** const modnames)
+static wordlist *
+modtranslate(struct line *c, char *subname, wordlist ** const modnames)
 {
-    bool gotone = FALSE;
+    wordlist *submod = NULL;
 
     for (; c; c = c->li_next)
         if (ciprefix(".model", c->li_line)) {
@@ -1688,7 +1688,7 @@ modtranslate(struct line *c, char *subname, wordlist **submod, wordlist ** const
             translated_model_name = tprintf("%s:%s", subname, model_name);
 
             /* remember the translation */
-            *submod = wl_cons(model_name, *submod);
+            submod = wl_cons(model_name, submod);
             *modnames = wl_cons(translated_model_name, *modnames);
 
             /* perform the actual translation of this .model line */
@@ -1702,10 +1702,9 @@ modtranslate(struct line *c, char *subname, wordlist **submod, wordlist ** const
                    model_name, translated_model_name);
 #endif
 
-            gotone = TRUE;
         }
 
-    return gotone;
+    return submod;
 }
 
 
