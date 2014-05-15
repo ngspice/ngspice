@@ -397,7 +397,6 @@ doit(struct line *deck, wordlist *modnames) {
 
     /* Save all the old stuff... */
     struct subs *subs = NULL;
-    wordlist *orig_modnames;
     wordlist *xmodnames = modnames;
 
 #ifdef TRACE
@@ -607,11 +606,16 @@ doit(struct line *deck, wordlist *modnames) {
                 lcc = inp_deckcopy(sss->su_def);
 
                 /* Change the names of .models found in .subckts . . .  */
-                /* this translates the model name in the .model line */
-                orig_modnames = modtranslate(lcc, scname, &modnames);
-                if (orig_modnames)
-                    devmodtranslate(lcc, scname, orig_modnames); /* This translates the model name on all components in the deck */
-                wl_free(orig_modnames);
+                {
+                    /* this translates the model names in .model lines
+                     *   and appends them to `modnames'
+                     */
+                    wordlist *orig_modnames = modtranslate(lcc, scname, &modnames);
+                    /* This translates the model name on all components in the deck */
+                    if (orig_modnames)
+                        devmodtranslate(lcc, scname, orig_modnames);
+                    wl_free(orig_modnames);
+                }
 
                 {
                     char *s = sss->su_args;
