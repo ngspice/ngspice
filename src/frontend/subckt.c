@@ -93,7 +93,7 @@ static int settrans(char *formal, char *actual, char *subname);
 static char *gettrans(const char *name, const char *name_end);
 static int numnodes(char *name, struct subs *subs, wordlist const *modnames);
 static int  numdevs(char *s);
-static wordlist *modtranslate(struct line *deck, char *subname, wordlist  **const modnames);
+static wordlist *modtranslate(struct line *deck, char *subname, wordlist  **const new_modnames);
 static void devmodtranslate(struct line *deck, char *subname, wordlist * const orig_modnames);
 static int inp_numnodes(char c);
 
@@ -1666,7 +1666,7 @@ numdevs(char *s)
  *  modtranslate returns the list of model names which have been translated
  *----------------------------------------------------------------------*/
 static wordlist *
-modtranslate(struct line *c, char *subname, wordlist ** const modnames)
+modtranslate(struct line *c, char *subname, wordlist ** const new_modnames)
 {
     wordlist *orig_modnames = NULL;
 
@@ -1689,7 +1689,7 @@ modtranslate(struct line *c, char *subname, wordlist ** const modnames)
 
             /* remember the translation */
             orig_modnames = wl_cons(model_name, orig_modnames);
-            *modnames = wl_cons(new_model_name, *modnames);
+            *new_modnames = wl_cons(new_model_name, *new_modnames);
 
             /* perform the actual translation of this .model line */
             t = tprintf(".model %s %s", new_model_name, t);
