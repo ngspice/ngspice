@@ -94,7 +94,7 @@ static char *gettrans(const char *name, const char *name_end);
 static int numnodes(char *name, struct subs *subs, wordlist const *modnames);
 static int  numdevs(char *s);
 static wordlist *modtranslate(struct line *deck, char *subname, wordlist  **const modnames);
-static void devmodtranslate(struct line *deck, char *subname, wordlist * const submod);
+static void devmodtranslate(struct line *deck, char *subname, wordlist * const orig_modnames);
 static int inp_numnodes(char c);
 
 /*---------------------------------------------------------------------
@@ -121,7 +121,7 @@ struct subs {
 };
 
 
-/* submod is the list of original model names, modnames is the
+/* orig_modnames is the list of original model names, modnames is the
  * list of translated names (i.e. after subckt expansion)
  */
 
@@ -397,7 +397,7 @@ doit(struct line *deck, wordlist *modnames) {
 
     /* Save all the old stuff... */
     struct subs *subs = NULL;
-    wordlist *submod;
+    wordlist *orig_modnames;
     wordlist *xmodnames = modnames;
 
 #ifdef TRACE
@@ -608,10 +608,10 @@ doit(struct line *deck, wordlist *modnames) {
 
                 /* Change the names of .models found in .subckts . . .  */
                 /* this translates the model name in the .model line */
-                submod = modtranslate(lcc, scname, &modnames);
-                if (submod)
-                    devmodtranslate(lcc, scname, submod); /* This translates the model name on all components in the deck */
-                wl_free(submod);
+                orig_modnames = modtranslate(lcc, scname, &modnames);
+                if (orig_modnames)
+                    devmodtranslate(lcc, scname, orig_modnames); /* This translates the model name on all components in the deck */
+                wl_free(orig_modnames);
 
                 {
                     char *s = sss->su_args;
@@ -1668,7 +1668,7 @@ numdevs(char *s)
 static wordlist *
 modtranslate(struct line *c, char *subname, wordlist ** const modnames)
 {
-    wordlist *submod = NULL;
+    wordlist *orig_modnames = NULL;
 
     for (; c; c = c->li_next)
         if (ciprefix(".model", c->li_line)) {
@@ -1688,7 +1688,7 @@ modtranslate(struct line *c, char *subname, wordlist ** const modnames)
             translated_model_name = tprintf("%s:%s", subname, model_name);
 
             /* remember the translation */
-            submod = wl_cons(model_name, submod);
+            orig_modnames = wl_cons(model_name, orig_modnames);
             *modnames = wl_cons(translated_model_name, *modnames);
 
             /* perform the actual translation of this .model line */
@@ -1704,7 +1704,7 @@ modtranslate(struct line *c, char *subname, wordlist ** const modnames)
 
         }
 
-    return submod;
+    return orig_modnames;
 }
 
 
@@ -1716,7 +1716,7 @@ modtranslate(struct line *c, char *subname, wordlist ** const modnames)
  *  after:    Q1 c b e U1:2N3904
  *-------------------------------------------------------------------*/
 static void
-devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
+devmodtranslate(struct line *deck, char *subname, wordlist * const orig_modnames)
 {
     struct line *s;
     int found;
@@ -1782,10 +1782,10 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
 
 
             /*
-             *  Note that we compare against submod,
+             *  Note that we compare against orig_modnames,
              *    which is the list of untranslated names of models.
              */
-            wlsub = wl_find(name, submod);
+            wlsub = wl_find(name, orig_modnames);
 
             if (!wlsub)
                 (void) sprintf(buffer + strlen(buffer), "%s ", name);
@@ -1821,7 +1821,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
 
             if (*t) {    /* if there is a model, process it. . . . */
                 name = gettok(&t);
-                wlsub = wl_find(name, submod);
+                wlsub = wl_find(name, orig_modnames);
 
                 if (!wlsub)
                     (void) sprintf(buffer + strlen(buffer), "%s ", name);
@@ -1832,7 +1832,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
 
             if (*t) {
                 name = gettok(&t);
-                wlsub = wl_find(name, submod);
+                wlsub = wl_find(name, orig_modnames);
 
                 if (!wlsub)
                     (void) sprintf(buffer + strlen(buffer), "%s ", name);
@@ -1858,7 +1858,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
             tfree(name);
             name = gettok(&t);
 
-            wlsub = wl_find(name, submod);
+            wlsub = wl_find(name, orig_modnames);
 
             if (!wlsub)
                 (void) sprintf(buffer + strlen(buffer), "%s ", name);
@@ -1890,7 +1890,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
             tfree(name);
             name = gettok(&t);
 
-            wlsub = wl_find(name, submod);
+            wlsub = wl_find(name, orig_modnames);
 
             if (!wlsub)
                 (void) sprintf(buffer + strlen(buffer), "%s ", name);
@@ -1928,7 +1928,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
             tfree(name);
             name = gettok(&t);
 
-            wlsub = wl_find(name, submod);
+            wlsub = wl_find(name, orig_modnames);
 
             if (!wlsub)
                 (void) sprintf(buffer + strlen(buffer), "%s ", name);
@@ -1963,7 +1963,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
             found = 0;
             while (!found) {
                 /* Now, is this a subcircuit model? */
-                for (wlsub = submod; wlsub; wlsub = wlsub->wl_next) {
+                for (wlsub = orig_modnames; wlsub; wlsub = wlsub->wl_next) {
                     /* FIXME, probably too unspecific */
                     int i = (int) strlen(wlsub->wl_word);
                     int j = 0; /* Now, have we a binned model? */
@@ -2022,14 +2022,14 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
             tfree(name);
             name = gettok_node(&t);  /* this can be either a model name or a node name. */
 
-            wlsub = wl_find(name, submod);
+            wlsub = wl_find(name, orig_modnames);
 
             if (!wlsub)
                 if (*t) { /* There is another token - perhaps a model */
                     (void) sprintf(buffer + strlen(buffer), "%s ", name);
                     tfree(name);
                     name = gettok(&t);
-                    wlsub = wl_find(name, submod);
+                    wlsub = wl_find(name, orig_modnames);
                 }
 
 #ifdef ADMS
@@ -2038,7 +2038,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
                     (void) sprintf(buffer + strlen(buffer), "%s ", name);
                     tfree(name);
                     name = gettok(&t);
-                    wlsub = wl_find(name, submod);
+                    wlsub = wl_find(name, orig_modnames);
                 }
 #endif
 
@@ -2076,7 +2076,7 @@ devmodtranslate(struct line *deck, char *subname, wordlist * const submod)
                 }
             }  /* while  */
 
-            wlsub = wl_find(name, submod);
+            wlsub = wl_find(name, orig_modnames);
 
             if (!wlsub)
                 (void) sprintf(buffer + strlen(buffer), "%s ", name);
