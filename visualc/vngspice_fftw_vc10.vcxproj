@@ -1,0 +1,2739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="console_debug|Win32">
+      <Configuration>console_debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="console_debug|x64">
+      <Configuration>console_debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="console_release_omp|Win32">
+      <Configuration>console_release_omp</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="console_release_omp|x64">
+      <Configuration>console_release_omp</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="console_release|Win32">
+      <Configuration>console_release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="console_release|x64">
+      <Configuration>console_release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseOMP|Win32">
+      <Configuration>ReleaseOMP</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseOMP|x64">
+      <Configuration>ReleaseOMP</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>vngspice</ProjectName>
+    <ProjectGuid>{83E315C7-EDD3-4F6B-AF28-87A92A4FA49A}</ProjectGuid>
+    <RootNamespace>vngspice</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='console_release_omp|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='console_release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='console_release_omp|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='console_release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='console_release_omp|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='console_release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='console_release_omp|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='console_release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\$(Platform)\</IntDir>
+    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PreBuildEventUseInBuild>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Configuration)64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Configuration)64\$(Platform)\</IntDir>
+    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</PreBuildEventUseInBuild>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Configuration)64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Configuration)64\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'">$(Configuration)\$(Platform)\</IntDir>
+    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'">true</PreBuildEventUseInBuild>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'">false</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'">$(Configuration)64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'">$(Configuration)64\$(Platform)\</IntDir>
+    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'">true</PreBuildEventUseInBuild>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'">false</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='console_release|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='console_release|Win32'">$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='console_release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='console_release|x64'">$(Configuration)64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='console_release|x64'">$(Configuration)64\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='console_release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|Win32'">$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|x64'">$(Configuration)64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|x64'">$(Configuration)64\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|x64'" />
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='console_release_omp|Win32'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='console_release_omp|Win32'">$(Configuration)\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='console_release_omp|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='console_release_omp|x64'">$(Configuration)64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='console_release_omp|x64'">$(Configuration)64\$(Platform)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='console_release_omp|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>lib /machine:x86 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)include;$(ProjectDir)..\src\include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;NGDEBUG;XSPICE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>lib /machine:x64 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.lib
+</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)64\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)64\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;NGDEBUG;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>4194304</StackReserveSize>
+      <StackCommitSize>16384</StackCommitSize>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>lib /machine:x86 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>lib /machine:x64 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)64\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)64\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;CONFIG64;RELBUILD64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='console_debug|Win32'">
+    <PreBuildEvent>
+      <Command>lib /machine:x86 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;NGDEBUG;CONSOLE;XSPICE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='console_debug|x64'">
+    <PreBuildEvent>
+      <Command>lib /machine:x64 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)64\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)64\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;NGDEBUG;CONSOLE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='console_release|Win32'">
+    <PreBuildEvent>
+      <Command>lib /machine:x86 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;CONSOLE;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='console_release|x64'">
+    <PreBuildEvent>
+      <Command>lib /machine:x64 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)64\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)64\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;CONSOLE;CONFIG64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|Win32'">
+    <PreBuildEvent>
+      <Command>lib /machine:x86 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOMP|x64'">
+    <PreBuildEvent>
+      <Command>lib /machine:x64 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)64\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)64\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;USE_OMP;CONFIG64;RELBUILD64;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>4194304</StackReserveSize>
+      <StackCommitSize>16394</StackCommitSize>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='console_release_omp|Win32'">
+    <PreBuildEvent>
+      <Command>lib /machine:x86 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;CONSOLE;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>0</StackReserveSize>
+      <StackCommitSize>0</StackCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll32\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='console_release_omp|x64'">
+    <PreBuildEvent>
+      <Command>lib /machine:x64 /def:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.def /out:$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.lib</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Message>Custom defined Build: Recompile conf.c with actual date</Message>
+      <Command>del $(Configuration)64\$(Platform)\conf.obj</Command>
+      <Outputs>$(Configuration)64\$(Platform)\conf.obj;%(Outputs)</Outputs>
+    </CustomBuildStep>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\src\maths\poly;$(ProjectDir)..\src\frontend;$(ProjectDir)..\src\spicelib\devices;$(ProjectDir)..\src\include;$(ProjectDir)include;$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;SIMULATOR;CONSOLE;CONFIG64;RELBUILD64;USE_OMP;HAVE_LIBFFTW3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>psapi.lib;libfftw3-3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)fftw3\fftw-3.3.3-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <HeapReserveSize>0</HeapReserveSize>
+      <HeapCommitSize>0</HeapCommitSize>
+      <StackReserveSize>4194304</StackReserveSize>
+      <StackCommitSize>16384</StackCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)fftw3\fftw-3.3.3-dll64\libfftw3-3.dll" "$(OutDir)libfftw3-3.dll"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\include\ngspice\1-f-code.h" />
+    <ClInclude Include="..\src\maths\misc\accuracy.h" />
+    <ClInclude Include="..\src\include\ngspice\acdefs.h" />
+    <ClInclude Include="..\src\frontend\plotting\agraf.h" />
+    <ClInclude Include="..\src\misc\alloc.h" />
+    <ClInclude Include="..\src\spicelib\analysis\analysis.h" />
+    <ClInclude Include="..\src\frontend\arg.h" />
+    <ClInclude Include="..\src\frontend\aspice.h" />
+    <ClInclude Include="..\src\spicelib\devices\asrc\asrcdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\asrc\asrcext.h" />
+    <ClInclude Include="..\src\spicelib\devices\asrc\asrcinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\asrc\asrcitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_dd\b3soidddef.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_dd\b3soidditf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_fd\b3soifddef.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_fd\b3soifditf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_pd\b3soipddef.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3soi_pd\b3soipditf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsimsoi\b4soidef.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsimsoi\b4soiext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsimsoi\b4soiinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsimsoi\b4soiitf.h" />
+    <ClInclude Include="..\src\frontend\parser\backq.h" />
+    <ClInclude Include="..\src\include\ngspice\bdrydefs.h" />
+    <ClInclude Include="..\src\maths\misc\bernoull.h" />
+    <ClInclude Include="..\src\spicelib\devices\bjt\bjtdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\bjt\bjtdset.h" />
+    <ClInclude Include="..\src\spicelib\devices\bjt\bjtext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bjt\bjtinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\bjt\bjtitf.h" />
+    <ClInclude Include="..\src\include\ngspice\bool.h" />
+    <ClInclude Include="..\src\frontend\breakp.h" />
+    <ClInclude Include="..\src\frontend\breakp2.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim1\bsim1def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim1\bsim1ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim1\bsim1init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim1\bsim1itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim2\bsim2def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim2\bsim2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim2\bsim2init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim2\bsim2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3\bsim3def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3\bsim3ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3\bsim3init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3\bsim3itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v0\bsim3v0def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v0\bsim3v0ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v0\bsim3v0init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v0\bsim3v0itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v1\bsim3v1def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v1\bsim3v1ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v1\bsim3v1init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v1\bsim3v1itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v32\bsim3v32def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v32\bsim3v32ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v32\bsim3v32init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim3v32\bsim3v32itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4\bsim4def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4\bsim4ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4\bsim4init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4\bsim4itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v4\bsim4v4def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v4\bsim4v4ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v4\bsim4v4init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v4\bsim4v4itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v5\bsim4v5def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v5\bsim4v5ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v5\bsim4v5init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v5\bsim4v5itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v6\bsim4v6def.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v6\bsim4v6ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v6\bsim4v6init.h" />
+    <ClInclude Include="..\src\spicelib\devices\bsim4v6\bsim4v6itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\cap\capdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\cap\capext.h" />
+    <ClInclude Include="..\src\spicelib\devices\cap\capinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\cap\capitf.h" />
+    <ClInclude Include="..\src\include\ngspice\carddefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\cccs\cccsdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\cccs\cccsext.h" />
+    <ClInclude Include="..\src\spicelib\devices\cccs\cccsinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\cccs\cccsitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\ccvs\ccvsdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\ccvs\ccvsext.h" />
+    <ClInclude Include="..\src\spicelib\devices\ccvs\ccvsinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\ccvs\ccvsitf.h" />
+    <ClInclude Include="..\src\include\ngspice\ciderinp.h" />
+    <ClInclude Include="..\src\include\ngspice\cidersupt.h" />
+    <ClInclude Include="..\src\frontend\circuits.h" />
+    <ClInclude Include="..\src\spicelib\devices\cktaccept.h" />
+    <ClInclude Include="..\src\include\ngspice\cktdefs.h" />
+    <ClInclude Include="..\src\frontend\plotting\clip.h" />
+    <ClInclude Include="..\src\include\ngspice\cluster.h" />
+    <ClInclude Include="..\src\include\ngspice\cm.h" />
+    <ClInclude Include="..\src\maths\cmaths\cmath.h" />
+    <ClInclude Include="..\src\maths\cmaths\cmath1.h" />
+    <ClInclude Include="..\src\maths\cmaths\cmath2.h" />
+    <ClInclude Include="..\src\maths\cmaths\cmath3.h" />
+    <ClInclude Include="..\src\maths\cmaths\cmath4.h" />
+    <ClInclude Include="..\src\include\ngspice\cmconstants.h" />
+    <ClInclude Include="..\src\include\ngspice\cmproto.h" />
+    <ClInclude Include="..\src\include\ngspice\cmtypes.h" />
+    <ClInclude Include="..\src\frontend\com_ahelp.h" />
+    <ClInclude Include="..\src\frontend\com_alias.h" />
+    <ClInclude Include="..\src\frontend\com_asciiplot.h" />
+    <ClInclude Include="..\src\frontend\com_cdump.h" />
+    <ClInclude Include="..\src\frontend\com_chdir.h" />
+    <ClInclude Include="..\src\frontend\com_commands.h" />
+    <ClInclude Include="..\src\frontend\com_compose.h" />
+    <ClInclude Include="..\src\frontend\com_display.h" />
+    <ClInclude Include="..\src\frontend\com_dl.h" />
+    <ClInclude Include="..\src\frontend\com_dump.h" />
+    <ClInclude Include="..\src\frontend\com_echo.h" />
+    <ClInclude Include="..\src\frontend\com_fft.h" />
+    <ClInclude Include="..\src\frontend\com_ghelp.h" />
+    <ClInclude Include="..\src\frontend\com_gnuplot.h" />
+    <ClInclude Include="..\src\frontend\com_hardcopy.h" />
+    <ClInclude Include="..\src\frontend\com_help.h" />
+    <ClInclude Include="..\src\frontend\com_history.h" />
+    <ClInclude Include="..\src\frontend\com_let.h" />
+    <ClInclude Include="..\src\frontend\com_measure2.h" />
+    <ClInclude Include="..\src\frontend\com_option.h" />
+    <ClInclude Include="..\src\frontend\com_plot.h" />
+    <ClInclude Include="..\src\frontend\com_rehash.h" />
+    <ClInclude Include="..\src\frontend\com_set.h" />
+    <ClInclude Include="..\src\frontend\com_setscale.h" />
+    <ClInclude Include="..\src\frontend\com_shell.h" />
+    <ClInclude Include="..\src\frontend\com_shift.h" />
+    <ClInclude Include="..\src\frontend\com_state.h" />
+    <ClInclude Include="..\src\frontend\com_strcmp.h" />
+    <ClInclude Include="..\src\frontend\com_unset.h" />
+    <ClInclude Include="..\src\frontend\com_xgraph.h" />
+    <ClInclude Include="..\src\frontend\commands.h" />
+    <ClInclude Include="..\src\include\ngspice\compatmode.h" />
+    <ClInclude Include="..\src\frontend\parser\complete.h" />
+    <ClInclude Include="..\src\frontend\completion.h" />
+    <ClInclude Include="..\src\include\ngspice\complex.h" />
+    <ClInclude Include="..\src\conf.h" />
+    <ClInclude Include="include\ngspice\config.h" />
+    <ClInclude Include="..\src\include\ngspice\const.h" />
+    <ClInclude Include="..\src\include\ngspice\contdefs.h" />
+    <ClInclude Include="..\src\frontend\control.h" />
+    <ClInclude Include="..\src\include\ngspice\cpdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\cpextern.h" />
+    <ClInclude Include="..\src\frontend\cpitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\cpl\cpldefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\cpl\cplext.h" />
+    <ClInclude Include="..\src\spicelib\devices\cpl\cplinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\cpl\cplitf.h" />
+    <ClInclude Include="..\src\include\ngspice\cpstd.h" />
+    <ClInclude Include="..\src\frontend\parser\cshpar.h" />
+    <ClInclude Include="..\src\spicelib\devices\csw\cswdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\csw\cswext.h" />
+    <ClInclude Include="..\src\spicelib\devices\csw\cswinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\csw\cswitf.h" />
+    <ClInclude Include="..\src\frontend\define.h" />
+    <ClInclude Include="..\src\include\ngspice\defines.h" />
+    <ClInclude Include="..\src\spicelib\devices\dev.h" />
+    <ClInclude Include="..\src\include\ngspice\devdefs.h" />
+    <ClInclude Include="..\src\frontend\device.h" />
+    <ClInclude Include="..\src\include\ngspice\dgen.h" />
+    <ClInclude Include="..\src\frontend\diff.h" />
+    <ClInclude Include="..\src\frontend\dimens.h" />
+    <ClInclude Include="..\src\spicelib\devices\dio\diodefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\dio\dioext.h" />
+    <ClInclude Include="..\src\spicelib\devices\dio\dioinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\dio\dioitf.h" />
+    <ClInclude Include="..\src\frontend\display.h" />
+    <ClInclude Include="..\src\include\ngspice\distodef.h" />
+    <ClInclude Include="..\src\include\ngspice\dllitf.h" />
+    <ClInclude Include="..\src\include\ngspice\domndefs.h" />
+    <ClInclude Include="..\src\include\ngspice\dopdefs.h" />
+    <ClInclude Include="..\src\frontend\dotcards.h" />
+    <ClInclude Include="..\src\include\ngspice\dstring.h" />
+    <ClInclude Include="..\src\misc\dup2.h" />
+    <ClInclude Include="..\src\include\ngspice\dvec.h" />
+    <ClInclude Include="..\src\include\ngspice\elctdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\enh.h" />
+    <ClInclude Include="..\src\frontend\error.h" />
+    <ClInclude Include="..\src\frontend\evaluate.h" />
+    <ClInclude Include="..\src\include\ngspice\evt.h" />
+    <ClInclude Include="..\src\include\ngspice\evtproto.h" />
+    <ClInclude Include="..\src\include\ngspice\evtudn.h" />
+    <ClInclude Include="..\src\include\ngspice\FastNorm3.h" />
+    <ClInclude Include="..\src\include\ngspice\fftext.h" />
+    <ClInclude Include="..\src\maths\fft\fftlib.h" />
+    <ClInclude Include="..\src\frontend\fourier.h" />
+    <ClInclude Include="..\src\include\ngspice\ftedbgra.h" />
+    <ClInclude Include="..\src\include\ngspice\ftedebug.h" />
+    <ClInclude Include="..\src\include\ngspice\ftedefs.h" />
+    <ClInclude Include="..\src\include\ngspice\ftedev.h" />
+    <ClInclude Include="..\src\include\ngspice\fteext.h" />
+    <ClInclude Include="..\src\frontend\wdisp\ftegraf.h" />
+    <ClInclude Include="..\src\frontend\ftehelp.h" />
+    <ClInclude Include="..\src\include\ngspice\fteinp.h" />
+    <ClInclude Include="..\src\include\ngspice\fteinput.h" />
+    <ClInclude Include="..\src\include\ngspice\fteoptdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\fteparse.h" />
+    <ClInclude Include="..\src\include\ngspice\gendefs.h" />
+    <ClInclude Include="..\src\include\ngspice\gendev.h" />
+    <ClInclude Include="..\src\frontend\numparam\general.h" />
+    <ClInclude Include="..\src\frontend\gens.h" />
+    <ClInclude Include="..\src\misc\getopt_bsd.h" />
+    <ClInclude Include="..\src\frontend\parser\glob.h" />
+    <ClInclude Include="..\src\frontend\plotting\gnuplot.h" />
+    <ClInclude Include="..\src\frontend\plotting\graf.h" />
+    <ClInclude Include="..\src\include\ngspice\graph.h" />
+    <ClInclude Include="..\src\frontend\plotting\graphdb.h" />
+    <ClInclude Include="..\src\include\ngspice\grid.h" />
+    <ClInclude Include="..\src\include\ngspice\hash.h" />
+    <ClInclude Include="..\src\frontend\hcomp.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet2\hfet2defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet2\hfet2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet2\hfet2init.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet2\hfet2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet1\hfetdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet1\hfetext.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet1\hfetinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\hfet1\hfetitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisim2\hisim.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hisimhv.h" />
+    <ClInclude Include="..\src\include\ngspice\hlpdefs.h" />
+    <ClInclude Include="..\src\frontend\hpgl.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisim2\hsm2def.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisim2\hsm2evalenv.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisim2\hsm2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisim2\hsm2init.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisim2\hsm2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvdef.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhveval_qover.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvevalenv.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvext.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvld_info_eval.h" />
+    <ClInclude Include="..\src\spicelib\devices\hisimhv1\hsmhvtemp_eval.h" />
+    <ClInclude Include="..\src\include\ngspice\iferrmsg.h" />
+    <ClInclude Include="..\src\include\ngspice\ifsim.h" />
+    <ClInclude Include="..\src\spicelib\devices\ind\inddefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\ind\indext.h" />
+    <ClInclude Include="..\src\spicelib\devices\ind\indinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\ind\inditf.h" />
+    <ClInclude Include="..\src\frontend\init.h" />
+    <ClInclude Include="..\src\spicelib\parser\inpxx.h" />
+    <ClInclude Include="..\src\frontend\inp.h" />
+    <ClInclude Include="..\src\frontend\inpcom.h" />
+    <ClInclude Include="..\src\include\ngspice\inpdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\inpmacs.h" />
+    <ClInclude Include="..\src\spicelib\parser\inppas1.h" />
+    <ClInclude Include="..\src\spicelib\parser\inppas2.h" />
+    <ClInclude Include="..\src\spicelib\parser\inppas3.h" />
+    <ClInclude Include="..\src\spicelib\parser\inpptree-parser.h" />
+    <ClInclude Include="..\src\include\ngspice\inpptree.h" />
+    <ClInclude Include="..\src\frontend\parser\input.h" />
+    <ClInclude Include="..\src\frontend\interp.h" />
+    <ClInclude Include="..\src\maths\poly\interpolate.h" />
+    <ClInclude Include="include\inttypes.h" />
+    <ClInclude Include="..\src\include\ngspice\ipc.h" />
+    <ClInclude Include="..\src\include\ngspice\ipcproto.h" />
+    <ClInclude Include="..\src\include\ngspice\ipctiein.h" />
+    <ClInclude Include="..\src\spicelib\devices\isrc\isrcdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\isrc\isrcext.h" />
+    <ClInclude Include="..\src\spicelib\devices\isrc\isrcinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\isrc\isrcitf.h" />
+    <ClInclude Include="..\src\misc\ivars.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet2\jfet2defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet2\jfet2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet2\jfet2init.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet2\jfet2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet2\jfet2parm.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet\jfetdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet\jfetext.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet\jfetinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet\jfetitf.h" />
+    <ClInclude Include="..\src\include\ngspice\jobdefs.h" />
+    <ClInclude Include="..\src\frontend\parser\lexical.h" />
+    <ClInclude Include="..\src\frontend\linear.h" />
+    <ClInclude Include="..\src\include\ngspice\lsort.h" />
+    <ClInclude Include="..\src\spicelib\devices\ltra\ltradefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\ltra\ltraext.h" />
+    <ClInclude Include="..\src\spicelib\devices\ltra\ltrainit.h" />
+    <ClInclude Include="..\src\spicelib\devices\ltra\ltraitf.h" />
+    <ClInclude Include="..\src\include\ngspice\macros.h" />
+    <ClInclude Include="..\src\include\ngspice\material.h" />
+    <ClInclude Include="..\src\include\ngspice\matldefs.h" />
+    <ClInclude Include="..\src\maths\fft\matlib.h" />
+    <ClInclude Include="..\src\include\ngspice\memory.h" />
+    <ClInclude Include="..\src\misc\mempool.h" />
+    <ClInclude Include="..\src\spicelib\devices\mesa\mesadefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mesa\mesaext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mesa\mesainit.h" />
+    <ClInclude Include="..\src\spicelib\devices\mesa\mesaitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\mes\mesdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mes\mesext.h" />
+    <ClInclude Include="..\src\include\ngspice\meshdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\meshext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mes\mesinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\mes\mesitf.h" />
+    <ClInclude Include="..\src\include\ngspice\methdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\mif.h" />
+    <ClInclude Include="..\src\include\ngspice\mifcmdat.h" />
+    <ClInclude Include="..\src\include\ngspice\mifdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\mifparse.h" />
+    <ClInclude Include="..\src\include\ngspice\mifproto.h" />
+    <ClInclude Include="..\src\include\ngspice\miftypes.h" />
+    <ClInclude Include="..\src\misc\misc_time.h" />
+    <ClInclude Include="..\src\frontend\misccoms.h" />
+    <ClInclude Include="..\src\frontend\miscvars.h" />
+    <ClInclude Include="..\src\include\ngspice\missing_math.h" />
+    <ClInclude Include="..\src\misc\mktemp.h" />
+    <ClInclude Include="..\src\include\ngspice\mobdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\modldefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos1\mos1defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos1\mos1ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos1\mos1init.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos1\mos1itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos2\mos2defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos2\mos2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos2\mos2init.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos2\mos2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos3\mos3defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos3\mos3ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos3\mos3init.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos3\mos3itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos6\mos6defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos6\mos6ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos6\mos6init.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos6\mos6itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos9\mos9defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos9\mos9ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos9\mos9init.h" />
+    <ClInclude Include="..\src\spicelib\devices\mos9\mos9itf.h" />
+    <ClInclude Include="..\src\include\ngspice\multi_line.h" />
+    <ClInclude Include="..\src\frontend\mw_coms.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt2\nbjt2def.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt2\nbjt2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt2\nbjt2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt\nbjtdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt\nbjtext.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt\nbjtinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt\nbjtitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\nbjt2\nbt2init.h" />
+    <ClInclude Include="..\src\frontend\newcoms.h" />
+    <ClInclude Include="..\src\include\ngspice\ngspice.h" />
+    <ClInclude Include="..\src\include\ngspice\noisedef.h" />
+    <ClInclude Include="..\src\maths\misc\norm.h" />
+    <ClInclude Include="..\src\include\ngspice\numcards.h" />
+    <ClInclude Include="..\src\include\ngspice\numconst.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd2\numd2def.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd2\numd2ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd2\numd2init.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd2\numd2itf.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd\numddefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd\numdext.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd\numdinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\numd\numditf.h" />
+    <ClInclude Include="..\src\include\ngspice\numenum.h" />
+    <ClInclude Include="..\src\include\ngspice\numgen.h" />
+    <ClInclude Include="..\src\include\ngspice\numglobs.h" />
+    <ClInclude Include="..\src\spicelib\devices\numos\numosdef.h" />
+    <ClInclude Include="..\src\spicelib\devices\numos\numosext.h" />
+    <ClInclude Include="..\src\spicelib\devices\numos\numosinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\numos\numositf.h" />
+    <ClInclude Include="..\src\frontend\numparam\numpaif.h" />
+    <ClInclude Include="..\src\frontend\numparam\numparam.h" />
+    <ClInclude Include="..\src\frontend\parser\numparse.h" />
+    <ClInclude Include="..\src\frontend\nutinp.h" />
+    <ClInclude Include="..\src\frontend\nutmegif.h" />
+    <ClInclude Include="..\src\ciderlib\oned\oneddefs.h" />
+    <ClInclude Include="..\src\include\ngspice\onedev.h" />
+    <ClInclude Include="..\src\ciderlib\oned\onedext.h" />
+    <ClInclude Include="..\src\include\ngspice\onemesh.h" />
+    <ClInclude Include="..\src\include\ngspice\opdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\optdefs.h" />
+    <ClInclude Include="..\src\frontend\options.h" />
+    <ClInclude Include="..\src\include\ngspice\optndefs.h" />
+    <ClInclude Include="..\src\frontend\outitf.h" />
+    <ClInclude Include="..\src\include\ngspice\outpdefs.h" />
+    <ClInclude Include="..\src\frontend\parse.h" />
+    <ClInclude Include="..\src\include\ngspice\plot.h" />
+    <ClInclude Include="..\src\frontend\plotting\plot5.h" />
+    <ClInclude Include="..\src\frontend\plotting\plotcurv.h" />
+    <ClInclude Include="..\src\frontend\plotting\plotit.h" />
+    <ClInclude Include="..\src\frontend\plotting\plotting.h" />
+    <ClInclude Include="..\src\include\ngspice\pnode.h" />
+    <ClInclude Include="..\src\frontend\points.h" />
+    <ClInclude Include="..\src\maths\poly\poly.h" />
+    <ClInclude Include="..\src\maths\poly\polyderiv.h" />
+    <ClInclude Include="..\src\maths\poly\polyeval.h" />
+    <ClInclude Include="..\src\maths\poly\polyfit.h" />
+    <ClInclude Include="..\src\frontend\postcoms.h" />
+    <ClInclude Include="..\src\frontend\postsc.h" />
+    <ClInclude Include="..\src\misc\printnum.h" />
+    <ClInclude Include="..\src\include\ngspice\profile.h" />
+    <ClInclude Include="..\src\spicelib\devices\jfet2\psmodel.h" />
+    <ClInclude Include="..\src\include\ngspice\pssdefs.h" />
+    <ClInclude Include="..\src\frontend\plotting\pvec.h" />
+    <ClInclude Include="..\src\include\ngspice\pzdefs.h" />
+    <ClInclude Include="..\src\frontend\quote.h" />
+    <ClInclude Include="..\src\frontend\rawfile.h" />
+    <ClInclude Include="..\src\spicelib\devices\res\resdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\res\resext.h" />
+    <ClInclude Include="..\src\spicelib\devices\res\resinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\res\resitf.h" />
+    <ClInclude Include="..\src\frontend\resource.h" />
+    <ClInclude Include="..\src\frontend\runcoms.h" />
+    <ClInclude Include="..\src\frontend\runcoms2.h" />
+    <ClInclude Include="..\src\include\ngspice\sen2defs.h" />
+    <ClInclude Include="..\src\include\ngspice\sensdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\sensgen.h" />
+    <ClInclude Include="..\src\frontend\shyu.h" />
+    <ClInclude Include="..\src\frontend\signal_handler.h" />
+    <ClInclude Include="..\src\include\ngspice\sim.h" />
+    <ClInclude Include="..\src\include\ngspice\smpdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\soi3\soi3defs.h" />
+    <ClInclude Include="..\src\spicelib\devices\soi3\soi3ext.h" />
+    <ClInclude Include="..\src\spicelib\devices\soi3\soi3init.h" />
+    <ClInclude Include="..\src\spicelib\devices\soi3\soi3itf.h" />
+    <ClInclude Include="..\src\maths\sparse\spconfig.h" />
+    <ClInclude Include="..\src\maths\sparse\spdefs.h" />
+    <ClInclude Include="..\src\frontend\spec.h" />
+    <ClInclude Include="..\src\include\ngspice\sperror.h" />
+    <ClInclude Include="..\src\frontend\spiceif.h" />
+    <ClInclude Include="..\src\include\ngspice\spmatrix.h" />
+    <ClInclude Include="include\stdint.h" />
+    <ClInclude Include="..\src\frontend\streams.h" />
+    <ClInclude Include="..\src\include\ngspice\stringutil.h" />
+    <ClInclude Include="..\src\frontend\subckt.h" />
+    <ClInclude Include="..\src\include\ngspice\suffix.h" />
+    <ClInclude Include="..\src\spicelib\devices\sw\swdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\swec.h" />
+    <ClInclude Include="..\src\spicelib\devices\sw\swext.h" />
+    <ClInclude Include="..\src\spicelib\devices\sw\swinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\sw\switf.h" />
+    <ClInclude Include="..\src\frontend\terminal.h" />
+    <ClInclude Include="..\src\include\ngspice\tfdefs.h" />
+    <ClInclude Include="..\src\misc\tilde.h" />
+    <ClInclude Include="..\src\spicelib\devices\tra\tradefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\tra\traext.h" />
+    <ClInclude Include="..\src\spicelib\devices\tra\trainit.h" />
+    <ClInclude Include="..\src\spicelib\devices\tra\traitf.h" />
+    <ClInclude Include="..\src\include\ngspice\trandefs.h" />
+    <ClInclude Include="..\src\include\ngspice\trcvdefs.h" />
+    <ClInclude Include="..\src\include\ngspice\tskdefs.h" />
+    <ClInclude Include="..\src\ciderlib\twod\twoddefs.h" />
+    <ClInclude Include="..\src\include\ngspice\twodev.h" />
+    <ClInclude Include="..\src\ciderlib\twod\twodext.h" />
+    <ClInclude Include="..\src\include\ngspice\twomesh.h" />
+    <ClInclude Include="..\src\spicelib\devices\txl\txldefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\txl\txlext.h" />
+    <ClInclude Include="..\src\spicelib\devices\txl\txlinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\txl\txlitf.h" />
+    <ClInclude Include="..\src\include\ngspice\typedefs.h" />
+    <ClInclude Include="..\src\frontend\typesdef.h" />
+    <ClInclude Include="..\src\frontend\parser\unixcom.h" />
+    <ClInclude Include="..\src\spicelib\devices\urc\urcdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\urc\urcext.h" />
+    <ClInclude Include="..\src\spicelib\devices\urc\urcinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\urc\urcitf.h" />
+    <ClInclude Include="..\src\misc\util.h" />
+    <ClInclude Include="..\src\frontend\variable.h" />
+    <ClInclude Include="..\src\spicelib\devices\vbic\vbicdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\vbic\vbicext.h" />
+    <ClInclude Include="..\src\spicelib\devices\vbic\vbicinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\vbic\vbicitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\vccs\vccsdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\vccs\vccsext.h" />
+    <ClInclude Include="..\src\spicelib\devices\vccs\vccsinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\vccs\vccsitf.h" />
+    <ClInclude Include="..\src\spicelib\devices\vcvs\vcvsdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\vcvs\vcvsext.h" />
+    <ClInclude Include="..\src\spicelib\devices\vcvs\vcvsinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\vcvs\vcvsitf.h" />
+    <ClInclude Include="..\src\frontend\vectors.h" />
+    <ClInclude Include="..\src\spicelib\devices\vsrc\vsrcdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\vsrc\vsrcext.h" />
+    <ClInclude Include="..\src\spicelib\devices\vsrc\vsrcinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\vsrc\vsrcitf.h" />
+    <ClInclude Include="..\src\include\ngspice\wallace.h" />
+    <ClInclude Include="..\src\frontend\where.h" />
+    <ClInclude Include="..\src\frontend\wdisp\windisp.h" />
+    <ClInclude Include="..\src\winmain.h" />
+    <ClInclude Include="..\src\frontend\wdisp\winprint.h" />
+    <ClInclude Include="..\src\include\ngspice\wordlist.h" />
+    <ClInclude Include="..\src\include\ngspice\wstdio.h" />
+    <ClInclude Include="..\src\frontend\plotting\x11.h" />
+    <ClInclude Include="..\src\frontend\plotting\xgraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\xspice\icm\objects.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\frontend\trannoise\1-f-code.c" />
+    <ClCompile Include="..\src\spicelib\analysis\acan.c" />
+    <ClCompile Include="..\src\spicelib\analysis\acaskq.c" />
+    <ClCompile Include="..\src\maths\misc\accuracy.c" />
+    <ClCompile Include="..\src\spicelib\analysis\acsetp.c" />
+    <ClCompile Include="..\src\frontend\plotting\agraf.c" />
+    <ClCompile Include="..\src\misc\alloc.c" />
+    <ClCompile Include="..\src\spicelib\analysis\analysis.c" />
+    <ClCompile Include="..\src\frontend\arg.c" />
+    <ClCompile Include="..\src\frontend\aspice.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrc.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcask.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcconv.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcfbr.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcload.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrcset.c" />
+    <ClCompile Include="..\src\spicelib\devices\asrc\asrctemp.c" />
+    <ClCompile Include="..\src\maths\deriv\atander.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1disto.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1dset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1eval.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1moscap.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\b1trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2eval.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2moscap.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\b2trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3soachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soidd.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddcheck.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddcvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soidddel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soidddest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddnoi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_dd\b3soiddtrunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifd.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdcheck.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdcvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifddel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifddest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdnoi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_fd\b3soifdtrunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipd.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdcheck.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdcvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipddel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipddest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdnoi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3soi_pd\b3soipdtrunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\b3trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\b3v0trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\b3v1trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32soachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\b3v32trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4geo.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4soachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soiacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soiask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soicheck.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soicvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soidel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soidest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soigetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soiinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soild.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soimask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soimdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soimpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soinoi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soipar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soipzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soiset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soisoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soitemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsimsoi\b4soitrunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\b4trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4geo.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\b4v4trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5geo.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5soachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\b4v5trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6check.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6del.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6geo.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6par.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6set.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6soachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\b4v6trunc.c" />
+    <ClCompile Include="..\src\frontend\parser\backq.c" />
+    <ClCompile Include="..\src\ciderlib\input\bdryset.c" />
+    <ClCompile Include="..\src\maths\misc\bernoull.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjt.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtconv.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtdisto.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtdset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtload.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtnoise.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjtsupd.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjttemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\bjt\bjttrunc.c" />
+    <ClCompile Include="..\src\ciderlib\input\boundary.c" />
+    <ClCompile Include="..\src\frontend\breakp.c" />
+    <ClCompile Include="..\src\frontend\breakp2.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim1\bsim1init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim2\bsim2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3\bsim3init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v0\bsim3v0init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v1\bsim3v1init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim3v32\bsim3v32init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4\bsim4init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v4\bsim4v4init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v5\bsim4v5init.c" />
+    <ClCompile Include="..\src\spicelib\devices\bsim4v6\bsim4v6init.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\cap.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capask.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capload.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\cappzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\capsupd.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\captemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\cap\captrunc.c" />
+    <ClCompile Include="..\src\ciderlib\input\cards.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccs.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsask.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccspar.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccspzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccssacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccssld.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccssprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\cccs\cccssset.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvs.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsask.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsfbr.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvspar.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvspzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvssacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvssld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvssprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\ccvs\ccvssset.c" />
+    <ClCompile Include="..\src\frontend\circuits.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktaccept.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktacct.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktacdum.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktask.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktaskaq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktasknq.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktbindnode.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktbkdum.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktclrbk.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktcrte.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdelt.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdest.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdisto.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdlti.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdltm.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdltn.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdojob.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktdump.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktfbran.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktfinddev.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktfnda.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktfndm.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktfnode.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktftask.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktgrnd.c" />
+    <ClCompile Include="..\src\spicelib\analysis\ckti2nod.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktic.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktinit.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktlnkeq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktload.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmapn.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmask.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmcrt.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmkcur.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmknod.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmkvol.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktmpar.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktnames.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktncdump.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktnewan.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktneweq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktnewn.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktnodn.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktnoise.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktntask.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktnum2n.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktop.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktparam.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktpmnam.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktpname.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktpzld.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktpzset.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktpzstr.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsens.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsetap.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsetbk.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsetnp.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsetup.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsgen.c" />
+    <ClCompile Include="..\src\spicelib\devices\cktsoachk.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktsopt.c" />
+    <ClCompile Include="..\src\spicelib\analysis\ckttemp.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cktterr.c" />
+    <ClCompile Include="..\src\spicelib\analysis\ckttroub.c" />
+    <ClCompile Include="..\src\spicelib\analysis\ckttrunc.c" />
+    <ClCompile Include="..\src\spicelib\analysis\ckttyplk.c" />
+    <ClCompile Include="..\src\frontend\plotting\clip.c" />
+    <ClCompile Include="..\src\spicelib\analysis\cluster.c" />
+    <ClCompile Include="..\src\xspice\cm\cm.c" />
+    <ClCompile Include="..\src\maths\cmaths\cmath1.c" />
+    <ClCompile Include="..\src\maths\cmaths\cmath2.c" />
+    <ClCompile Include="..\src\maths\cmaths\cmath3.c" />
+    <ClCompile Include="..\src\maths\cmaths\cmath4.c" />
+    <ClCompile Include="..\src\xspice\cm\cmevt.c" />
+    <ClCompile Include="..\src\xspice\cm\cmexport.c" />
+    <ClCompile Include="..\src\xspice\cm\cmmeters.c" />
+    <ClCompile Include="..\src\xspice\cm\cmutil.c" />
+    <ClCompile Include="..\src\frontend\com_ahelp.c" />
+    <ClCompile Include="..\src\frontend\com_alias.c" />
+    <ClCompile Include="..\src\frontend\com_asciiplot.c" />
+    <ClCompile Include="..\src\frontend\com_cdump.c" />
+    <ClCompile Include="..\src\frontend\com_chdir.c" />
+    <ClCompile Include="..\src\frontend\com_compose.c" />
+    <ClCompile Include="..\src\frontend\com_display.c" />
+    <ClCompile Include="..\src\frontend\com_dl.c" />
+    <ClCompile Include="..\src\frontend\com_dump.c" />
+    <ClCompile Include="..\src\frontend\com_echo.c" />
+    <ClCompile Include="..\src\frontend\com_fft.c" />
+    <ClCompile Include="..\src\frontend\com_ghelp.c" />
+    <ClCompile Include="..\src\frontend\com_gnuplot.c" />
+    <ClCompile Include="..\src\frontend\com_hardcopy.c" />
+    <ClCompile Include="..\src\frontend\com_help.c" />
+    <ClCompile Include="..\src\frontend\com_history.c" />
+    <ClCompile Include="..\src\frontend\com_let.c" />
+    <ClCompile Include="..\src\frontend\com_measure2.c" />
+    <ClCompile Include="..\src\frontend\com_option.c" />
+    <ClCompile Include="..\src\frontend\com_plot.c" />
+    <ClCompile Include="..\src\frontend\com_rehash.c" />
+    <ClCompile Include="..\src\frontend\com_set.c" />
+    <ClCompile Include="..\src\frontend\com_setscale.c" />
+    <ClCompile Include="..\src\frontend\com_shell.c" />
+    <ClCompile Include="..\src\frontend\com_shift.c" />
+    <ClCompile Include="..\src\frontend\com_state.c" />
+    <ClCompile Include="..\src\frontend\com_strcmp.c" />
+    <ClCompile Include="..\src\frontend\com_sysinfo.c" />
+    <ClCompile Include="..\src\frontend\com_unset.c" />
+    <ClCompile Include="..\src\frontend\com_xgraph.c" />
+    <ClCompile Include="..\src\frontend\commands.c" />
+    <ClCompile Include="..\src\frontend\parser\complete.c" />
+    <ClCompile Include="..\src\conf.c" />
+    <ClCompile Include="..\src\ciderlib\input\contact.c" />
+    <ClCompile Include="..\src\frontend\control.c" />
+    <ClCompile Include="..\src\ciderlib\input\contset.c" />
+    <ClCompile Include="..\src\maths\deriv\cosderiv.c" />
+    <ClCompile Include="..\src\frontend\cpitf.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cpl.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplask.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cpldel.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cpldest.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplload.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\cpl\cplsetup.c" />
+    <ClCompile Include="..\src\frontend\parser\cshpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\csw.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswask.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswload.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswnoise.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\csw\cswtrunc.c" />
+    <ClCompile Include="..\src\maths\deriv\cubeder.c" />
+    <ClCompile Include="..\src\spicelib\analysis\daskq.c" />
+    <ClCompile Include="..\src\ciderlib\support\database.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dcoaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dcop.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dcosetp.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dcpss.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dctaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dctran.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dctrcurv.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dctsetp.c" />
+    <ClCompile Include="..\src\frontend\define.c" />
+    <ClCompile Include="..\src\spicelib\devices\dev.c" />
+    <ClCompile Include="..\src\frontend\device.c" />
+    <ClCompile Include="..\src\ciderlib\support\devprint.c" />
+    <ClCompile Include="..\src\spicelib\devices\devsup.c" />
+    <ClCompile Include="..\src\frontend\diff.c" />
+    <ClCompile Include="..\src\frontend\dimens.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dio.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dioacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dioask.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dioconv.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diodel.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diodest.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diodisto.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diodset.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diogetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dioinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dioload.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diomask.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diomdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diompar.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dionoise.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\dioparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diopzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosload.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosset.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diosupd.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diotemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\dio\diotrunc.c" />
+    <ClCompile Include="..\src\frontend\display.c" />
+    <ClCompile Include="..\src\spicelib\analysis\distoan.c" />
+    <ClCompile Include="..\src\maths\deriv\divderiv.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dkerproc.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dloadfns.c" />
+    <ClCompile Include="..\src\ciderlib\input\domain.c" />
+    <ClCompile Include="..\src\ciderlib\input\domnset.c" />
+    <ClCompile Include="..\src\ciderlib\input\doping.c" />
+    <ClCompile Include="..\src\ciderlib\input\dopset.c" />
+    <ClCompile Include="..\src\frontend\dotcards.c" />
+    <ClCompile Include="..\src\spicelib\analysis\dsetparm.c" />
+    <ClCompile Include="..\src\misc\dstring.c" />
+    <ClCompile Include="..\src\misc\dup2.c" />
+    <ClCompile Include="..\src\ciderlib\input\elctset.c" />
+    <ClCompile Include="..\src\ciderlib\input\electrod.c" />
+    <ClCompile Include="..\src\xspice\enh\enh.c" />
+    <ClCompile Include="..\src\xspice\enh\enhtrans.c" />
+    <ClCompile Include="..\src\maths\deriv\equalder.c" />
+    <ClCompile Include="..\src\maths\misc\equality.c" />
+    <ClCompile Include="..\src\maths\misc\erfc.c" />
+    <ClCompile Include="..\src\frontend\error.c" />
+    <ClCompile Include="..\src\frontend\evaluate.c" />
+    <ClCompile Include="..\src\xspice\evt\evtaccept.c" />
+    <ClCompile Include="..\src\xspice\evt\evtbackup.c" />
+    <ClCompile Include="..\src\xspice\evt\evtcall_hybrids.c" />
+    <ClCompile Include="..\src\xspice\evt\evtdeque.c" />
+    <ClCompile Include="..\src\xspice\evt\evtdump.c" />
+    <ClCompile Include="..\src\xspice\evt\evtinit.c" />
+    <ClCompile Include="..\src\xspice\evt\evtiter.c" />
+    <ClCompile Include="..\src\xspice\evt\evtload.c" />
+    <ClCompile Include="..\src\xspice\evt\evtnext_time.c" />
+    <ClCompile Include="..\src\xspice\evt\evtnode_copy.c" />
+    <ClCompile Include="..\src\xspice\evt\evtop.c" />
+    <ClCompile Include="..\src\xspice\evt\evtplot.c" />
+    <ClCompile Include="..\src\xspice\evt\evtprint.c" />
+    <ClCompile Include="..\src\xspice\evt\evtqueue.c" />
+    <ClCompile Include="..\src\xspice\evt\evtsetup.c" />
+    <ClCompile Include="..\src\xspice\evt\evttermi.c" />
+    <ClCompile Include="..\src\maths\deriv\expderiv.c" />
+    <ClCompile Include="..\src\frontend\trannoise\FastNorm3.c" />
+    <ClCompile Include="..\src\maths\fft\fftext.c" />
+    <ClCompile Include="..\src\maths\fft\fftlib.c" />
+    <ClCompile Include="..\src\frontend\fourier.c" />
+    <ClCompile Include="..\src\frontend\ftesopt.c" />
+    <ClCompile Include="..\src\frontend\gens.c" />
+    <ClCompile Include="..\src\ciderlib\support\geominfo.c" />
+    <ClCompile Include="..\src\misc\getopt_long_bsd.c" />
+    <ClCompile Include="..\src\frontend\parser\glob.c" />
+    <ClCompile Include="..\src\ciderlib\support\globals.c" />
+    <ClCompile Include="..\src\frontend\plotting\gnuplot.c" />
+    <ClCompile Include="..\src\frontend\plotting\graf.c" />
+    <ClCompile Include="..\src\frontend\plotting\graphdb.c" />
+    <ClCompile Include="..\src\frontend\plotting\grid.c" />
+    <ClCompile Include="..\src\misc\hash.c" />
+    <ClCompile Include="..\src\frontend\hcomp.c" />
+    <ClCompile Include="..\src\frontend\help\help.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfet.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2acl.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2load.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2param.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2pzl.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2setup.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet2\hfet2trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetload.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetpzl.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfetsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfettemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\hfet1\hfettrunc.c" />
+    <ClCompile Include="..\src\frontend\hpgl.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2cvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2eval.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2getic.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2ld.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2par.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2set.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2soachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisim2\hsm2trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhv.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvcvtest.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhveval.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvld.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvnoi.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvset.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvsoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\hisimhv1\hsmhvtrunc.c" />
+    <ClCompile Include="..\src\xspice\idn\idndig.c" />
+    <ClCompile Include="..\src\spicelib\parser\ifeval.c" />
+    <ClCompile Include="..\src\spicelib\parser\ifnewuid.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\ind.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indask.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\inddel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\inddest.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indload.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indsacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indsprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indsupd.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\indtrunc.c" />
+    <ClCompile Include="..\src\frontend\init.c" />
+    <ClCompile Include="..\src\frontend\inp.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2b.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2c.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2d.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2dot.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2e.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2f.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2g.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2h.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2i.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2j.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2k.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2l.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2m.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2n.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2o.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2p.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2q.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2r.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2s.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2t.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2u.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2v.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2w.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2y.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2z.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpaname.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpapnam.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpcfix.c" />
+    <ClCompile Include="..\src\frontend\inpcom.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpdomod.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpdoopt.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpdpar.c" />
+    <ClCompile Include="..\src\spicelib\parser\inperrc.c" />
+    <ClCompile Include="..\src\spicelib\parser\inperror.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpeval.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpfindl.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpfindv.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpgmod.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpgstr.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpgtitl.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpgtok.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpgval.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpkmods.c" />
+    <ClCompile Include="..\src\spicelib\parser\inplist.c" />
+    <ClCompile Include="..\src\spicelib\parser\inplkmod.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpmkmod.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpmktmp.c" />
+    <ClCompile Include="..\src\spicelib\parser\inppas1.c" />
+    <ClCompile Include="..\src\spicelib\parser\inppas2.c" />
+    <ClCompile Include="..\src\spicelib\parser\inppas3.c" />
+    <ClCompile Include="..\src\spicelib\parser\inppname.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpptree.c" />
+    <ClCompile Include="..\src\spicelib\parser\inpsymt.c" />
+    <ClCompile Include="..\src\spicelib\parser\inptyplk.c" />
+    <ClCompile Include="..\src\frontend\parser\input.c" />
+    <ClCompile Include="..\src\ciderlib\support\integset.c" />
+    <ClCompile Include="..\src\ciderlib\support\integuse.c" />
+    <ClCompile Include="..\src\frontend\interp.c" />
+    <ClCompile Include="..\src\maths\poly\interpolate.c" />
+    <ClCompile Include="..\src\maths\deriv\invderiv.c" />
+    <ClCompile Include="..\src\frontend\inventory.c" />
+    <ClCompile Include="..\src\xspice\ipc\ipc.c" />
+    <ClCompile Include="..\src\xspice\ipc\ipcaegis.c" />
+    <ClCompile Include="..\src\xspice\ipc\ipcsockets.c" />
+    <ClCompile Include="..\src\xspice\ipc\ipcstdio.c" />
+    <ClCompile Include="..\src\xspice\ipc\ipctiein.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrc.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcacct.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcask.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcload.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrcpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\isrc\isrctemp.c" />
+    <ClCompile Include="..\src\misc\ivars.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfet.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2load.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2par.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2set.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\jfet2trun.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetask.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetdist.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetdset.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetload.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetnoi.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfetset.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfettemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet\jfettrun.c" />
+    <ClCompile Include="..\src\frontend\parser\lexical.c" />
+    <ClCompile Include="..\src\spicelib\devices\limit.c" />
+    <ClCompile Include="..\src\frontend\linear.c" />
+    <ClCompile Include="..\src\maths\misc\logb.c" />
+    <ClCompile Include="..\src\ciderlib\support\logfile.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltra.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltraacct.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltraacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltraask.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltradel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltradest.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltrainit.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltraload.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltramask.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltramdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltramisc.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltrampar.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltrapar.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltraset.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltratemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\ltra\ltratrun.c" />
+    <ClCompile Include="..\src\main.c" />
+    <ClCompile Include="..\src\ciderlib\support\mater.c" />
+    <ClCompile Include="..\src\ciderlib\input\material.c" />
+    <ClCompile Include="..\src\maths\fft\matlib.c" />
+    <ClCompile Include="..\src\ciderlib\input\matlset.c" />
+    <ClCompile Include="..\src\frontend\measure.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mes.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesa.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesaacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesaask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesadel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesadest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesagetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesainit.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesaload.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesamask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesamdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesamparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesaparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesapzl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesasetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesatemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mesa\mesatrunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesdisto.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesdset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesgetic.c" />
+    <ClCompile Include="..\src\ciderlib\input\mesh.c" />
+    <ClCompile Include="..\src\ciderlib\input\meshset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesload.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesnoise.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mesparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mespzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\messetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mestemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mes\mestrunc.c" />
+    <ClCompile Include="..\src\ciderlib\input\method.c" />
+    <ClCompile Include="..\src\xspice\mif\mif.c" />
+    <ClCompile Include="..\src\xspice\mif\mif_inp2.c" />
+    <ClCompile Include="..\src\xspice\mif\mifask.c" />
+    <ClCompile Include="..\src\xspice\mif\mifconvt.c" />
+    <ClCompile Include="..\src\xspice\mif\mifdelete.c" />
+    <ClCompile Include="..\src\xspice\mif\mifdestr.c" />
+    <ClCompile Include="..\src\xspice\mif\mifgetmod.c" />
+    <ClCompile Include="..\src\xspice\mif\mifgetvalue.c" />
+    <ClCompile Include="..\src\xspice\mif\mifload.c" />
+    <ClCompile Include="..\src\xspice\mif\mifmask.c" />
+    <ClCompile Include="..\src\xspice\mif\mifmdelete.c" />
+    <ClCompile Include="..\src\xspice\mif\mifmpara.c" />
+    <ClCompile Include="..\src\xspice\mif\mifsetup.c" />
+    <ClCompile Include="..\src\xspice\mif\miftrunc.c" />
+    <ClCompile Include="..\src\xspice\mif\mifutil.c" />
+    <ClCompile Include="..\src\ciderlib\support\misc.c" />
+    <ClCompile Include="..\src\misc\misc_time.c" />
+    <ClCompile Include="..\src\frontend\misccoms.c" />
+    <ClCompile Include="..\src\frontend\miscvars.c" />
+    <ClCompile Include="..\src\misc\mktemp.c" />
+    <ClCompile Include="..\src\ciderlib\support\mobil.c" />
+    <ClCompile Include="..\src\ciderlib\input\mobility.c" />
+    <ClCompile Include="..\src\ciderlib\input\mobset.c" />
+    <ClCompile Include="..\src\ciderlib\input\models.c" />
+    <ClCompile Include="..\src\ciderlib\input\modlset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1conv.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1del.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1dist.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1dset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1init.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1load.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1par.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1sacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1set.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1sld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1sprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1sset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1supd.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos1\mos1trun.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2conv.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2dist.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2dset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2load.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2par.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2sacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2set.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2sld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2sprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2sset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2supd.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos2\mos2trun.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3conv.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3del.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3dist.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3dset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3init.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3load.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3par.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3sacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3set.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3sld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3sprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3sset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3supd.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos3\mos3trun.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6conv.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6init.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6load.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6par.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6set.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos6\mos6trun.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9conv.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9del.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9dist.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9dset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9init.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9load.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9noi.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9par.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9sacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9set.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9sld.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9sprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9sset.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9supd.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\mos9\mos9trun.c" />
+    <ClCompile Include="msvc-compat.c" />
+    <ClCompile Include="..\src\maths\deriv\multder.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutask.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutsprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\mutsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\ind\muttemp.c" />
+    <ClCompile Include="..\src\frontend\mw_coms.c" />
+    <ClCompile Include="..\src\frontend\numparam\mystring.c" />
+    <ClCompile Include="..\src\spicelib\analysis\naskq.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjt.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtask.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtdump.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtload.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtparm.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjtset.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjttemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt\nbjttrun.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2dump.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2load.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2parm.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2set.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\nbjt2\nbt2trun.c" />
+    <ClCompile Include="..\src\spicelib\analysis\nevalsrc.c" />
+    <ClCompile Include="..\src\frontend\newcoms.c" />
+    <ClCompile Include="..\src\ngspice.c" />
+    <ClCompile Include="..\src\maths\ni\niaciter.c" />
+    <ClCompile Include="..\src\maths\ni\nicomcof.c" />
+    <ClCompile Include="..\src\maths\ni\niconv.c" />
+    <ClCompile Include="..\src\maths\ni\nidest.c" />
+    <ClCompile Include="..\src\maths\ni\niditer.c" />
+    <ClCompile Include="..\src\maths\ni\niinit.c" />
+    <ClCompile Include="..\src\maths\ni\niinteg.c" />
+    <ClCompile Include="..\src\maths\ni\niiter.c" />
+    <ClCompile Include="..\src\maths\ni\niniter.c" />
+    <ClCompile Include="..\src\spicelib\analysis\ninteg.c" />
+    <ClCompile Include="..\src\maths\ni\nipred.c" />
+    <ClCompile Include="..\src\maths\ni\nipzmeth.c" />
+    <ClCompile Include="..\src\maths\ni\nireinit.c" />
+    <ClCompile Include="..\src\maths\ni\nisenre.c" />
+    <ClCompile Include="..\src\spicelib\analysis\noisean.c" />
+    <ClCompile Include="..\src\maths\misc\norm.c" />
+    <ClCompile Include="..\src\spicelib\analysis\nsetparm.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2del.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2dump.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2load.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2parm.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2pzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2set.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\nud2trun.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numd.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd2\numd2init.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdask.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numddel.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numddest.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numddump.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdload.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdparm.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdset.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\numd\numdtrun.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\numm.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummask.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummdump.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummload.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummparm.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummset.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummtemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\nummtrun.c" />
+    <ClCompile Include="..\src\spicelib\devices\numos\numosinit.c" />
+    <ClCompile Include="..\src\frontend\parser\numparse.c" />
+    <ClCompile Include="..\src\frontend\nutinp.c" />
+    <ClCompile Include="..\src\frontend\nutmegif.c" />
+    <ClCompile Include="..\src\ciderlib\oned\oneadmit.c" />
+    <ClCompile Include="..\src\ciderlib\oned\oneaval.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onecond.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onecont.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onedest.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onedopng.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onefreez.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onemesh.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onepoiss.c" />
+    <ClCompile Include="..\src\ciderlib\oned\oneprint.c" />
+    <ClCompile Include="..\src\ciderlib\oned\oneproj.c" />
+    <ClCompile Include="..\src\ciderlib\oned\oneread.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onesetup.c" />
+    <ClCompile Include="..\src\ciderlib\oned\onesolve.c" />
+    <ClCompile Include="..\src\frontend\options.c" />
+    <ClCompile Include="..\src\ciderlib\input\optionsc.c" />
+    <ClCompile Include="..\src\frontend\outitf.c" />
+    <ClCompile Include="..\src\ciderlib\input\outpset.c" />
+    <ClCompile Include="..\src\ciderlib\input\output.c" />
+    <ClCompile Include="..\src\frontend\parse.c" />
+    <ClCompile Include="..\src\frontend\plotting\plot5.c" />
+    <ClCompile Include="..\src\frontend\plotting\plotcurv.c" />
+    <ClCompile Include="..\src\frontend\plotting\plotit.c" />
+    <ClCompile Include="..\src\frontend\plotting\plotting.c" />
+    <ClCompile Include="..\src\maths\deriv\plusder.c" />
+    <ClCompile Include="..\src\frontend\points.c" />
+    <ClCompile Include="..\src\maths\poly\polyderiv.c" />
+    <ClCompile Include="..\src\maths\poly\polyeval.c" />
+    <ClCompile Include="..\src\maths\poly\polyfit.c" />
+    <ClCompile Include="..\src\frontend\postcoms.c" />
+    <ClCompile Include="..\src\frontend\postsc.c" />
+    <ClCompile Include="..\src\maths\deriv\powderiv.c" />
+    <ClCompile Include="..\src\misc\printnum.c" />
+    <ClCompile Include="..\src\frontend\help\provide.c" />
+    <ClCompile Include="..\src\spicelib\devices\jfet2\psmodel.c" />
+    <ClCompile Include="..\src\spicelib\analysis\pssaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\pssinit.c" />
+    <ClCompile Include="..\src\spicelib\analysis\psssetp.c" />
+    <ClCompile Include="..\src\spicelib\parser\ptfuncs.c" />
+    <ClCompile Include="..\src\frontend\plotting\pvec.c" />
+    <ClCompile Include="..\src\spicelib\analysis\pzan.c" />
+    <ClCompile Include="..\src\spicelib\analysis\pzaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\pzsetp.c" />
+    <ClCompile Include="..\src\frontend\quote.c" />
+    <ClCompile Include="..\src\maths\misc\randnumb.c" />
+    <ClCompile Include="..\src\frontend\rawfile.c" />
+    <ClCompile Include="..\src\frontend\help\readhelp.c" />
+    <ClCompile Include="..\src\ciderlib\support\recomb.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\res.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resask.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resload.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resnoise.c" />
+    <ClCompile Include="..\src\frontend\resource.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\resparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\respzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\ressacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\ressetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\ressload.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\ressoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\ressprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\ressset.c" />
+    <ClCompile Include="..\src\spicelib\devices\res\restemp.c" />
+    <ClCompile Include="..\src\frontend\runcoms.c" />
+    <ClCompile Include="..\src\frontend\runcoms2.c" />
+    <ClCompile Include="..\src\maths\misc\scalb.c" />
+    <ClCompile Include="..\src\spicelib\analysis\sensaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\senssetp.c" />
+    <ClCompile Include="..\src\frontend\shyu.c" />
+    <ClCompile Include="..\src\frontend\signal_handler.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3acld.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3ask.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3cap.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3conv.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3del.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3dest.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3ic.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3init.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3load.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3mask.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3mdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3mpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3nois.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3par.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3set.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3temp.c" />
+    <ClCompile Include="..\src\spicelib\devices\soi3\soi3trun.c" />
+    <ClCompile Include="..\src\maths\sparse\spalloc.c" />
+    <ClCompile Include="..\src\maths\sparse\spbuild.c" />
+    <ClCompile Include="..\src\frontend\spec.c" />
+    <ClCompile Include="..\src\spicelib\parser\sperror.c" />
+    <ClCompile Include="..\src\maths\sparse\spextra.c" />
+    <ClCompile Include="..\src\maths\sparse\spfactor.c" />
+    <ClCompile Include="..\src\frontend\spiceif.c" />
+    <ClCompile Include="..\src\frontend\numparam\spicenum.c" />
+    <ClCompile Include="..\src\maths\sparse\spoutput.c" />
+    <ClCompile Include="..\src\maths\sparse\spsmp.c" />
+    <ClCompile Include="..\src\maths\sparse\spsolve.c" />
+    <ClCompile Include="..\src\maths\sparse\sputils.c" />
+    <ClCompile Include="..\src\maths\deriv\sqrtder.c" />
+    <ClCompile Include="..\src\frontend\parser\std.c" />
+    <ClCompile Include="..\src\frontend\streams.c" />
+    <ClCompile Include="..\src\misc\string.c" />
+    <ClCompile Include="..\src\frontend\subckt.c" />
+    <ClCompile Include="..\src\ciderlib\support\suprem.c" />
+    <ClCompile Include="..\src\ciderlib\support\suprmitf.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\sw.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swacload.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swask.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swdelete.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swload.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swmparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swnoise.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swpzload.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\sw\swtrunc.c" />
+    <ClCompile Include="..\src\maths\deriv\tanderiv.c" />
+    <ClCompile Include="..\src\frontend\terminal.c" />
+    <ClCompile Include="..\src\frontend\help\textdisp.c" />
+    <ClCompile Include="..\src\spicelib\analysis\tfanal.c" />
+    <ClCompile Include="..\src\spicelib\analysis\tfaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\tfsetp.c" />
+    <ClCompile Include="..\src\misc\tilde.c" />
+    <ClCompile Include="..\src\maths\deriv\timesder.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\tra.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\traacct.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\traacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\traask.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\tradel.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\tradest.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\trainit.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\traload.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\tramdel.c" />
+    <ClCompile Include="..\src\spicelib\analysis\tranaskq.c" />
+    <ClCompile Include="..\src\spicelib\analysis\traninit.c" />
+    <ClCompile Include="..\src\spicelib\analysis\transetp.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\traparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\trasetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\tratemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\tra\tratrunc.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twoadmit.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twoaval.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twocond.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twocont.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twocurr.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twodest.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twodopng.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twoelect.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twofield.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twomesh.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twomobdv.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twomobfn.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twomobil.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twoncont.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twopcont.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twopoiss.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twoprint.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twoproj.c" />
+    <ClCompile Include="..\src\ciderlib\twod\tworead.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twosetbc.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twosetup.c" />
+    <ClCompile Include="..\src\ciderlib\twod\twosolve.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txl.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlacct.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlask.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txldel.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txldest.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlfbr.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlload.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\txl\txlsetup.c" />
+    <ClCompile Include="..\src\frontend\typesdef.c" />
+    <ClCompile Include="..\src\frontend\parser\unixcom.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urc.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcask.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\urc\urcsetup.c" />
+    <ClCompile Include="..\src\misc\util.c" />
+    <ClCompile Include="..\src\frontend\variable.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbic.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicask.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicconv.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicgetic.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicload.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicmask.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicmpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicnoise.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicsetup.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbicsoachk.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbictemp.c" />
+    <ClCompile Include="..\src\spicelib\devices\vbic\vbictrunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccs.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsask.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccspar.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccspzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccssacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccssld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccssprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\vccs\vccssset.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvs.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsask.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsfbr.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsload.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvspar.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvspzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvssacl.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvsset.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvssld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvssprt.c" />
+    <ClCompile Include="..\src\spicelib\devices\vcvs\vcvssset.c" />
+    <ClCompile Include="..\src\frontend\vectors.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrc.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcacct.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcacld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcask.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcdest.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcfbr.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcload.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcmdel.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcpar.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcpzld.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcpzs.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrcset.c" />
+    <ClCompile Include="..\src\spicelib\devices\vsrc\vsrctemp.c" />
+    <ClCompile Include="..\src\frontend\trannoise\wallace.c" />
+    <ClCompile Include="..\src\frontend\where.c" />
+    <ClCompile Include="..\src\frontend\wdisp\windisp.c" />
+    <ClCompile Include="..\src\winmain.c" />
+    <ClCompile Include="..\src\frontend\wdisp\winprint.c" />
+    <ClCompile Include="..\src\misc\wlist.c" />
+    <ClCompile Include="..\src\frontend\plotting\x11.c" />
+    <ClCompile Include="..\src\frontend\help\x11disp.c" />
+    <ClCompile Include="..\src\frontend\help\xdisplay.c" />
+    <ClCompile Include="..\src\frontend\plotting\xgraph.c" />
+    <ClCompile Include="..\src\frontend\numparam\xpressn.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
