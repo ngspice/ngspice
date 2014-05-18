@@ -181,7 +181,7 @@ int HSM2load(
 {
   register HSM2model *model = (HSM2model*)inModel;
   register HSM2instance *here;
-  HSM2binningParam *pParam;
+/*  HSM2binningParam *pParam;*/
   double cbhat=0.0, cdrain=0.0, cdhat=0.0, cdreq=0.0, cgbhat=0.0, cgshat=0.0, cgdhat=0.0 ;
   double Ibtot=0.0, Idtot=0.0, Igbtot=0.0, Igstot=0.0, Igdtot=0.0 ;
   double ceq=0.0, ceqbd=0.0, ceqbs=0.0, ceqqb=0.0, ceqqd=0.0, ceqqg=0.0 ;
@@ -204,7 +204,7 @@ int HSM2load(
   double ivds=0.0, ivgs=0.0, ivbs=0.0 ;
   double gjbs=0.0, gjbd=0.0, gcdbdb=0.0, gcsbsb=0.0, gcbbb=0.0, gcdbb=0.0, gcsbb=0.0, grg=0.0 ;
   double vdbs=0.0, vsbs=0.0, vdbd=0.0, delvdbs=0.0, delvsbs=0.0, delvdbd=0.0 ;
-  double vges=0.0, vged=0.0, delvges=0.0, delvged=0.0, vgedo=0.0 ;
+  double vges=0.0, vged=0.0, delvges=0.0,/* delvged=0.0,*/ vgedo=0.0 ;
   double vsbdo=0.0, vsbd=0.0; 
   double vbs_jct=0.0, vbd_jct=0.0, delvbs_jct=0.0, delvbd_jct=0.0 ;
   int ByPass=0, Check=0, Check1=0, Check2=0 ;
@@ -241,7 +241,7 @@ tm0 = gtodsecld() ;
 
     for (here = model->HSM2instances; here != NULL ;
 	 here = here->HSM2nextInstance) {
-      pParam = &here->pParam ;
+/*      pParam = &here->pParam ;*/
       showPhysVal = 0;
       Check=1;
       ByPass = 0;
@@ -369,7 +369,7 @@ tm0 = gtodsecld() ;
 	delvsbs = vsbs - *(ckt->CKTstate0 + here->HSM2vsbs);
 	delvdbd = vdbd - *(ckt->CKTstate0 + here->HSM2vdbd);
 	delvgd = vgd - vgdo;
-	delvged = vged - vgedo;
+/*	delvged = vged - vgedo;*/
 
 	delvbd_jct = (!here->HSM2_corbnet) ? delvbd : delvdbd;
 	delvbs_jct = (!here->HSM2_corbnet) ? delvbs : delvsbs;

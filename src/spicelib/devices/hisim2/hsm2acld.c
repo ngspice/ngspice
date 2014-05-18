@@ -59,7 +59,10 @@ int HSM2acLoad(
   double grg = 0.0, pxcbdb_i = 0.0, pxcbsb_i = 0.0;
 
   double Qi, Qi_dVgs, Qi_dVbs, Qi_dVds ;
-  double Qb, Qb_dVgs, Qb_dVbs, Qb_dVds ;
+#ifdef DEBUG_HISIM2CGG
+  double Qb ;
+#endif
+  double Qb_dVgs, Qb_dVbs, Qb_dVds ;
   double tau ;
   double taub ;
   double Xd, Xd_dVgs, Xd_dVbs, Xd_dVds ;
@@ -95,7 +98,9 @@ int HSM2acLoad(
 	Qi_dVds = here->HSM2_Qi_dVds ;
 	Qi_dVbs = here->HSM2_Qi_dVbs ;
 
+#ifdef DEBUG_HISIM2CGG
 	Qb = here->HSM2_Qb  ;
+#endif
 	Qb_dVgs = here->HSM2_Qb_dVgs ;
 	Qb_dVds = here->HSM2_Qb_dVds ;
 	Qb_dVbs = here->HSM2_Qb_dVbs ;

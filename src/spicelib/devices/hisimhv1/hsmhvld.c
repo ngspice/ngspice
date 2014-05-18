@@ -171,8 +171,8 @@ int HSMHVload(
   register HSMHVmodel *model = (HSMHVmodel*)inModel;
   register HSMHVinstance *here;
   HSMHVbinningParam *pParam;
-  HSMHVmodelMKSParam *modelMKS ;
-  HSMHVhereMKSParam  *hereMKS ;
+/*  HSMHVmodelMKSParam *modelMKS ;*/
+/*  HSMHVhereMKSParam  *hereMKS ;*/
 
 
 
@@ -249,7 +249,7 @@ int HSMHVload(
 
   double Qdext=0.0, dQdext_dVdse=0.0, dQdext_dVgse=0.0, dQdext_dVbse=0.0, dQdext_dT=0.0 ;
   double Qgext=0.0, dQgext_dVdse=0.0, dQgext_dVgse=0.0, dQgext_dVbse=0.0, dQgext_dT=0.0 ;
-  double dQsext_dVdse=0.0, dQsext_dVgse=0.0, dQsext_dVbse=0.0, dQsext_dT=0.0 ;
+  double /*Qsext=0.0,*/ dQsext_dVdse=0.0, dQsext_dVgse=0.0, dQsext_dVbse=0.0, dQsext_dT=0.0 ;
   double Qbext=0.0, dQbext_dVdse=0.0, dQbext_dVgse=0.0, dQbext_dVbse=0.0, dQbext_dT=0.0 ;
   /* 5th substrate node */
   int flg_subNode = 0 ;
@@ -363,12 +363,12 @@ int HSMHVload(
   for ( ; model != NULL; model = model->HSMHVnextModel ) {
     /* loop through all the instances of the model */
 
-    modelMKS = &model->modelMKS ;
+/*    modelMKS = &model->modelMKS ;*/
 
     for (here = model->HSMHVinstances; here != NULL ;
          here = here->HSMHVnextInstance) {
       
-      hereMKS = &here->hereMKS ;
+/*      hereMKS = &here->hereMKS ;*/
       pParam = &here->pParam ;
       showPhysVal = 0;
       Check=1;
@@ -1107,6 +1107,7 @@ line755: /* standard entry if HSMHVevaluate is bypassed */
         dQgext_dVgse = here->HSMHV_dQgext_dVgse ;
         dQgext_dVbse = here->HSMHV_dQgext_dVbse ;
         dQgext_dT    = (here->HSMHV_coselfheat > 0) ? here->HSMHV_dQgext_dTi : 0.0  ;
+/*        Qsext        = here->HSMHV_qsext ;*/
         dQsext_dVdse = here->HSMHV_dQsext_dVdse ;
         dQsext_dVgse = here->HSMHV_dQsext_dVgse ;
         dQsext_dVbse = here->HSMHV_dQsext_dVbse ;
@@ -1268,6 +1269,7 @@ line755: /* standard entry if HSMHVevaluate is bypassed */
         dQgext_dVgse = here->HSMHV_dQgext_dVgse ;
         dQgext_dVbse = here->HSMHV_dQgext_dVbse ;
         dQgext_dT    = (here->HSMHV_coselfheat > 0) ? here->HSMHV_dQgext_dTi : 0.0  ;
+/*        Qsext        = here->HSMHV_qdext ;*/
         dQsext_dVdse = - (here->HSMHV_dQdext_dVdse + here->HSMHV_dQdext_dVgse + here->HSMHV_dQdext_dVbse);
         dQsext_dVgse = here->HSMHV_dQdext_dVgse ;
         dQsext_dVbse = here->HSMHV_dQdext_dVbse ;

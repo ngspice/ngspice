@@ -311,8 +311,8 @@
         psi      += beta*0.1 ;
         psi_dT   += beta_dT*0.1 ;
 
-        psi_B = psi;
-        arg_B = psi*psi/(gamma*T0);
+/*        psi_B = psi;*/
+/*        arg_B = psi*psi/(gamma*T0);*/
         Chi_B = log(gamma*T0 + psi*psi) - log(cnst1over*T0) + beta*Vxbgmtcl;
         Chi_B_dVgb = 2.0*psi*psi_dVgb/ (gamma*T0 + psi*psi);
         Chi_B_dVxb = (gamma_dVxb*T0+2.0*psi*psi_dVxb)/(gamma*T0+psi*psi)
@@ -321,10 +321,10 @@
                             - (cnst1over_dT*T0 + cnst1over*T0_dT)/(cnst1over*T0)
                             + beta_dT*Vxbgmtcl + beta*Vxbgmtcl_dT;
         Ps0_iniB      = Chi_B/beta - Vxbgmtcl ;
-        Ps0_iniB_dVgb = Chi_B_dVgb/beta;
+/*        Ps0_iniB_dVgb = Chi_B_dVgb/beta;
         Ps0_iniB_dVxb = Chi_B_dVxb/beta- Vxbgmtcl_dVxbgmt;
         Ps0_iniB_dT   = Chi_B_dT/beta - Chi_B/(beta*beta)*beta_dT - Vxbgmtcl_dT;
-
+*/
         
         /* construction of Ps0LD by taking Ps0_iniB as an upper limit of Ps0_iniA
          *
@@ -577,7 +577,7 @@
         fs01_dVgs = Ps0LD_dVgb * fs01_dPs0 ;
         fs01_dT   = Ps0LD_dT * fs01_dPs0 + fs01_dT;
         fs02_dVbs = Ps0LD_dVxb * fs02_dPs0 + fs02_dVbs ;
-        fs02_dVxb = Ps0LD_dVds * fs02_dPs0 ;
+/*        fs02_dVxb = Ps0LD_dVds * fs02_dPs0 ;*/
         fs02_dVgb = Ps0LD_dVgb * fs02_dPs0 ;
         fs02_dT   = Ps0LD_dT * fs02_dPs0 + fs02_dT;
 
@@ -616,9 +616,9 @@
     } /* end of Vgbgmt region blocks */
   
     /* convert to source ref. */
-    Ps0LD_dVbs = Ps0LD_dVxb * Vxbgmt_dVbs + Ps0LD_dVgb * Vgbgmt_dVbs ;
+/*    Ps0LD_dVbs = Ps0LD_dVxb * Vxbgmt_dVbs + Ps0LD_dVgb * Vgbgmt_dVbs ;*/
     Ps0LD_dVds = Ps0LD_dVxb * Vxbgmt_dVds + Ps0LD_dVgb * Vgbgmt_dVds ;
-    Ps0LD_dVgs = Ps0LD_dVxb * Vxbgmt_dVgs + Ps0LD_dVgb * Vgbgmt_dVgs ;
+/*    Ps0LD_dVgs = Ps0LD_dVxb * Vxbgmt_dVgs + Ps0LD_dVgb * Vgbgmt_dVgs ;*/
 
     QsuLD_dVbs = QsuLD_dVxb * Vxbgmt_dVbs + QsuLD_dVgb * Vgbgmt_dVbs ;
     QsuLD_dVds = QsuLD_dVxb * Vxbgmt_dVds + QsuLD_dVgb * Vgbgmt_dVds ;

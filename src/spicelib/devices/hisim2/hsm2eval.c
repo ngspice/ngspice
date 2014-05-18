@@ -898,17 +898,17 @@ int HSM2evaluate
   double Chi_A=0.0, Chi_A_dVxb=0.0, Chi_A_dVgb =0.0 ;
   double Chi_B=0.0, Chi_B_dVxb=0.0, Chi_B_dVgb =0.0 ;
   double Chi_1=0.0, Chi_1_dVxb=0.0, Chi_1_dVgb =0.0 ;
-  double psi_B=0.0, arg_B =0.0 ;
+/*  double psi_B=0.0, arg_B =0.0 ;*/
   double psi=0.0, psi_dVgb=0.0, psi_dVxb =0.0 ;
   double Ps0_iniA_dVxb=0.0, Ps0_iniA_dVgb =0.0 ;
-  double Ps0_iniB_dVxb=0.0, Ps0_iniB_dVgb =0.0 ;
+/*  double Ps0_iniB_dVxb=0.0 , Ps0_iniB_dVgb =0.0 ;*/
   double Psa_dVxb=0.0, Psa_dVgb=0.0, Ps0LD_dVxb=0.0, Ps0LD_dVgb =0.0 ;
-  double fs02_dVxb=0.0, fs02_dVgb =0.0 ;
+  double /*fs02_dVxb=0.0,*/ fs02_dVgb =0.0 ;
 
   /* SCE LOOP */
   double A =0.0, A_dVgs=0.0, A_dVds=0.0, A_dVbs =0.0 ;
   int    NNN =0 ;
-  double PS0_SCE=0 ,  PS0_SCE_dVgs = 0 ,  PS0_SCE_dVds = 0 ,  PS0_SCE_dVbs = 0 ;
+/*  double PS0_SCE=0 ,  PS0_SCE_dVgs = 0 ,  PS0_SCE_dVds = 0 ,  PS0_SCE_dVbs = 0 ;*/
   double PS0Z_SCE=0 , PS0Z_SCE_dVgs = 0 , PS0Z_SCE_dVds = 0 , PS0Z_SCE_dVbs = 0 ;
    /* double arg0 = 0.01 , arg1 = 0.04 ; */
    double arg0 = 0.01 ;
@@ -1563,11 +1563,11 @@ int HSM2evaluate
       /**************************/
 
 	/* initial value for SCE LOOP */
-	PS0_SCE = Ps0_ini ;   
+/*	PS0_SCE = Ps0_ini ;   
       PS0_SCE_dVds  = Ps0_ini_dVds ;
       PS0_SCE_dVgs  = Ps0_ini_dVgs ;
       PS0_SCE_dVbs  = Ps0_ini_dVbs ; 
-
+*/
 	PS0Z_SCE = Ps0_ini ;
       PS0Z_SCE_dVds = Ps0_ini_dVds ;
       PS0Z_SCE_dVgs = Ps0_ini_dVgs ;
@@ -2818,12 +2818,12 @@ int HSM2evaluate
 	PS0Z_SCE_dVbs = Ps0z_dVbs ;
         PS0Z_SCE_dVds = Ps0z_dVds ;
         PS0Z_SCE_dVgs = Ps0z_dVgs ;
-
+/*
         PS0_SCE = PS0Z_SCE - Pzadd ;
         PS0_SCE_dVbs = Ps0_dVbs ;
         PS0_SCE_dVds = Ps0_dVds ;
         PS0_SCE_dVgs = Ps0_dVgs ;
-
+*/
 	NNN += 1 ;
 
 	if( (    fabs(delta_PS0Z_SCE) > PS0_SCE_tol
@@ -3321,12 +3321,12 @@ int HSM2evaluate
 	PS0Z_SCE_dVbs = Ps0z_dVbs ;
         PS0Z_SCE_dVds = Ps0z_dVds ;
         PS0Z_SCE_dVgs = Ps0z_dVgs ;
-
+/*
         PS0_SCE = PS0Z_SCE - Pzadd ;
         PS0_SCE_dVbs = Ps0_dVbs ;
         PS0_SCE_dVds = Ps0_dVds ;
         PS0_SCE_dVgs = Ps0_dVgs ;
-
+*/
 
 	NNN += 1 ;
 
@@ -3775,12 +3775,12 @@ start_of_loopl:
       PS0Z_SCE_dVbs = Ps0z_dVbs ;
       PS0Z_SCE_dVds = Ps0z_dVds ;
       PS0Z_SCE_dVgs = Ps0z_dVgs ;
-
+/*
       PS0_SCE = PS0Z_SCE - Pzadd ;
       PS0_SCE_dVbs = Ps0_dVbs ;
       PS0_SCE_dVds = Ps0_dVds ;
       PS0_SCE_dVgs = Ps0_dVgs ;
-
+*/
       NNN += 1 ;
 
       if( (    fabs(delta_PS0Z_SCE) > PS0_SCE_tol
@@ -5623,17 +5623,17 @@ start_of_mobility:
             psi_dVxb -= Chi_1_dVxb ;
          
             psi      += beta*0.1 ;
-    
+/*    
             psi_B = psi;
-            arg_B = psi*psi/(gamma*T0);
+            arg_B = psi*psi/(gamma*T0);*/
             Chi_B = log(gamma*T0 + psi*psi) - log(cnst1over*T0) + beta*Vxbgmtcl;
             Chi_B_dVgb = 2.0*psi*psi_dVgb/ (gamma*T0 + psi*psi);
             Chi_B_dVxb = (gamma_dVxb*T0+2.0*psi*psi_dVxb)/(gamma*T0+psi*psi)
                                 + beta*Vxbgmtcl_dVxbgmt;    
             Ps0_iniB      = Chi_B/beta - Vxbgmtcl ;
-            Ps0_iniB_dVgb = Chi_B_dVgb/beta;
+/*            Ps0_iniB_dVgb = Chi_B_dVgb/beta;
             Ps0_iniB_dVxb = Chi_B_dVxb/beta- Vxbgmtcl_dVxbgmt;
-    
+*/    
             
             /* construction of Ps0LD by taking Ps0_iniB as an upper limit of Ps0_iniA
              *
@@ -5861,7 +5861,7 @@ start_of_mobility:
             fs01_dVds = Ps0LD_dVds * fs01_dPs0 ;
             fs01_dVgs = Ps0LD_dVgb * fs01_dPs0 ;
             fs02_dVbs = Ps0LD_dVxb * fs02_dPs0 + fs02_dVbs ;
-            fs02_dVxb = Ps0LD_dVds * fs02_dPs0 ;
+/*            fs02_dVxb = Ps0LD_dVds * fs02_dPs0 ;*/
             fs02_dVgb = Ps0LD_dVgb * fs02_dPs0 ;
     
             /*-----------------------------------------------------------*

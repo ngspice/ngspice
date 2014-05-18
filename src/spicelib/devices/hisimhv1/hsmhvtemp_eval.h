@@ -24,8 +24,8 @@
     /* Self heating */
     TTEMP = TTEMP + deltemp ; 
 #endif
-Tdiff0 =   TTEMP0 - model->HSMHV_ktnom ;
-Tdiff0_2 = TTEMP0 * TTEMP0 - model->HSMHV_ktnom * model->HSMHV_ktnom ;
+/*Tdiff0 =   TTEMP0 - model->HSMHV_ktnom ;*/
+/*Tdiff0_2 = TTEMP0 * TTEMP0 - model->HSMHV_ktnom * model->HSMHV_ktnom ;*/
 Tdiff =    TTEMP  - model->HSMHV_ktnom ;
 Tdiff_2 =  TTEMP  * TTEMP  - model->HSMHV_ktnom * model->HSMHV_ktnom ;
 

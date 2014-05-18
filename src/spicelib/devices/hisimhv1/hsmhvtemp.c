@@ -73,7 +73,7 @@ int HSMHVtemp(
   double T0, T1, T2, T3, T4, T5, T6, T7 ;
   /* temperature-dependent variables */
   double Eg =0.0, TTEMP0=0.0, TTEMP=0.0, beta=0.0, Nin=0.0 ;
-  double Tdiff0 = 0.0, Tdiff0_2 = 0.0, Tdiff = 0.0, Tdiff_2 = 0.0 ;
+  double /*Tdiff0 = 0.0, Tdiff0_2 = 0.0,*/ Tdiff = 0.0, Tdiff_2 = 0.0 ;
   double js=0.0, jssw=0.0, js2=0.0, jssw2 =0.0 ;
   int i=0 ;
   double TMF1 , TMF2 ;
