@@ -230,8 +230,6 @@ message(tdico *dic, const char *fmt, ...)
     vfprintf(stderr, fmt, ap);
     va_end(ap);
 
-    fprintf(stderr, "\n");
-
     dic->errcount++;
 
     return 1; /* error! */
@@ -349,7 +347,7 @@ dicostack(tdico *dico, char op)
             dico->stack_depth--;
 
         } else {
-            message(dico, " Subckt Stack underflow.");
+            message(dico, " Subckt Stack underflow.\n");
         }
     }
 }
@@ -426,7 +424,7 @@ fetchnumentry(tdico *dico, char *t, bool *perr)
     if (entry_p) {
         u = entry_p->vl;
     } else {
-        err = message(dico, "Undefined number [%s]", t);
+        err = message(dico, "Undefined number [%s]\n", t);
         u = 0.0;
     }
 
@@ -522,7 +520,7 @@ define(tdico *dico,
 
     if (!entry_p) {
 
-        err = message(dico, " Symbol table overflow");
+        err = message(dico, " Symbol table overflow\n");
 
     } else {
 
@@ -546,7 +544,7 @@ define(tdico *dico,
 
             /* warn about re-write to a global scope! */
             if (entry_p->level < dico->stack_depth)
-                warn = message(dico, "%s:%d overwritten.", t, entry_p->level);
+                warn = message(dico, "%s:%d overwritten.\n", t, entry_p->level);
 
         } else {
             /* suppress error message, resulting from multiple definition of
@@ -555,7 +553,7 @@ define(tdico *dico,
                behaviour later. (H. Vogt 090426)
             */
             if (0)
-                message(dico, "%s: cannot redefine", t);
+                message(dico, "%s: cannot redefine\n", t);
         }
     }
 
@@ -596,7 +594,7 @@ defsubckt(tdico *dico, char *s, int w, char categ)
         err = define(dico, spice_dstring_value(&ustr), ' ', categ, 0.0, w, NULL, NULL);
         spice_dstring_free(&ustr);
     } else {
-        err = message(dico, "Subcircuit or Model without name.");
+        err = message(dico, "Subcircuit or Model without name.\n");
     }
 
     return err;
@@ -635,7 +633,7 @@ findsubckt(tdico *dico, char *s, SPICE_DSTRINGPTR subname)
     } else {
         line = 0;
         spice_dstring_reinit(subname);
-        message(dico, "Cannot find subcircuit.");
+        message(dico, "Cannot find subcircuit.\n");
     }
 
     return line;
@@ -661,14 +659,14 @@ deffuma(                        /* define function or macro entry. */
     j = 0;
 
     if (i <= 0) {
-        err = message(dico, " Symbol table overflow");
+        err = message(dico, " Symbol table overflow\n");
     } else {
         if (dico->dat[i].tp != '?') {
             /* old item! */
             if (jumped)
                 j = dico->dat[i].ivl;
             else
-                err = message(dico, "%s already defined", t);
+                err = message(dico, "%s already defined\n", t);
         } else {
             dico->dat[i].tp = tpe;
             dico->nfms++;
@@ -792,7 +790,7 @@ fetchnumber(tdico *dico, const char **pi, bool *perror)
 
     if (1 != sscanf(s, "%lG%n", &u, &n)) {
 
-        *perror = message(dico, "Number format error: \"%s\"", s);
+        *perror = message(dico, "Number format error: \"%s\"\n", s);
 
         return 0.0;             /* FIXME return NaN */
 
@@ -890,7 +888,7 @@ fetchoperator(tdico *dico,
     } else {
         state = S_init;
         if (c > ' ')
-            error = message(dico, "Syntax error: letter [%c]", c);
+            error = message(dico, "Syntax error: letter [%c]\n", c);
     }
 
     *pi = iptr;
@@ -1073,7 +1071,7 @@ formula(tdico *dico, const char *s, const char *s_end, bool *perror)
             // fixme, here level = 0 !!!!! (almost)
 
             if (kptr > s_end) {
-                error = message(dico, "Closing \")\" not found.");
+                error = message(dico, "Closing \")\" not found.\n");
                 natom++;        /* shut up other error message */
             } else {
                 if (arg2 > s) {
@@ -1140,7 +1138,7 @@ formula(tdico *dico, const char *s, const char *s_end, bool *perror)
         }
 
         if (!ok)
-            error = message(dico, " Misplaced operator");
+            error = message(dico, " Misplaced operator\n");
 
         if (state == S_unop) {
             /* push unary operator */
@@ -1198,11 +1196,11 @@ formula(tdico *dico, const char *s, const char *s_end, bool *perror)
     }
 
     if ((natom == 0) || (oldstate != S_stop))
-        error = message(dico, " Expression err: %s", s_orig);
+        error = message(dico, " Expression err: %s\n", s_orig);
 
     if (negate == 1)
         error = message(dico,
-                        " Problem with formula eval -- wrongly determined negation!");
+                        " Problem with formula eval -- wrongly determined negation!\n");
 
     *perror = error;
 
@@ -1273,7 +1271,7 @@ evaluate(tdico *dico, SPICE_DSTRINGPTR qstr_p, char *t, unsigned char mode)
 
         if (!entry_p)
             err = message(dico,
-                          "\"%s\" not evaluated.%s", t,
+                          "\"%s\" not evaluated.%s\n", t,
                           nolookup ? " Lookup failure." : "");
     } else {
         u = formula(dico, t, t + strlen(t), &err);
@@ -1346,7 +1344,7 @@ scanline(tdico *dico, char *s, char *r, bool err)
             } while ((nnest != 0) && (d != '\0'));
 
             if (d == '\0') {
-                err = message(dico, "Closing \"}\" not found.");
+                err = message(dico, "Closing \"}\" not found.\n");
             } else {
                 pscopy(t, s, i + 1, k - i - 1);
                 if (dico->hs_compatibility && (strcasecmp(t, "LAST") == 0)) {
@@ -1362,7 +1360,7 @@ scanline(tdico *dico, char *s, char *r, bool err)
             if (!err)           /* insert number */
                 sadd(r, q);
             else
-                err = message(dico, "%s", s);
+                err = message(dico, "%s\n", s);
 
         } else if (c == Intro) {
 
@@ -1392,7 +1390,7 @@ scanline(tdico *dico, char *s, char *r, bool err)
                 } while ((k <= ls) && !((d == ')') && (level <= 0)));
 
                 if (k > ls) {
-                    err = message(dico, "Closing \")\" not found.");
+                    err = message(dico, "Closing \")\" not found.\n");
                 } else {
                     pscopy(t, s, i + 1, k - i - 1);
                     err = evaluate(dico, q, t, 0);
@@ -1421,7 +1419,7 @@ scanline(tdico *dico, char *s, char *r, bool err)
             if (!err) /* insert the number */
                 sadd(r, q);
             else
-                message(dico, "%s", s);
+                message(dico, "%s\n", s);
 
         } else if (c == Nodekey) {
             /* follows: a node keyword */
@@ -1487,7 +1485,7 @@ insertnumber(tdico *dico, int i, char *s, SPICE_DSTRINGPTR ustr_p)
     message
         (dico,
          "insertnumber: fails.\n"
-         "  s+i = \"%s\" u=\"%s\" id=%ld",
+         "  s+i = \"%s\" u=\"%s\" id=%ld\n",
          s+i, u, id);
 
     /* swallow everything on failure */
@@ -1536,7 +1534,7 @@ nupa_substitute(tdico *dico, char *s, char *r, bool err)
             } while ((nnest != 0) && (d != '\0'));
 
             if (d == '\0') {
-                err = message(dico, "Closing \"}\" not found.");
+                err = message(dico, "Closing \"}\" not found.\n");
             } else {
                 pscopy(&tstr, s, i , k - i - 1);
                 /* exeption made for .meas */
@@ -1553,7 +1551,7 @@ nupa_substitute(tdico *dico, char *s, char *r, bool err)
             if (!err)
                 ir = insertnumber(dico, ir, r, &qstr);
             else
-                err = message(dico, "Cannot compute substitute");
+                err = message(dico, "Cannot compute substitute\n");
 
         } else if (c == Intro) {
             /* skip "&&" which may occur in B source */
@@ -1589,7 +1587,7 @@ nupa_substitute(tdico *dico, char *s, char *r, bool err)
                 } while ((k <= ls) && !((d == ')') && (level <= 0)));
 
                 if (k > ls) {
-                    err = message(dico, "Closing \")\" not found.");
+                    err = message(dico, "Closing \")\" not found.\n");
                 } else {
                     pscopy(&tstr, s, i, k - i - 1);
                     err = evaluate(dico, &qstr, spice_dstring_value(&tstr), 0);
@@ -1618,7 +1616,7 @@ nupa_substitute(tdico *dico, char *s, char *r, bool err)
             if (!err)
                 ir = insertnumber(dico, ir, r, &qstr);
             else
-                message(dico, "Cannot compute &(expression)");
+                message(dico, "Cannot compute &(expression)\n");
         }
     }
 
@@ -1791,7 +1789,7 @@ nupa_assignment(tdico *dico, char *s, char mode)
         getword(s, &tstr, i, &i);
         t_p = spice_dstring_value(&tstr);
         if (t_p[0] == '\0')
-            error = message(dico, " Identifier expected");
+            error = message(dico, " Identifier expected\n");
 
         if (!error) {
             /* assignment expressions */
@@ -1799,17 +1797,17 @@ nupa_assignment(tdico *dico, char *s, char mode)
                 i++;
 
             if (i > ls)
-                error = message(dico, " = sign expected .");
+                error = message(dico, " = sign expected.\n");
 
             dtype = getexpress(s, &ustr, &i);
 
             if (dtype == 'R') {
                 const char *tmp = spice_dstring_value(&ustr);
                 rval = formula(dico, tmp, tmp + strlen(tmp), &error);
-                if (error) {
-                    message(dico, " Formula() error.");
-                    fprintf(stderr, "      %s\n", s);
-                }
+                if (error)
+                    message(dico,
+                            " Formula() error.\n"
+                            "      %s\n", s);
             } else if (dtype == 'S') {
                 wval = i;
             }
@@ -1820,7 +1818,7 @@ nupa_assignment(tdico *dico, char *s, char mode)
         }
 
         if ((i < ls) && (s[i - 1] != ';'))
-            error = message(dico, " ; sign expected.");
+            error = message(dico, " ; sign expected.\n");
         /* else
            i++; */
     }
@@ -1886,7 +1884,7 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
             j++;
         }
     } else {
-        err = message(dico, " ! a subckt line!");
+        err = message(dico, " ! a subckt line!\n");
     }
 
     i = spos_("PARAMS:", spice_dstring_value(&tstr));
@@ -1929,7 +1927,7 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
                 sadd(&idlist, "=$;");
                 n++;
             } else {
-                message(dico, "identifier expected.");
+                message(dico, "identifier expected.\n");
             }
         }
     }
@@ -2019,12 +2017,8 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
                     j--;       /* confusion: j was in Turbo Pascal convention */
                 } else {
                     j++;
-                    if (t_p[k] > ' ') {
-                        spice_dstring_append(&vstr, "Subckt call, symbol ", -1);
-                        cadd(&vstr, t_p[k]);
-                        sadd(&vstr, " not understood");
-                        message(dico, "%s", spice_dstring_value(&vstr));
-                    }
+                    if (t_p[k] > ' ')
+                        message(dico, "Subckt call, symbol %c not understood\n", t_p[k]);
                 }
 
                 u_p = spice_dstring_value(&ustr);
@@ -2042,7 +2036,7 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
                 }
             }
         } else {
-            message(dico, "Cannot find called subcircuit");
+            message(dico, "Cannot find called subcircuit\n");
         }
     }
 
@@ -2051,8 +2045,8 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
 
     if (narg != n) {
         err = message(dico,
-                      " Mismatch: %d  formal but %d actual params.\n"
-                      "%s",
+                      " Mismatch: %d formal but %d actual params.\n"
+                      "%s\n",
                       n, narg, spice_dstring_value(&idlist));
         /* ;} else { debugwarn(dico, idlist) */
     }
