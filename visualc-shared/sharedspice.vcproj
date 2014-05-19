@@ -565,19 +565,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\bsim4v4def.h"
+				RelativePath="..\src\spicelib\devices\bsim4v7\bsim4v7def.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\bsim4v4ext.h"
+				RelativePath="..\src\spicelib\devices\bsim4v7\bsim4v7ext.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\bsim4v4init.h"
+				RelativePath="..\src\spicelib\devices\bsim4v7\bsim4v7init.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\bsim4v4itf.h"
+				RelativePath="..\src\spicelib\devices\bsim4v7\bsim4v7itf.h"
 				>
 			</File>
 			<File
@@ -3241,79 +3241,83 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4acld.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7acld.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4ask.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7ask.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4check.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7check.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4cvtest.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7cvtest.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4del.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7del.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4dest.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7dest.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4geo.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7geo.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4getic.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7getic.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4ld.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7ld.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4mask.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7mask.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4mdel.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7mdel.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4mpar.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7mpar.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4noi.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7noi.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4par.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7par.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4pzld.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7pzld.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4set.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7set.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4temp.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7soachk.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\b4v4trunc.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7temp.c"
+				>
+			</File>
+			<File
+				RelativePath="..\src\spicelib\devices\bsim4v7\b4v7trunc.c"
 				>
 			</File>
 			<File
@@ -3633,7 +3637,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\spicelib\devices\bsim4v4\bsim4v4init.c"
+				RelativePath="..\src\spicelib\devices\bsim4v7\bsim4v7init.c"
 				>
 			</File>
 			<File

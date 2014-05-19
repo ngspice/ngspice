@@ -79,9 +79,9 @@ int add_udn(int,Evt_Udn_Info_t **);
 #include "bsim3v1/bsim3v1itf.h"
 #include "bsim3v32/bsim3v32itf.h"
 #include "bsim4/bsim4itf.h"
-#include "bsim4v4/bsim4v4itf.h"
 #include "bsim4v5/bsim4v5itf.h"
 #include "bsim4v6/bsim4v6itf.h"
+#include "bsim4v7/bsim4v7itf.h"
 #include "bsim3soi_pd/b3soipditf.h"
 #include "bsim3soi_fd/b3soifditf.h"
 #include "bsim3soi_dd/b3soidditf.h"
@@ -200,9 +200,9 @@ spice_init_devices(void)
     DEVices[ 8] = get_bsim3v32_info();
     DEVices[ 9] = get_b4soi_info();
     DEVices[10] = get_bsim4_info();
-    DEVices[11] = get_bsim4v4_info();
-    DEVices[12] = get_bsim4v5_info();
-    DEVices[13] = get_bsim4v6_info();
+    DEVices[11] = get_bsim4v5_info();
+    DEVices[12] = get_bsim4v6_info();
+    DEVices[13] = get_bsim4v7_info();
     DEVices[14] = get_b3soipd_info();
     DEVices[15] = get_b3soifd_info();
     DEVices[16] = get_b3soidd_info();
@@ -298,12 +298,12 @@ SPICEdev ** devices(void)
 /*not yet usable*/
 
 #ifdef ADMS
-#define DEVICES_USED {"asrc", "bjt", "vbic", "bsim1", "bsim2", "bsim3", "bsim3v32", "bsim3v2", "bsim3v1", "bsim4", "bsim4v4", "bsim4v5", "bsim4v6", \
+#define DEVICES_USED {"asrc", "bjt", "vbic", "bsim1", "bsim2", "bsim3", "bsim3v32", "bsim3v2", "bsim3v1", "bsim4", "bsim4v5", "bsim4v6", "bsim4v7", \
                       "bsim4soi", "bsim3soipd", "bsim3soifd", "bsim3soidd", "hisim2", "hisimhv1", \
                       "cap", "cccs", "ccvs", "csw", "dio", "hfet", "hfet2", "ind", "isrc", "jfet", "ltra", "mes", "mesa" ,"mos1", "mos2", "mos3", \
                       "mos6", "mos9", "res", "soi3", "sw", "tra", "urc", "vccs", "vcvs", "vsrc", "hicum0", "hicum2", "bjt504t", "ekv", "psp102"}
 #else
-#define DEVICES_USED {"asrc", "bjt", "vbic", "bsim1", "bsim2", "bsim3", "bsim3v32", "bsim3v2", "bsim3v1", "bsim4", "bsim4v4", "bsim4v5", "bsim4v6", \
+#define DEVICES_USED {"asrc", "bjt", "vbic", "bsim1", "bsim2", "bsim3", "bsim3v32", "bsim3v2", "bsim3v1", "bsim4", "bsim4v5", "bsim4v6", "bsim4v7", \
                       "bsim4soi", "bsim3soipd", "bsim3soifd", "bsim3soidd", "hisim2", "hisimhv1", \
                       "cap", "cccs", "ccvs", "csw", "dio", "hfet", "hfet2", "ind", "isrc", "jfet", "ltra", "mes", "mesa" ,"mos1", "mos2", "mos3", \
                       "mos6", "mos9", "res", "soi3", "sw", "tra", "urc", "vccs", "vcvs", "vsrc"}

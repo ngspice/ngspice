@@ -304,16 +304,16 @@ char *INPdomodel(CKTcircuit *ckt, card * image, INPtables * tab)
 			    break;
 			case 14: case 54:
 			    err = INPfindVer(line, ver); /* mapping of minor versions >= 4.2.1 are included */
-			    if ((prefix("4.0", ver)) || (prefix("4.1", ver)) || (prefix("4.2", ver)) || (prefix("4.3", ver)) || (prefix("4.4", ver))) {
-			      type = INPtypelook("BSIM4v4");
-			    }
-			    if (prefix("4.5", ver)) {
+			    if ((prefix("4.0", ver)) || (prefix("4.1", ver)) || (prefix("4.2", ver)) || (prefix("4.3", ver)) || (prefix("4.4", ver)) || (prefix("4.5", ver))) {
 			      type = INPtypelook("BSIM4v5");
 			    }
 			    if (prefix("4.6", ver)) {
 			      type = INPtypelook("BSIM4v6");
 			    }
-			    if ( (strstr(ver, "default")) || (prefix("4.7", ver)) ) {
+			    if (prefix("4.7", ver)) {
+			      type = INPtypelook("BSIM4v7");
+			    }
+			    if ( (strstr(ver, "default")) || (prefix("4.8", ver)) ) {
 			      type = INPtypelook("BSIM4");
 			    }
 			    if (type < 0) {
