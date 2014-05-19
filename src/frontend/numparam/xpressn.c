@@ -1662,7 +1662,6 @@ getexpress(char *s, SPICE_DSTRINGPTR tstr_p, int *pi)
     int i = *pi;
     int ia, ls, level;
     char c, d, tpe;
-    bool comment = 0;
 
     ls = length(s);
     ia = i + 1;
@@ -1720,11 +1719,7 @@ getexpress(char *s, SPICE_DSTRINGPTR tstr_p, int *pi)
                 } while ((i <= ls) && !((d == ')') && (level <= 0)));
             }
 
-            /* buggy? */
-            if ((c == '/') || (c == '-'))
-                comment = (s[i] == c);
-
-        } while (!((cpos (c, ",;)}") >= 0) || comment)); /* legal separators */
+        } while (!(cpos (c, ",;)}") >= 0)); /* legal separators */
 
         tpe = 'R';
     }
@@ -1752,7 +1747,7 @@ nupa_assignment(tdico *dico, char *s, char mode)
 */
 {
     /* s has the format: ident = expression; ident= expression ...  */
-    int i, j, ls;
+    int i, ls;
     bool error, err;
     char dtype;
     int wval = 0;
@@ -1765,13 +1760,6 @@ nupa_assignment(tdico *dico, char *s, char mode)
     spice_dstring_init(&ustr);
     ls = length(s);
     error = 0;
-    i = 0;
-    j = spos_("//", s);                /* stop before comment if any */
-
-    if (j >= 0)
-        ls = j;
-
-    /* bug: doesnt work. need to  revise getexpress ... !!! */
     i = 0;
 
     while ((i < ls) && (s[i] <= ' '))
@@ -1864,12 +1852,8 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
     /***** first, analyze the subckt definition line */
     n = 0;                      /* number of parameters if any */
     ls = length(s);
-    j = spos_("//", s);
 
-    if (j >= 0)
-        pscopy_up(&tstr, s, 0, j);
-    else
-        scopy_up(&tstr, s);
+    scopy_up(&tstr, s);
 
     j = spos_("SUBCKT", spice_dstring_value(&tstr));
 
@@ -1936,14 +1920,9 @@ nupa_subcktcall(tdico *dico, char *s, char *x, bool err)
     if (!err) {
 
         narg = 0;
-        j = spos_("//", x);
 
-        if (j >= 0) {
-            pscopy_up(&tstr, x, 0, j);
-        } else {
-            scopy_up(&tstr, x);
-            j = 0;
-        }
+        scopy_up(&tstr, x);
+        j = 0;
 
         ls = spice_dstring_length(&tstr);
 
