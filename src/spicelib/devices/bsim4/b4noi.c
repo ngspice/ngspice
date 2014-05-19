@@ -1,13 +1,13 @@
-/**** BSIM4.7.0 Released by Darsen Lu 04/08/2011 ****/
+/**** BSIM4.8.0 Released by Navid Paydavosi 11/01/2013 ****/
 
 /**********
  * Copyright 2006 Regents of the University of California. All rights reserved.
- * File: b4noi.c of BSIM4.7.0.
+ * File: b4noi.c of BSIM4.8.0.
  * Author: 2000 Weidong Liu
  * Authors: 2001- Xuemei Xi, Mohan Dunga, Ali Niknejad, Chenming Hu.
  * Authors: 2006- Mohan Dunga, Ali Niknejad, Chenming Hu
  * Authors: 2007- Mohan Dunga, Wenwei Yang, Ali Niknejad, Chenming Hu
-  * Authors: 2008- Wenwei Yang,  Ali Niknejad, Chenming Hu
+ * Authors: 2008- Wenwei Yang,  Ali Niknejad, Chenming Hu 
  * Project Director: Prof. Chenming Hu.
  * Modified by Xuemei Xi, 04/06/2001.
  * Modified by Xuemei Xi, 10/05/2001.
@@ -17,6 +17,7 @@
  * Modified by Mohan Dunga, 12/13/2006
  * Modified by Wenwei Yang, 07/31/2008.
  * Modified by Tanvir Morshed, Darsen Lu 03/27/2011
+ * Modified by Pankaj Kumar Thakur, 07/23/2012
  **********/
 
 #include "ngspice/ngspice.h"
@@ -392,9 +393,10 @@ double m;
                                   Leff = pParam->BSIM4leff;
                                   Lvsat = Leff * (1.0 + here->BSIM4Vdseff / here->BSIM4EsatL);
                                   T6 = Leff / Lvsat;
-
-                                  T5 = here->BSIM4Vgsteff / here->BSIM4EsatL;
+                                  /*Unwanted code for T5 commented*/
+                                  /*T5 = here->BSIM4Vgsteff / here->BSIM4EsatL; 
                                   T5 = T5 * T5;
+                                  */
                                   gamma = T6 * (0.5 * T1 + T0 * T0 / (6.0 * T2));
                                   T3 = T2 * T2;
                                   T4 = T0 * T0;

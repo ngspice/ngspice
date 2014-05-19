@@ -1,4 +1,4 @@
-/**** BSIM4.6.2 Released by Wenwei Yang 07/31/2008 ****/
+/**** BSIM4.8.0 Released by Navid Paydavosi 11/01/2013 ****/
 
 /**********
 Copyright 2006 Regents of the University of California.  All rights reserved.
@@ -16,7 +16,8 @@ Modified by Xuemei Xi, 07/29/2005.
 Modified by Mohan Dunga, 12/13/2006
 Modified by Mohan Dunga, Wenwei Yang, 05/18/2007.
 Modified by Wenwei Yang, 07/31/2008.
- * Modified by Tanvir Morshed, Darsen Lu 03/27/2011
+Modified by Tanvir Morshed, Darsen Lu 03/27/2011
+Modified by Pankaj Kumar Thakur, 07/23/2012
 **********/
 
 #ifndef BSIM4
@@ -123,6 +124,8 @@ typedef struct sBSIM4instance
     double BSIM4vbsc;
     double BSIM4k2ox;
     double BSIM4eta0;
+    double BSIM4toxp;
+    double BSIM4coxp;
 
     double BSIM4icVDS;
     double BSIM4icVGS;
@@ -698,6 +701,9 @@ struct bsim4SizeDependParam
     double BSIM4aigc;
     double BSIM4bigc;
     double BSIM4cigc;
+    double BSIM4aigsd;
+    double BSIM4bigsd;
+    double BSIM4cigsd;
     double BSIM4aigs;
     double BSIM4bigs;
     double BSIM4cigs;

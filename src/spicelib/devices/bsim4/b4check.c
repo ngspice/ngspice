@@ -1,8 +1,8 @@
-/**** BSIM4.7.0 Released by Darsen Lu 04/08/2011 ****/
+/**** BSIM4.8.0 Released by Navid Paydavosi 11/01/2013 ****/
 
 /**********
  * Copyright 2006 Regents of the University of California. All rights reserved.
- * File: b4check.c of BSIM4.7.0.
+ * File: b4check.c of BSIM4.8.0.
  * Author: 2000 Weidong Liu
  * Authors: 2001- Xuemei Xi, Mohan Dunga, Ali Niknejad, Chenming Hu.
  * Authors: 2006- Mohan Dunga, Ali Niknejad, Chenming Hu
@@ -18,6 +18,8 @@
  * Modified by Mohan Dunga, Wenwei Yang, 05/18/2007.
  * Modified by  Wenwei Yang, 07/31/2008 .
  * Modified by Tanvir Morshed, Darsen Lu 03/27/2011
+ * Modified by Pankaj Kumar Thakur, 07/23/2012
+ * Modified by Navid Paydavosi, 08/21/2013
  **********/
 
 #include "ngspice/ngspice.h"
@@ -46,9 +48,9 @@ FILE *fplog;
         fprintf(fplog, "\n");
         fprintf(fplog, "++++++++++ BSIM4 PARAMETER CHECKING BELOW ++++++++++\n");
 
-        if ((strcmp(model->BSIM4version, "4.7.0")) && (strcmp(model->BSIM4version, "4.70")) && (strcmp(model->BSIM4version, "4.7")))
-        {  fprintf(fplog, "Warning: This model is BSIM4.7.0; you specified a wrong version number.\n");
-           printf("Warning: This model is BSIM4.7.0; you specified a wrong version number.\n");
+        if ((strcmp(model->BSIM4version, "4.8.0")) && (strcmp(model->BSIM4version, "4.80")) && (strcmp(model->BSIM4version, "4.8")))
+        {  fprintf(fplog, "Warning: This model is BSIM4.8.0; you specified a wrong version number.\n");
+           printf("Warning: This model is BSIM4.8.0; you specified a wrong version number.\n");
         }
         fprintf(fplog, "Model = %s\n", model->BSIM4modName);
 
@@ -66,10 +68,10 @@ FILE *fplog;
             printf("Fatal: Toxe = %g is not positive.\n", model->BSIM4toxe);
             Fatal_Flag = 1;
         }
-        if (model->BSIM4toxp <= 0.0)
+        if (here->BSIM4toxp <= 0.0)
         {   fprintf(fplog, "Fatal: Toxp = %g is not positive.\n",
-                    model->BSIM4toxp);
-            printf("Fatal: Toxp = %g is not positive.\n", model->BSIM4toxp);
+                    here->BSIM4toxp);
+            printf("Fatal: Toxp = %g is not positive.\n", here->BSIM4toxp);
             Fatal_Flag = 1;
         }
         if (model->BSIM4eot <= 0.0)
@@ -453,10 +455,10 @@ FILE *fplog;
                     model->BSIM4toxe);
             printf("Warning: Toxe = %g is less than 1A. Recommended Toxe >= 5A\n", model->BSIM4toxe);
         }
-        if (model->BSIM4toxp < 1.0e-10)
+        if (here->BSIM4toxp < 1.0e-10)
         {   fprintf(fplog, "Warning: Toxp = %g is less than 1A. Recommended Toxp >= 5A\n",
-                    model->BSIM4toxp);
-            printf("Warning: Toxp = %g is less than 1A. Recommended Toxp >= 5A\n", model->BSIM4toxp);
+                    here->BSIM4toxp);
+            printf("Warning: Toxp = %g is less than 1A. Recommended Toxp >= 5A\n", here->BSIM4toxp);
         }
         if (model->BSIM4toxm < 1.0e-10)
         {   fprintf(fplog, "Warning: Toxm = %g is less than 1A. Recommended Toxm >= 5A\n",
@@ -669,6 +671,56 @@ FILE *fplog;
                      printf("Warning: xrcrg1 should be positive for rgateMod = 3.\n");
          }
          
+         /* Check body resistance parameters */ 
+        if (model->BSIM4rbps0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBPS0 = %g is not positive.\n",
+                model->BSIM4rbps0 );
+            printf("Fatal: RBPS0 = %g is not positive.\n", model->BSIM4rbps0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbpd0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBPD0 = %g is not positive.\n",
+                model->BSIM4rbpd0 );
+            printf("Fatal: RBPD0 = %g is not positive.\n", model->BSIM4rbpd0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbpbx0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBPBX0 = %g is not positive.\n",
+                model->BSIM4rbpbx0);
+            printf("Fatal: RBPBX0 = %g is not positive.\n", model->BSIM4rbpbx0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbpby0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBPBY0 = %g is not positive.\n",
+                model->BSIM4rbpby0);
+            printf("Fatal: RBPBY0 = %g is not positive.\n", model->BSIM4rbpby0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbdbx0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBDBX0 = %g is not positive.\n",
+                model->BSIM4rbdbx0);
+            printf("Fatal: RBDBX0 = %g is not positive.\n", model->BSIM4rbdbx0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbdby0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBDBY0 = %g is not positive.\n",
+                model->BSIM4rbdby0);
+            printf("Fatal: RBDBY0 = %g is not positive.\n", model->BSIM4rbdby0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbsbx0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBSBX0 = %g is not positive.\n",
+                model->BSIM4rbsbx0);
+            printf("Fatal: RBSBX0 = %g is not positive.\n", model->BSIM4rbsbx0);
+            Fatal_Flag = 1;
+        }
+            if (model->BSIM4rbsby0 <= 0.0)
+        {   fprintf(fplog, "Fatal: RBSBY0 = %g is not positive.\n",
+                model->BSIM4rbsby0);
+            printf("Fatal: RBSBY0 = %g is not positive.\n", model->BSIM4rbsby0);
+            Fatal_Flag = 1;
+        }
+
 /* Check capacitance parameters */
         if (pParam->BSIM4noff < 0.1)
         {   fprintf(fplog, "Warning: Noff = %g is too small.\n",

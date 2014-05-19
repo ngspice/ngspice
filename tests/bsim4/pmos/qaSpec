@@ -19,8 +19,8 @@ nTypeSelectionArguments     pmos level=14 version=4.7.0
 pTypeSelectionArguments     pmos level=14 version=4.7.0
 `endif
 `ifdef ngspice
-nTypeSelectionArguments     pmos level=14 version=4.7.0
-pTypeSelectionArguments     pmos level=14 version=4.7.0
+nTypeSelectionArguments     pmos level=14 version=4.8.0
+pTypeSelectionArguments     pmos level=14 version=4.8.0
 `endif
 
 //

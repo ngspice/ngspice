@@ -1,8 +1,8 @@
-/**** BSIM4.7.0 Released by Darsen Lu 04/08/2011 ****/
+/**** BSIM4.8.0 Released by Navid Paydavosi 11/01/2013 ****/
 /**** OpenMP support ngspice 06/28/2010 ****/
 /**********
  * Copyright 2006 Regents of the University of California. All rights reserved.
- * File: b4ld.c of BSIM4.7.0.
+ * File: b4ld.c of BSIM4.8.0.
  * Author: 2000 Weidong Liu
  * Authors: 2001- Xuemei Xi, Mohan Dunga, Ali Niknejad, Chenming Hu.
  * Authors: 2006- Mohan Dunga, Ali Niknejad, Chenming Hu
@@ -19,6 +19,8 @@
  * Modified by Mohan Dunga, Wenwei Yang, 05/18/2007.
  * Modified by Wenwei Yang, 07/31/2008.
  * Modified by Tanvir Morshed, Darsen Lu 03/27/2011
+ * Modified by Pankaj Kumar Thakur, 07/23/2012 
+ * Modified by Navid Paydavosi, 08/21/2013    
  **********/
 
 
@@ -246,7 +248,7 @@ model = here->BSIM4modPtr;
 
 ScalingFactor = 1.0e-9;
 ChargeComputationNeeded =  
-                 ((ckt->CKTmode & (MODEDCTRANCURVE | MODEAC | MODETRAN | MODEINITSMSIG)) ||
+                 ((ckt->CKTmode & (MODEAC | MODETRAN | MODEINITSMSIG)) ||
                  ((ckt->CKTmode & MODETRANOP) && (ckt->CKTmode & MODEUIC)))
                  ? 1 : 0;
 
@@ -1476,7 +1478,6 @@ for (; model != NULL; model = model->BSIM4nextModel)
               T1 = exp(pParam->BSIM4eu * log(T0));
               dT1_dVg = T1 * pParam->BSIM4eu / T0 / toxe;
               T2 = pParam->BSIM4ua + pParam->BSIM4uc * Vbseff;
-              T3 = T0 / toxe; /*Do we need it?*/
 
               T12 = sqrt(Vth * Vth + 0.0001);
               T9 = 1.0/(Vgsteff + 2*T12);
@@ -1491,6 +1492,60 @@ for (; model != NULL; model = model->BSIM4nextModel)
               dDenomi_dVd = T13 * dVth_dVd;
               dDenomi_dVb = T13 * dVth_dVb + T1 * pParam->BSIM4uc;
           }
+          else if (model->BSIM4mobMod == 4) /* Synopsys 08/30/2013 add */
+          {
+              T0 = Vgsteff + here->BSIM4vtfbphi1 - T14;
+              T2 = pParam->BSIM4ua + pParam->BSIM4uc * Vbseff;
+              T3 = T0 / toxe;	  
+              T12 = sqrt(here->BSIM4vtfbphi1*here->BSIM4vtfbphi1 + 0.0001);
+              T9 = 1.0/(Vgsteff + 2*T12);
+              T10 = T9*toxe;
+              T8 = pParam->BSIM4ud * T10 * T10 * here->BSIM4vtfbphi1;
+              T6 = T8 * here->BSIM4vtfbphi1;
+              T5 = T3 * (T2 + pParam->BSIM4ub * T3) + T6;
+              T7 = - 2.0 * T6 * T9;
+              dDenomi_dVg = (T2 + 2.0 * pParam->BSIM4ub * T3) / toxe;
+              dDenomi_dVd = 0.0;
+              dDenomi_dVb = pParam->BSIM4uc * T3;
+              dDenomi_dVg+= T7;
+          }
+          else if (model->BSIM4mobMod == 5) /* Synopsys 08/30/2013 add */
+          {
+              T0 = Vgsteff + here->BSIM4vtfbphi1 - T14;
+              T2 = 1.0 + pParam->BSIM4uc * Vbseff;
+              T3 = T0 / toxe;
+              T4 = T3 * (pParam->BSIM4ua + pParam->BSIM4ub * T3);
+              T12 = sqrt(here->BSIM4vtfbphi1 * here->BSIM4vtfbphi1 + 0.0001);
+              T9 = 1.0/(Vgsteff + 2*T12);
+              T10 = T9*toxe;
+              T8 = pParam->BSIM4ud * T10 * T10 * here->BSIM4vtfbphi1;
+              T6 = T8 * here->BSIM4vtfbphi1;
+              T5 = T4 * T2 + T6;
+              T7 = - 2.0 * T6 * T9;
+              dDenomi_dVg = (pParam->BSIM4ua + 2.0 * pParam->BSIM4ub * T3) * T2
+                          / toxe;
+              dDenomi_dVd = 0.0;
+              dDenomi_dVb = pParam->BSIM4uc * T4;
+              dDenomi_dVg+= T7;	    	      	  
+          }  
+          else if (model->BSIM4mobMod == 6) /* Synopsys 08/30/2013 modify */
+          {   T0 = (Vgsteff + here->BSIM4vtfbphi1) / toxe;
+              T1 = exp(pParam->BSIM4eu * log(T0));
+              dT1_dVg = T1 * pParam->BSIM4eu / T0 / toxe;
+              T2 = pParam->BSIM4ua + pParam->BSIM4uc * Vbseff;
+
+              T12 = sqrt(here->BSIM4vtfbphi1 * here->BSIM4vtfbphi1 + 0.0001);
+              T9 = 1.0/(Vgsteff + 2*T12);
+              T10 = T9*toxe;
+              T8 = pParam->BSIM4ud * T10 * T10 * here->BSIM4vtfbphi1;
+              T6 = T8 * here->BSIM4vtfbphi1;
+              T5 = T1 * T2 + T6;
+              T7 = - 2.0 * T6 * T9;        
+              dDenomi_dVg = T2 * dT1_dVg + T7;              
+              dDenomi_dVd = 0;
+              dDenomi_dVb = T1 * pParam->BSIM4uc;
+          }  
+
           /*high K mobility*/
          else 
       {                                 
@@ -1752,7 +1807,7 @@ for (; model != NULL; model = model->BSIM4nextModel)
           /* Calculate Idl first */
               
           tmp1 = here->BSIM4vtfbphi2;
-          tmp2 = 2.0e8 * model->BSIM4toxp;
+          tmp2 = 2.0e8 * here->BSIM4toxp;
           dT0_dVg = 1.0 / tmp2;
           T0 = (Vgsteff + tmp1) * dT0_dVg;
 
@@ -1762,8 +1817,8 @@ for (; model != NULL; model = model->BSIM4nextModel)
           Tcen = model->BSIM4ados * 1.9e-9 / T1;
           dTcen_dVg = -Tcen * T2 * dT0_dVg / T1;
 
-          Coxeff = epssub * model->BSIM4coxp
-                 / (epssub + model->BSIM4coxp * Tcen);
+          Coxeff = epssub * here->BSIM4coxp
+                 / (epssub + here->BSIM4coxp * Tcen);
           here->BSIM4Coxeff = Coxeff;
           dCoxeff_dVg = -Coxeff * Coxeff * dTcen_dVg / epssub;
 
@@ -2528,8 +2583,8 @@ for (; model != NULL; model = model->BSIM4nextModel)
                         dVaux_dVd = 0.0;
                           dVaux_dVb = 0.0;
                   } else if (model->BSIM4igcMod == 2) {
-                        dVaux_dVd = -dVgs_eff_dVg * dVth_dVd;
-                        dVaux_dVb = -dVgs_eff_dVg * dVth_dVb;
+                        dVaux_dVd = -dVaux_dVg* dVth_dVd;  /* Synopsys 08/30/2013 modify */
+                        dVaux_dVb = -dVaux_dVg* dVth_dVb;  /* Synopsys 08/30/2013 modify */
                   }
                   dVaux_dVg *= dVgs_eff_dVg;
               }
@@ -2590,7 +2645,7 @@ for (; model != NULL; model = model->BSIM4nextModel)
               dT7_dVd = -Vdseff * dPigcd_dVd - Pigcd * dVdseff_dVd + dT7_dVg * dVgsteff_dVd;
               dT7_dVb = -Vdseff * dPigcd_dVb - Pigcd * dVdseff_dVb + dT7_dVg * dVgsteff_dVb;
               dT7_dVg *= dVgsteff_dVg;
-              dT7_dVb *= dVbseff_dVb;
+              /*dT7_dVb *= dVbseff_dVb;*/ /* Synopsys, 2013/08/30 */
               T8 = T7 * T7 + 2.0e-4;
               dT8_dVg = 2.0 * T7;
               dT8_dVd = dT8_dVg * dT7_dVd;
@@ -3563,8 +3618,8 @@ for (; model != NULL; model = model->BSIM4nextModel)
                   dVfbeff_dVg = T1 * dVgs_eff_dVg;
                   dVfbeff_dVb = -T1 * dVbseffCV_dVb;
 
-                  Cox = model->BSIM4coxp;
-                  Tox = 1.0e8 * model->BSIM4toxp;
+                  Cox = here->BSIM4coxp;
+                  Tox = 1.0e8 * here->BSIM4toxp;
                   T0 = (Vgs_eff - VbseffCV - here->BSIM4vfbzb) / Tox;
                   dT0_dVg = dVgs_eff_dVg / Tox;
                   dT0_dVb = -dVbseffCV_dVb / Tox;
@@ -3585,7 +3640,7 @@ for (; model != NULL; model = model->BSIM4nextModel)
                       dTcen_dVg = dTcen_dVb = 0.0;
                   }
 
-                  LINK = 1.0e-3 * model->BSIM4toxp;
+                  LINK = 1.0e-3 * here->BSIM4toxp;
                   V3 = pParam->BSIM4ldeb - Tcen - LINK;
                   V4 = sqrt(V3 * V3 + 4.0 * LINK * pParam->BSIM4ldeb);
                   Tcen = pParam->BSIM4ldeb - 0.5 * (V3 + V4);
