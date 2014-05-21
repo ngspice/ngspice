@@ -26,10 +26,10 @@
 
 int HSM2convTest(
      GENmodel *inModel,
-     register CKTcircuit *ckt)
+     CKTcircuit *ckt)
 {
-  register HSM2model *model = (HSM2model*)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model*)inModel;
+  HSM2instance *here;
   double delvbd, delvbs, delvds, delvgd, delvgs, vbd, vbs, vds;
   double cd, cdhat, tol0, tol1, tol2, tol3, tol4, vgd, vgdo, vgs;
   double Ibtot, cbhat, Igstot, cgshat, Igdtot, cgdhat, Igbtot, cgbhat;

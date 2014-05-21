@@ -36,17 +36,17 @@ int HSM2noise (
      int mode, int operation,
      GENmodel *inModel,
      CKTcircuit *ckt,
-     register Ndata *data,
+     Ndata *data,
      double *OnDens)
 {
-  register HSM2model *model = (HSM2model *)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model *)inModel;
+  HSM2instance *here;
   char name[N_MXVLNTH];
   double tempOnoise;
   double tempInoise;
   double noizDens[HSM2NSRCS];
   double lnNdens[HSM2NSRCS];
-  register int i;
+  int i;
   double G = 0.0 ;
   double TTEMP = 0.0 ;
  

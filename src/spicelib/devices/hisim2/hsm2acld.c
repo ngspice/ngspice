@@ -24,10 +24,10 @@
 
 int HSM2acLoad(
      GENmodel *inModel,
-     register CKTcircuit *ckt)
+     CKTcircuit *ckt)
 {
-  register HSM2model *model = (HSM2model*)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model*)inModel;
+  HSM2instance *here;
   double xcggb_r, xcgdb_r, xcgsb_r, xcgbb_r, xcggb_i, xcgdb_i, xcgsb_i, xcgbb_i;
   double xcbgb_r, xcbdb_r, xcbsb_r, xcbbb_r, xcbgb_i, xcbdb_i, xcbsb_i, xcbbb_i;
   double xcdgb_r, xcddb_r, xcdsb_r, xcdbb_r, xcdgb_i, xcddb_i, xcdsb_i, xcdbb_i;

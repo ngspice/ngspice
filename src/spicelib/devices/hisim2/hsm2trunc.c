@@ -23,12 +23,12 @@
 
 int HSM2trunc(
      GENmodel *inModel,
-     register CKTcircuit *ckt,
+     CKTcircuit *ckt,
      double *timeStep)
 
 {
-  register HSM2model *model = (HSM2model*)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model*)inModel;
+  HSM2instance *here;
 #ifdef STEPDEBUG
   double debugtemp;
 #endif /* STEPDEBUG */

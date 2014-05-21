@@ -174,13 +174,13 @@ static void ShowPhysVals
 
 int HSM2load(
      GENmodel *inModel,
-     register CKTcircuit *ckt)
+     CKTcircuit *ckt)
      /* actually load the current value into the 
       * sparse matrix previously provided 
       */
 {
-  register HSM2model *model = (HSM2model*)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model*)inModel;
+  HSM2instance *here;
 /*  HSM2binningParam *pParam;*/
   double cbhat=0.0, cdrain=0.0, cdhat=0.0, cdreq=0.0, cgbhat=0.0, cgshat=0.0, cgdhat=0.0 ;
   double Ibtot=0.0, Idtot=0.0, Igbtot=0.0, Igstot=0.0, Igdtot=0.0 ;

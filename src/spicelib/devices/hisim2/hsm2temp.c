@@ -64,8 +64,8 @@ int HSM2temp(
      GENmodel *inModel,
      CKTcircuit *ckt)
 {
-  register HSM2model *model = (HSM2model *)inModel ;
-  register HSM2instance *here ;
+  HSM2model *model = (HSM2model *)inModel ;
+  HSM2instance *here ;
   HSM2binningParam *pParam ;
   HSM2modelMKSParam *modelMKS ;
   HSM2hereMKSParam  *hereMKS ;

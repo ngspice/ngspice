@@ -24,11 +24,11 @@
 
 int HSM2pzLoad(
      GENmodel *inModel,
-     register CKTcircuit *ckt,
-     register SPcomplex *s)
+     CKTcircuit *ckt,
+     SPcomplex *s)
 {
-  register HSM2model *model = (HSM2model*)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model*)inModel;
+  HSM2instance *here;
   double xcggb, xcgdb, xcgsb, xcgbb, xcbgb, xcbdb = 0.0, xcbsb, xcbbb;
   double xcdgb, xcddb, xcdsb, xcdbb, xcsgb, xcsdb = 0.0, xcssb, xcsbb;
   double xcdbdb = 0.0, xcsbsb = 0.0;

@@ -53,16 +53,16 @@
 
 
 int HSM2setup(
-     register SMPmatrix *matrix,
-     register GENmodel *inModel,
-     register CKTcircuit *ckt,
+     SMPmatrix *matrix,
+     GENmodel *inModel,
+     CKTcircuit *ckt,
      int *states)
      /* load the HSM2 device structure with those pointers needed later 
       * for fast matrix loading 
       */
 {
-  register HSM2model *model = (HSM2model*)inModel;
-  register HSM2instance *here;
+  HSM2model *model = (HSM2model*)inModel;
+  HSM2instance *here;
   int error;
   CKTnode *tmp;
   HSM2binningParam *pParam ;
