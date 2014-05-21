@@ -15,7 +15,7 @@
 #include "ngspice/cktdefs.h"
 #include "ngspice/complex.h"
 #include "ngspice/sperror.h"
-#include "bsim4v7def.h."
+#include "bsim4v7def.h"
 #include "ngspice/suffix.h"
 
 int

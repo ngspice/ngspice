@@ -22,7 +22,7 @@
 
 #include "ngspice/ngspice.h"
 #include "ngspice/cktdefs.h"
-#include "bsim4v7def.h."
+#include "bsim4v7def.h"
 #include "ngspice/trandefs.h"
 #include "ngspice/const.h"
 #include "ngspice/sperror.h"

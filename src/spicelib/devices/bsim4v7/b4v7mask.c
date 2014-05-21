@@ -23,7 +23,7 @@
 #include "ngspice/ifsim.h"
 #include "ngspice/cktdefs.h"
 #include "ngspice/devdefs.h"
-#include "bsim4v7def.h."
+#include "bsim4v7def.h"
 #include "ngspice/sperror.h"
 #include "ngspice/suffix.h"
 

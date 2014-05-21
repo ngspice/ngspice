@@ -2,9 +2,9 @@
 
 #include "ngspice/devdefs.h"
 
-#include "bsim4v7itf.h."
-#include "bsim4v7ext.h."
-#include "bsim4v7init.h."
+#include "bsim4v7itf.h"
+#include "bsim4v7ext.h"
+#include "bsim4v7init.h"
 
 
 SPICEdev BSIM4v7info = {

@@ -3759,7 +3759,7 @@ typedef struct sBSIM4v7model
 #define BSIM4v7_MOD_VBS_MAX            1305
 #define BSIM4v7_MOD_VBD_MAX            1306
 
-#include "bsim4v7ext.h."
+#include "bsim4v7ext.h"
 
 extern void BSIM4v7evaluate(double,double,double,BSIM4v7instance*,BSIM4v7model*,
         double*,double*,double*, double*, double*, double*, double*,

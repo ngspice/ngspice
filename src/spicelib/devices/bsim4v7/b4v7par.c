@@ -16,7 +16,7 @@
 
 #include "ngspice/ngspice.h"
 #include "ngspice/ifsim.h"
-#include "bsim4v7def.h."
+#include "bsim4v7def.h"
 #include "ngspice/sperror.h"
 #include "ngspice/suffix.h"
 #include "ngspice/fteext.h"

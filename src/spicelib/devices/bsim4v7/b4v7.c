@@ -23,7 +23,7 @@
 
 #include "ngspice/ngspice.h"
 #include "ngspice/devdefs.h"
-#include "bsim4v7def.h."
+#include "bsim4v7def.h"
 #include "ngspice/suffix.h"
 
 IFparm BSIM4v7pTable[] = { /* parameters */

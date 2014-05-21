@@ -20,7 +20,7 @@
  **********/
 
 #include "ngspice/ngspice.h"
-#include "bsim4v7def.h."
+#include "bsim4v7def.h"
 #include "ngspice/cktdefs.h"
 #include "ngspice/iferrmsg.h"
 #include "ngspice/noisedef.h"
