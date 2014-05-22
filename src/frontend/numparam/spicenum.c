@@ -416,35 +416,17 @@ static tdico *dicoS = NULL;
 static void
 putlogfile(char c, int num, char *t)
 {
-    SPICE_DSTRING fname;        /* file name */
-    SPICE_DSTRING u;            /* temp dynamic variable */
+    if (!dologfileS)
+        return;
 
-    spice_dstring_init(&fname);
-    spice_dstring_init(&u);
-
-    if (dologfileS) {
-
-        if ((logfileS == NULL)) {
-            scopys(&fname, "logfile.");
-            nblogS++;
-            nadd(&fname, nblogS);
-            logfileS = fopen(spice_dstring_value(&fname), "w");
-        }
-
-        if ((logfileS != NULL)) {
-            cadd(&u, c);
-            nadd(&u, num);
-            cadd(&u, ':');
-            cadd(&u, ' ');
-            sadd(&u, t);
-            cadd(&u, '\n');
-            fputs(spice_dstring_value(&u), logfileS);
-        }
-
+    if (!logfileS) {
+        char *fname = tprintf("logfile.%d", ++nblogS);
+        logfileS = fopen(fname, "w");
+        tfree(fname);
     }
 
-    spice_dstring_free(&u);
-    spice_dstring_free(&fname);
+    if (logfileS)
+        fprintf(logfileS, "%c%d: %s\n", c, num, t);
 }
 
 
