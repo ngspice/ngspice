@@ -481,38 +481,22 @@ nupa_del_dicoS(void)
 static void
 nupa_done(void)
 {
-    /* int i; not needed so far, see below */
-    SPICE_DSTRING rep;          /* dynamic report */
-    int dictsize, nerrors;
+    int nerrors = dicoS->errcount;
+    int dictsize = donedico(dicoS);
 
-    spice_dstring_init(&rep);
-
-    if (logfileS != NULL) {
+    if (logfileS) {
         fclose(logfileS);
         logfileS = NULL;
     }
-
-    nerrors = dicoS->errcount;
-    dictsize = donedico(dicoS);
 
     /* We cannot remove dicoS here because numparam is used by
        the .measure statements, which are invoked only after the
        simulation has finished. */
 
     if (nerrors) {
+        printf(" Copies=%d Evals=%d Placeholders=%ld Symbols=%d Errors=%d\n",
+               linecountS, evalcountS, placeholder, dictsize, nerrors);
         /* debug: ask if spice run really wanted */
-        sadd(&rep, " Copies=");
-        nadd(&rep, linecountS);
-        sadd(&rep, " Evals=");
-        nadd(&rep, evalcountS);
-        sadd(&rep, " Placeholders=");
-        nadd(&rep, placeholder);
-        sadd(&rep, " Symbols=");
-        nadd(&rep, dictsize);
-        sadd(&rep, " Errors=");
-        nadd(&rep, nerrors);
-        cadd(&rep, '\n');
-        printf("%s", spice_dstring_value(&rep));
         if (ft_batchmode)
             controlled_exit(EXIT_FAILURE);
         for (;;) {
