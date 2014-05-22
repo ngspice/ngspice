@@ -983,7 +983,7 @@ operate(char op, double x, double y)
         x = x - y * t;
         break;
     case '\\':                  /* / */
-        x = (double)(np_trunc(absf(x / y)));
+        x = (double)(np_trunc(fabs(x / y)));
         break;
     }
 
