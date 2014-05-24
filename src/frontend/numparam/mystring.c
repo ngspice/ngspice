@@ -599,18 +599,18 @@ spos_(char *sub, const char *s)
 }
 
 
-long
+double
 np_round(double r)
 {
-    return (long) floor(r + 0.5);
+    return floor(r + 0.5);
 }
 
 
-long
+double
 np_trunc(double r)
 {
     if (r >= 0.0)
-        return (long) floor(r);
+        return floor(r);
     else
-        return (long) ceil(r);
+        return ceil(r);
 }

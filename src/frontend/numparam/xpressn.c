@@ -979,11 +979,11 @@ operate(char op, double x, double y)
             x = z;
         break;
     case '%':                   /* % */
-        t = (double)(np_trunc(x / y));
+        t = np_trunc(x / y);
         x = x - y * t;
         break;
     case '\\':                  /* / */
-        x = (double)(np_trunc(fabs(x / y)));
+        x = np_trunc(fabs(x / y));
         break;
     }
 
