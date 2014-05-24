@@ -599,51 +599,6 @@ spos_(char *sub, const char *s)
 }
 
 
-#ifndef HAVE_LIBM
-
-long
-np_round(double x)
-/* using <math.h>, it would be simpler: floor(x+0.5), see below */
-{
-    double u;
-    long z;
-    int n;
-//  Str (40, s);
-    SPICE_DSTRING s;
-
-    spice_dstring_init(&s);
-    u = 2e9;
-
-    if (x > u)
-        x = u;
-    else if (x < -u)
-        x = -u;
-
-    n = sprintf(s, "%-12.0f", x);
-    s[n] = 0;
-    sscanf(s, "%ld", &z);
-
-    return z;
-}
-
-
-long
-np_trunc(double x)
-{
-    long n = np_round(x);
-
-    if ((n > x) && (x >= 0.0))
-        n--;
-    else if ((n < x) && (x < 0.0))
-        n++;
-
-    return n;
-}
-
-
-#else /* use floor() and ceil() */
-
-
 long
 np_round(double r)
 {
@@ -659,5 +614,3 @@ np_trunc(double r)
     else
         return (long) ceil(r);
 }
-
-#endif
