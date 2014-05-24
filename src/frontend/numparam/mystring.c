@@ -589,14 +589,11 @@ absi(long i)
 
 int
 spos_(char *sub, const char *s)
-/* equivalent to Turbo Pascal pos().
-   BUG: counts 1 ... length(s), not from 0 like C
-*/
 {
-    char *ptr;
+    const char *ptr = strstr(s, sub);
 
-    if ((ptr = strstr(s, sub)) != NULL)
-        return (int) (strlen(s) - strlen(ptr));
+    if (ptr)
+        return (int) (ptr - s);
     else
         return -1;
 }
