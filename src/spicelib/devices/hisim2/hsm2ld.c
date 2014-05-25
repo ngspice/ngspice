@@ -29,6 +29,9 @@
 #define BYP_TOL_FACTOR model->HSM2_byptol  
 
 #ifdef MOS_MODEL_TIME
+#ifdef USE_OMP
+#error "MOS_MODEL_TIME is not supported when USE_OMP is active"
+#endif
 /** MOS Model Time **/
 #include <sys/time.h>
 extern char *mos_model_name ;
@@ -47,6 +50,10 @@ static double vsum0 = 1.0e5 ;
 #endif
 #endif
 
+#ifdef USE_OMP
+int HSM2LoadOMP(HSM2instance *here, CKTcircuit *ckt);
+void HSM2LoadRhsMat(GENmodel *inModel, CKTcircuit *ckt);
+#endif
 
 static void ShowPhysVals
 (
@@ -179,8 +186,32 @@ int HSM2load(
       * sparse matrix previously provided 
       */
 {
+#ifdef USE_OMP
+    int idx;
+    HSM2model *model = (HSM2model*)inModel;
+    int good = 0;
+    HSM2instance *here;
+    HSM2instance **InstArray;
+    InstArray = model->HSM2InstanceArray;
+
+#pragma omp parallel for private(here)
+    for (idx = 0; idx < model->HSM2InstCount; idx++) {
+        here = InstArray[idx];
+        good = HSM2LoadOMP(here, ckt);
+    }
+
+    HSM2LoadRhsMat(inModel, ckt);
+
+    return good;
+}
+
+int HSM2LoadOMP(HSM2instance *here, CKTcircuit *ckt)
+{
+  HSM2model *model;
+#else
   HSM2model *model = (HSM2model*)inModel;
   HSM2instance *here;
+#endif
 /*  HSM2binningParam *pParam;*/
   double cbhat=0.0, cdrain=0.0, cdhat=0.0, cdreq=0.0, cgbhat=0.0, cgshat=0.0, cgdhat=0.0 ;
   double Ibtot=0.0, Idtot=0.0, Igbtot=0.0, Igstot=0.0, Igdtot=0.0 ;
@@ -229,6 +260,14 @@ tm0 = gtodsecld() ;
 #endif
 
 
+#ifdef USE_OMP
+    model = here->HSM2modPtr;
+    reltol = ckt->CKTreltol * BYP_TOL_FACTOR ;
+    abstol = ckt->CKTabstol * BYP_TOL_FACTOR ;
+    voltTol= ckt->CKTvoltTol* BYP_TOL_FACTOR ;
+    BYPASS_enable = (BYP_TOL_FACTOR > 0.0 && ckt->CKTbypass) ;
+    model->HSM2_bypass_enable = BYPASS_enable ;
+#else
   /*  loop through all the HSM2 device models */
   for ( ; model != NULL; model = model->HSM2nextModel ) {
     /* loop through all the instances of the model */
@@ -241,6 +280,7 @@ tm0 = gtodsecld() ;
 
     for (here = model->HSM2instances; here != NULL ;
 	 here = here->HSM2nextInstance) {
+#endif
 /*      pParam = &here->pParam ;*/
       showPhysVal = 0;
       Check=1;
@@ -1146,6 +1186,21 @@ tm0 = gtodsecld() ;
     printf( "----------------------------------------------------\n" ) ;
 #endif
 
+#ifdef USE_OMP
+    here->HSM2rhsdPrime = ceqjd - ceqbd - cdreq - ceqqd + Idtoteq;
+    here->HSM2rhsgPrime = ceqqg + Igtoteq;
+
+    if ( !here->HSM2_corbnet ) {
+      here->HSM2rhsbPrime = ceqbd + ceqbs - ceqjd - ceqjs - ceqqb + Ibtoteq;
+      here->HSM2rhssPrime = cdreq - ceqbs + ceqjs + ceqqg + ceqqb + ceqqd + Istoteq;
+    } else {
+      here->HSM2rhsdb = ceqjd + ceqqjd;
+      here->HSM2rhsbPrime = ceqbd + ceqbs - ceqqb + Ibtoteq;
+      here->HSM2rhssb = ceqjs + ceqqjs;
+      here->HSM2rhssPrime = cdreq - ceqbs + ceqjs + ceqqd
+                                + ceqqg + ceqqb + ceqqjd + ceqqjs + Istoteq;
+    }
+#else
     *(ckt->CKTrhs + here->HSM2dNodePrime) += ceqjd - ceqbd - cdreq - ceqqd + Idtoteq;
     *(ckt->CKTrhs + here->HSM2gNodePrime) -= ceqqg + Igtoteq;
 
@@ -1159,6 +1214,7 @@ tm0 = gtodsecld() ;
       *(ckt->CKTrhs + here->HSM2sNodePrime) += cdreq - ceqbs + ceqjs + ceqqd
 	+ ceqqg + ceqqb + ceqqjd + ceqqjs + Istoteq;
     }
+#endif
 
 #ifdef DEBUG_HISIM2LD    
     printf ("id ig ib is %12.5e %12.5e %12.5e %12.5e\n", ceqjd - ceqbd - cdreq - ceqqd + Idtoteq,
@@ -1176,7 +1232,100 @@ tm0 = gtodsecld() ;
     } else
       gjbd = gjbs = 0.0;
 
+#ifdef USE_OMP
+    if (here->HSM2_corg == 1) {
+      grg = here->HSM2_grg;
+      here->HSM2_1 = grg;
+      here->HSM2_2 = grg;
+      here->HSM2_3 = grg;
+      here->HSM2_4 = gcggb + grg + gIgtotg;
+      here->HSM2_5 = gcgdb + gIgtotd;
+      here->HSM2_6 = gcgsb + gIgtots;
+      here->HSM2_7 = gcgbb + gIgtotb;
+    } else {
+      here->HSM2_8 = gcggb + gIgtotg;
+      here->HSM2_9 = gcgdb + gIgtotd;
+      here->HSM2_10 = gcgsb + gIgtots;
+      here->HSM2_11 = gcgbb + gIgtotb;
+    }
 
+    here->HSM2_12 = here->HSM2drainConductance
+      + here->HSM2_gds + here->HSM2_gbd + RevSum + gcddb + gbdpdp - gIdtotd;
+    here->HSM2_13 = here->HSM2drainConductance;
+    here->HSM2_14 = gm + gcdgb + gbdpg - gIdtotg;
+    here->HSM2_15 = here->HSM2_gds + FwdSum - gcdsb - gbdpsp + gIdtots;
+    here->HSM2_16 = gjbd - gmbs - gcdbb - gbdpb + gIdtotb;
+
+    here->HSM2_17 = here->HSM2drainConductance;
+    here->HSM2_18 = here->HSM2drainConductance;
+
+    here->HSM2_19 = here->HSM2_gds + RevSum - gcsdb - gbspdp + gIstotd;
+    here->HSM2_20 = gcsgb - gm + gbspg - gIstotg;
+    here->HSM2_21 = here->HSM2sourceConductance
+      + here->HSM2_gds + here->HSM2_gbs + FwdSum + gcssb + gbspsp - gIstots;
+    here->HSM2_22 = here->HSM2sourceConductance;
+    here->HSM2_23 = gjbs + gmbs - gcsbb - gbspb + gIstotb;
+
+    here->HSM2_24 = here->HSM2sourceConductance;
+    here->HSM2_25 = here->HSM2sourceConductance;
+
+    here->HSM2_26 = gcbdb - gjbd + gbbdp - gIbtotd;
+    here->HSM2_27 = gcbgb - here->HSM2_gbgs - gIbtotg;
+    here->HSM2_28 = gcbsb - gjbs + gbbsp - gIbtots;
+    here->HSM2_29 = gjbd + gjbs + gcbbb - here->HSM2_gbbs - gIbtotb;
+
+    if (model->HSM2_cogidl) {
+      /* stamp GIDL */
+      here->HSM2_30 = here->HSM2_gigidlds;
+      here->HSM2_31 = here->HSM2_gigidlgs;
+      here->HSM2_32 = (here->HSM2_gigidlgs +
+                               here->HSM2_gigidlds + here->HSM2_gigidlbs);
+      here->HSM2_33 = here->HSM2_gigidlbs;
+      here->HSM2_34 = here->HSM2_gigidlds;
+      here->HSM2_35 = here->HSM2_gigidlgs;
+      here->HSM2_36 = (here->HSM2_gigidlgs +
+                               here->HSM2_gigidlds + here->HSM2_gigidlbs);
+      here->HSM2_37 = here->HSM2_gigidlbs;
+      /* stamp GISL */
+      here->HSM2_38 = (here->HSM2_gigislsd +
+                               here->HSM2_gigislgd + here->HSM2_gigislbd);
+      here->HSM2_39 = here->HSM2_gigislgd;
+      here->HSM2_40 = here->HSM2_gigislsd;
+      here->HSM2_41 = here->HSM2_gigislbd;
+      here->HSM2_42 = (here->HSM2_gigislgd +
+                               here->HSM2_gigislsd + here->HSM2_gigislbd);
+      here->HSM2_43 = here->HSM2_gigislgd;
+      here->HSM2_44 = here->HSM2_gigislsd;
+      here->HSM2_45 = here->HSM2_gigislbd;
+    }
+
+    if (here->HSM2_corbnet) { /* body resistance network */
+      here->HSM2_46 = gcdbdb - here->HSM2_gbd;
+      here->HSM2_47 = here->HSM2_gbs - gcsbsb;
+
+      here->HSM2_48 = gcdbdb - here->HSM2_gbd;
+      here->HSM2_49 = here->HSM2_gbd - gcdbdb
+                        + here->HSM2_grbpd + here->HSM2_grbdb;
+      here->HSM2_50 = here->HSM2_grbpd;
+      here->HSM2_51 = here->HSM2_grbdb;
+
+      here->HSM2_52 = here->HSM2_grbpd;
+      here->HSM2_53 = here->HSM2_grbpb;
+      here->HSM2_54 = here->HSM2_grbps;
+      here->HSM2_55 = here->HSM2_grbpd + here->HSM2_grbps + here->HSM2_grbpb;
+
+      here->HSM2_56 = gcsbsb - here->HSM2_gbs;
+      here->HSM2_57 = here->HSM2_grbps;
+      here->HSM2_58 = here->HSM2_grbsb;
+      here->HSM2_59 = here->HSM2_gbs - gcsbsb
+                        + here->HSM2_grbps + here->HSM2_grbsb;
+
+      here->HSM2_60 = here->HSM2_grbdb;
+      here->HSM2_61 = here->HSM2_grbpb;
+      here->HSM2_62 = here->HSM2_grbsb;
+      here->HSM2_63 = here->HSM2_grbsb + here->HSM2_grbdb + here->HSM2_grbpb;
+    }
+#else
     if (here->HSM2_corg == 1) {
       grg = here->HSM2_grg;
       *(here->HSM2GgPtr) += grg;
@@ -1269,12 +1418,15 @@ tm0 = gtodsecld() ;
       *(here->HSM2BsbPtr) -= here->HSM2_grbsb;
       *(here->HSM2BbPtr) += here->HSM2_grbsb + here->HSM2_grbdb + here->HSM2_grbpb;
     }
+#endif
 
   line1000:
     ;
     
+#ifndef USE_OMP
    } /* End of MOSFET Instance */
   } /* End of Model Instance */
+#endif
   
 #ifdef MOS_MODEL_TIME
 tm1 = gtodsecld() ;
@@ -1294,3 +1446,126 @@ vsum0 = vsum ;
 
   return(OK);
 }
+
+#ifdef USE_OMP
+void HSM2LoadRhsMat(GENmodel *inModel, CKTcircuit *ckt)
+{
+    unsigned int InstCount, idx;
+    HSM2instance **InstArray;
+    HSM2instance *here;
+    HSM2model *model = (HSM2model*)inModel;
+
+    InstArray = model->HSM2InstanceArray;
+    InstCount = model->HSM2InstCount;
+
+    for (idx = 0; idx < InstCount; idx++) {
+       here = InstArray[idx];
+        /* Update b for Ax = b */
+        *(ckt->CKTrhs + here->HSM2dNodePrime) += here->HSM2rhsdPrime;
+        *(ckt->CKTrhs + here->HSM2gNodePrime) -= here->HSM2rhsgPrime;
+
+        if ( !here->HSM2_corbnet ) {
+          *(ckt->CKTrhs + here->HSM2bNodePrime) += here->HSM2rhsbPrime;
+          *(ckt->CKTrhs + here->HSM2sNodePrime) += here->HSM2rhssPrime;
+        } else {
+          *(ckt->CKTrhs + here->HSM2dbNode) -= here->HSM2rhsdb;
+          *(ckt->CKTrhs + here->HSM2bNodePrime) += here->HSM2rhsbPrime;
+          *(ckt->CKTrhs + here->HSM2sbNode) -= here->HSM2rhssb;
+          *(ckt->CKTrhs + here->HSM2sNodePrime) += here->HSM2rhssPrime;
+       }
+
+       /* Update A for Ax = b */
+       if (here->HSM2_corg == 1) {
+         *(here->HSM2GgPtr) += here->HSM2_1;
+         *(here->HSM2GPgPtr) -= here->HSM2_2;
+         *(here->HSM2GgpPtr) -= here->HSM2_3;
+         *(here->HSM2GPgpPtr) += here->HSM2_4;
+         *(here->HSM2GPdpPtr) += here->HSM2_5;
+         *(here->HSM2GPspPtr) += here->HSM2_6;
+         *(here->HSM2GPbpPtr) += here->HSM2_7;
+       } else {
+         *(here->HSM2GPgpPtr) += here->HSM2_8;
+         *(here->HSM2GPdpPtr) += here->HSM2_9;
+         *(here->HSM2GPspPtr) += here->HSM2_10;
+         *(here->HSM2GPbpPtr) += here->HSM2_11;
+       }
+
+       *(here->HSM2DPdpPtr) += here->HSM2_12;
+
+       *(here->HSM2DPdPtr) -= here->HSM2_13;
+       *(here->HSM2DPgpPtr) += here->HSM2_14;
+       *(here->HSM2DPspPtr) -= here->HSM2_15;
+       *(here->HSM2DPbpPtr) -= here->HSM2_16;
+
+       *(here->HSM2DdpPtr) -= here->HSM2_17;
+       *(here->HSM2DdPtr) += here->HSM2_18;
+
+       *(here->HSM2SPdpPtr) -= here->HSM2_19;
+       *(here->HSM2SPgpPtr) += here->HSM2_20;
+       *(here->HSM2SPspPtr) += here->HSM2_21;
+
+       *(here->HSM2SPsPtr) -= here->HSM2_22;
+       *(here->HSM2SPbpPtr) -= here->HSM2_23;
+
+       *(here->HSM2SspPtr) -= here->HSM2_24;
+       *(here->HSM2SsPtr) += here->HSM2_25;
+
+       *(here->HSM2BPdpPtr) += here->HSM2_26;
+       *(here->HSM2BPgpPtr) += here->HSM2_27;
+       *(here->HSM2BPspPtr) += here->HSM2_28;
+       *(here->HSM2BPbpPtr) += here->HSM2_29;
+
+       if (model->HSM2_cogidl) {
+         /* stamp GIDL */
+         *(here->HSM2DPdpPtr) += here->HSM2_30;
+         *(here->HSM2DPgpPtr) += here->HSM2_31;
+         *(here->HSM2DPspPtr) -= here->HSM2_32;
+
+         *(here->HSM2DPbpPtr) += here->HSM2_33;
+         *(here->HSM2BPdpPtr) -= here->HSM2_34;
+         *(here->HSM2BPgpPtr) -= here->HSM2_35;
+         *(here->HSM2BPspPtr) += here->HSM2_36;
+
+         *(here->HSM2BPbpPtr) -= here->HSM2_37;
+         /* stamp GISL */
+         *(here->HSM2SPdpPtr) -= here->HSM2_38;
+
+         *(here->HSM2SPgpPtr) += here->HSM2_39;
+         *(here->HSM2SPspPtr) += here->HSM2_40;
+         *(here->HSM2SPbpPtr) += here->HSM2_41;
+         *(here->HSM2BPdpPtr) += here->HSM2_42;
+
+         *(here->HSM2BPgpPtr) -= here->HSM2_43;
+         *(here->HSM2BPspPtr) -= here->HSM2_44;
+         *(here->HSM2BPbpPtr) -= here->HSM2_45;
+       }
+
+       if (here->HSM2_corbnet) { /* body resistance network */
+         *(here->HSM2DPdbPtr) += here->HSM2_46;
+         *(here->HSM2SPsbPtr) -= here->HSM2_47;
+
+         *(here->HSM2DBdpPtr) += here->HSM2_48;
+         *(here->HSM2DBdbPtr) += here->HSM2_49;
+
+         *(here->HSM2DBbpPtr) -= here->HSM2_50;
+         *(here->HSM2DBbPtr) -= here->HSM2_51;
+
+         *(here->HSM2BPdbPtr) -= here->HSM2_52;
+         *(here->HSM2BPbPtr) -= here->HSM2_53;
+         *(here->HSM2BPsbPtr) -= here->HSM2_54;
+         *(here->HSM2BPbpPtr) += here->HSM2_55;
+
+         *(here->HSM2SBspPtr) += here->HSM2_56;
+         *(here->HSM2SBbpPtr) -= here->HSM2_57;
+         *(here->HSM2SBbPtr) -= here->HSM2_58;
+         *(here->HSM2SBsbPtr) += here->HSM2_59;
+
+
+         *(here->HSM2BdbPtr) -= here->HSM2_60;
+         *(here->HSM2BbpPtr) -= here->HSM2_61;
+         *(here->HSM2BsbPtr) -= here->HSM2_62;
+         *(here->HSM2BbPtr) += here->HSM2_63;
+       }
+    }
+}
+#endif

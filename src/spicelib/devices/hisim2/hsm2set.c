@@ -25,6 +25,10 @@
 #include "ngspice/suffix.h"
 
 
+#ifdef USE_OMP
+#include "ngspice/cpextern.h"
+#endif
+
 #define BINNING(param) pParam->HSM2_##param = model->HSM2_##param \
   + model->HSM2_l##param / Lbin + model->HSM2_w##param / Wbin \
   + model->HSM2_p##param / LWbin ;
@@ -71,6 +75,11 @@ int HSM2setup(
   double Lgate =0.0, LG =0.0, Wgate =0.0, WG=0.0 ;
   double Lbin=0.0, Wbin=0.0, LWbin =0.0; /* binning */
   
+#ifdef USE_OMP
+  unsigned int idx, InstCount;
+  HSM2instance **InstArray;
+#endif
+
   /*  loop through all the HSM2 device models */
   for ( ;model != NULL ;model = model->HSM2nextModel ) {
     /* Default value Processing for HSM2 MOSFET Models */
@@ -1103,6 +1112,40 @@ do { if((here->ptr = SMPmakeElt(matrix,here->first,here->second))==(double *)NUL
     }
 
   }   /* End of model */
+
+#ifdef USE_OMP
+    InstCount = 0;
+    model = (HSM2model*)inModel;
+    /* loop through all the HSM2 device models
+       to count the number of instances */
+
+    for ( ; model != NULL; model = model->HSM2nextModel )
+    {
+        /* loop through all the instances of the model */
+        for (here = model->HSM2instances; here != NULL ;
+             here = here->HSM2nextInstance)
+        {
+            InstCount++;
+        }
+    }
+    InstArray = TMALLOC(HSM2instance*, InstCount);
+    model = (HSM2model*)inModel;
+    idx = 0;
+    for ( ; model != NULL; model = model->HSM2nextModel )
+    {
+        /* loop through all the instances of the model */
+        for (here = model->HSM2instances; here != NULL ;
+             here = here->HSM2nextInstance)
+        {
+            InstArray[idx] = here;
+            idx++;
+        }
+        /* set the array pointer and instance count into each model */
+        model->HSM2InstCount = InstCount;
+        model->HSM2InstanceArray = InstArray;
+    }
+#endif
+
   return(OK);
 } 
 
