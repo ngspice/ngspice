@@ -475,9 +475,9 @@ typedef struct sHSM2instance {
   unsigned HSM2_m_Given  :1;
   
  /* WPE */
-  unsigned HSM2_sca_Given :1;	/* sca */
-  unsigned HSM2_scb_Given :1;	/* scb */
-  unsigned HSM2_scc_Given :1;	/* scc */
+  unsigned HSM2_sca_Given :1;        /* sca */
+  unsigned HSM2_scb_Given :1;        /* scb */
+  unsigned HSM2_scc_Given :1;        /* scc */
   /* pointer to sparse matrix */
 
   double *HSM2GgPtr;   /* pointer to sparse matrix element at (gate node,gate node) */
@@ -535,6 +535,80 @@ typedef struct sHSM2instance {
   double *HSM2BdbPtr;  /* pointer to sparse matrix element at (bulk node,drain body node) */
   double *HSM2BbPtr;   /* pointer to sparse matrix element at (bulk node,bulk node) */
 
+#ifdef USE_OMP
+    /* per instance storage of results, to update matrix and rhs at a later stage */
+    double HSM2rhsdPrime;
+    double HSM2rhsgPrime;
+    double HSM2rhsbPrime;
+    double HSM2rhssPrime;
+    double HSM2rhsdb;
+    double HSM2rhssb;
+
+    double HSM2_1;
+    double HSM2_2;
+    double HSM2_3;
+    double HSM2_4;
+    double HSM2_5;
+    double HSM2_6;
+    double HSM2_7;
+    double HSM2_8;
+    double HSM2_9;
+    double HSM2_10;
+    double HSM2_11;
+    double HSM2_12;
+    double HSM2_13;
+    double HSM2_14;
+    double HSM2_15;
+    double HSM2_16;
+    double HSM2_17;
+    double HSM2_18;
+    double HSM2_19;
+    double HSM2_20;
+    double HSM2_21;
+    double HSM2_22;
+    double HSM2_23;
+    double HSM2_24;
+    double HSM2_25;
+    double HSM2_26;
+    double HSM2_27;
+    double HSM2_28;
+    double HSM2_29;
+    double HSM2_30;
+    double HSM2_31;
+    double HSM2_32;
+    double HSM2_33;
+    double HSM2_34;
+    double HSM2_35;
+    double HSM2_36;
+    double HSM2_37;
+    double HSM2_38;
+    double HSM2_39;
+    double HSM2_40;
+    double HSM2_41;
+    double HSM2_42;
+    double HSM2_43;
+    double HSM2_44;
+    double HSM2_45;
+    double HSM2_46;
+    double HSM2_47;
+    double HSM2_48;
+    double HSM2_49;
+    double HSM2_50;
+    double HSM2_51;
+    double HSM2_52;
+    double HSM2_53;
+    double HSM2_54;
+    double HSM2_55;
+    double HSM2_56;
+    double HSM2_57;
+    double HSM2_58;
+    double HSM2_59;
+    double HSM2_60;
+    double HSM2_61;
+    double HSM2_62;
+    double HSM2_63;
+#endif
+
   /* common state values in hisim module */
 #define HSM2vbd HSM2states+ 0
 #define HSM2vbs HSM2states+ 1
@@ -589,17 +663,17 @@ typedef struct sHSM2instance {
 
 /* per model data */
 
-typedef struct sHSM2model {       	/* model structure for a resistor */
-  int HSM2modType;    		/* type index of this device type */
+typedef struct sHSM2model {               /* model structure for a resistor */
+  int HSM2modType;                    /* type index of this device type */
   struct sHSM2model *HSM2nextModel; /* pointer to next possible model 
-					 in linked list */
-  HSM2instance * HSM2instances;	/* pointer to list of instances 
-				   that have this model */
-  IFuid HSM2modName;       	/* pointer to the name of this model */
+                                         in linked list */
+  HSM2instance * HSM2instances;        /* pointer to list of instances 
+                                   that have this model */
+  IFuid HSM2modName;               /* pointer to the name of this model */
 
   /* --- end of generic struct GENmodel --- */
 
-  int HSM2_type;      		/* device type: 1 = nmos,  -1 = pmos */
+  int HSM2_type;                      /* device type: 1 = nmos,  -1 = pmos */
   int HSM2_level;               /* level */
   int HSM2_info;                /* information */
   int HSM2_noise;               /* noise model selecter see hsm2noi.c */
@@ -878,9 +952,9 @@ typedef struct sHSM2model {       	/* model structure for a resistor */
   /* variables for WPE */
   double HSM2_web ;
   double HSM2_wec ;
-  double HSM2_nsubcwpe ;	
-  double HSM2_npextwpe ;	
-  double HSM2_nsubpwpe ;	
+  double HSM2_nsubcwpe ;        
+  double HSM2_npextwpe ;        
+  double HSM2_nsubpwpe ;        
   /* for Ps0_min */
   double HSM2_Vgsmin ; 
   double HSM2_sc3Vbs ; /* SC3 clamping  */
@@ -1137,6 +1211,12 @@ typedef struct sHSM2model {       	/* model structure for a resistor */
   double HSM2vbdMax;
 
   HSM2modelMKSParam modelMKS ; /* unit-converted parameters */
+
+#ifdef USE_OMP
+    int HSM2InstCount;
+    struct sHSM2instance **HSM2InstanceArray;
+#endif
+
   /* flag for model */
   unsigned HSM2_type_Given  :1;
   unsigned HSM2_level_Given  :1;
@@ -1737,9 +1817,9 @@ typedef struct sHSM2model {       	/* model structure for a resistor */
 #define HSM2_M           83
 
 /* val symbol for WPE */
-#define HSM2_SCA	 85	/* sca */
-#define HSM2_SCB	 86	/* scb */
-#define HSM2_SCC	 87	/* scc */
+#define HSM2_SCA         85        /* sca */
+#define HSM2_SCB         86        /* scb */
+#define HSM2_SCC         87        /* scc */
 
 /* model parameters */
 #define HSM2_MOD_VMAX      100
@@ -1815,7 +1895,7 @@ typedef struct sHSM2model {       	/* model structure for a resistor */
 #define HSM2_MOD_MUEPHS    139
 #define HSM2_MOD_MUEPSP    140
 #define HSM2_MOD_VTMP      141
-#define HSM2_MOD_WVTH0 	   142
+#define HSM2_MOD_WVTH0            142
 #define HSM2_MOD_MUESR1    143
 #define HSM2_MOD_MUESR0    144
 #define HSM2_MOD_MUESRL    145
@@ -1983,8 +2063,8 @@ typedef struct sHSM2model {       	/* model structure for a resistor */
 #define HSM2_MOD_MUEPWP2   464
 
 /* val symbol for WPE */
-#define HSM2_MOD_WEB	    88
-#define HSM2_MOD_WEC	    89
+#define HSM2_MOD_WEB            88
+#define HSM2_MOD_WEC            89
 #define HSM2_MOD_NSUBCWPE  91
 #define HSM2_MOD_NPEXTWPE  41
 #define HSM2_MOD_NSUBPWPE  43
