@@ -248,26 +248,32 @@ HSM2instance *here;
   double vds_pre = 0.0;
   double reltol, abstol , voltTol ;
   
-#ifdef USE_OMP
-  model = here->HSM2modPtr;
-#endif
+  ChargeComputationNeeded =  
+    ((ckt->CKTmode & (MODEAC | MODETRAN | MODEINITSMSIG)) ||
+     ((ckt->CKTmode & MODETRANOP) && (ckt->CKTmode & MODEUIC)))
+    ? 1 : 0;
 
 #ifdef MOS_MODEL_TIME
   tm0 = gtodsecld() ;
 #endif
 
-  ChargeComputationNeeded =  
-    ((ckt->CKTmode & (MODEAC | MODETRAN | MODEINITSMSIG)) ||
-     ((ckt->CKTmode & MODETRANOP) && (ckt->CKTmode & MODEUIC)))
-    ? 1 : 0;
+#ifdef USE_OMP
+  model = here->HSM2modPtr;
   reltol = ckt->CKTreltol * BYP_TOL_FACTOR ; 
   abstol = ckt->CKTabstol * BYP_TOL_FACTOR ;
   voltTol= ckt->CKTvoltTol* BYP_TOL_FACTOR ;
   BYPASS_enable = (BYP_TOL_FACTOR > 0.0 && ckt->CKTbypass) ;
   model->HSM2_bypass_enable = BYPASS_enable ;
+#endif
+
 #ifndef USE_OMP
   /*  loop through all the HSM2 device models */
   for ( ; model != NULL; model = model->HSM2nextModel ) {
+    reltol = ckt->CKTreltol * BYP_TOL_FACTOR ; 
+    abstol = ckt->CKTabstol * BYP_TOL_FACTOR ;
+    voltTol= ckt->CKTvoltTol* BYP_TOL_FACTOR ;
+    BYPASS_enable = (BYP_TOL_FACTOR > 0.0 && ckt->CKTbypass) ;
+    model->HSM2_bypass_enable = BYPASS_enable ;
     /* loop through all the instances of the model */
     for (here = model->HSM2instances; here != NULL; 
           here = here->HSM2nextInstance)
