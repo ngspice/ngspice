@@ -766,7 +766,9 @@ tm0 = gtodsecld() ;
 	static int isFirst = 1;
 	if (isFirst) {
 	  printf("# vbs vds vgs cggb cgdb cgsb cbgb cbdb cbsb cdgb cddb cdsb\n");
+#ifdef USE_OMP
 	  isFirst = 0;
+#endif
 	}
 	printf("%12.5e %12.5e %12.5e %12.5e %12.5e %12.5e %12.5e %12.5e %12.5e %12.5e %12.5e %12.5e\n", 
 	       vbs, vds, vgs , 
@@ -835,7 +837,9 @@ tm0 = gtodsecld() ;
 	ShowPhysVals(here, model, isFirst, vds_pre, vgs, vbs, vgd, vbd, vgb);
       else 
 	ShowPhysVals(here, model, isFirst, vds, vgs, vbs, vgd, vbd, vgb);
+#ifdef USE_OMP
       if (isFirst) isFirst = 0;
+#endif
     }
 
     /* bulk and channel charge plus overlaps */
