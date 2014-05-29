@@ -29,6 +29,9 @@
 #define BYP_TOL_FACTOR model->HSM2_byptol  
 
 #ifdef MOS_MODEL_TIME
+#ifdef USE_OMP
+#error "MOS_MODEL_TIME is not supported when USE_OMP is active"
+#endif
 /** MOS Model Time **/
 #include <sys/time.h>
 extern char *mos_model_name ;
@@ -43,7 +46,7 @@ double tm0 , tm1 ;
 #ifdef PARAMOS_TIME
 #include <time.h>
 double vsum ;
-static double vsum0 = 1.0e5 ;
+double vsum0 = 1.0e5 ;
 #endif
 #endif
 
@@ -52,7 +55,7 @@ int HSM2LoadOMP(HSM2instance *here, CKTcircuit *ckt);
 void HSM2LoadRhsMat(GENmodel *inModel, CKTcircuit *ckt);
 #endif
 
-static void ShowPhysVals
+void ShowPhysVals
 (
  HSM2instance *here,
  HSM2model *model,
@@ -247,7 +250,11 @@ HSM2instance *here;
   int isConv;
   double vds_pre = 0.0;
   double reltol, abstol , voltTol ;
-  
+  static int isFirst;
+#ifdef USE_OMP
+#pragma omp threadprivate(isFirst)
+#endif
+
   ChargeComputationNeeded =  
     ((ckt->CKTmode & (MODEAC | MODETRAN | MODEINITSMSIG)) ||
      ((ckt->CKTmode & MODETRANOP) && (ckt->CKTmode & MODEUIC)))
@@ -761,7 +768,7 @@ HSM2instance *here;
       /* print all outputs ------------AA */
 
       if ( model->HSM2_info >= 3 ) { /* physical valiables vs bias */
-        static int isFirst = 1;
+        isFirst = 1;
         if (isFirst) {
           printf("# vbs vds vgs cggb cgdb cgsb cbgb cbdb cbsb cdgb cddb cdsb\n");
           isFirst = 0;
@@ -828,7 +835,7 @@ HSM2instance *here;
         !(ckt->CKTmode & MODEINITFIX) && !(ckt->CKTmode & MODEINITJCT)) 
       showPhysVal = 1;
     if (model->HSM2_show_Given && showPhysVal && isConv) {
-      static int isFirst = 1;
+      isFirst = 1;
       if (vds != vds_pre) 
         ShowPhysVals(here, model, isFirst, vds_pre, vgs, vbs, vgd, vbd, vgb);
       else 
