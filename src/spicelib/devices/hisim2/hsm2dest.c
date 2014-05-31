@@ -38,13 +38,7 @@ void HSM2destroy(
     }
     if (prev) FREE(prev);
   }
-  if (oldmod) {
-#ifdef USE_OMP
-      /* free just once for all models */
-      FREE(oldmod->HSM2InstanceArray);
-#endif
-      FREE(oldmod);
-  }
+  if (oldmod) FREE(oldmod);
   *model = NULL;
 }
 
