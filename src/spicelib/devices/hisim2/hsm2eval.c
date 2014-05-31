@@ -131,7 +131,6 @@ to others."
 #define C_IDD_MIN    1.0e-15
 
 /* local variables used in macro functions */
-static double TMF1 , TMF2 , TMF3 , TMF4 ; 
 /*===========================================================*
 * pow
 *=================*/
@@ -171,6 +170,7 @@ static double TMF1 , TMF2 , TMF3 , TMF4 ;
 *-----------------*/
 
 #define Fn_SU( y , x , xmax , delta , dx ) { \
+    double TMF1, TMF2; \
     TMF1 = ( xmax ) - ( x ) - ( delta ) ; \
     TMF2 = 4.0 * ( xmax ) * ( delta) ; \
     TMF2 = TMF2 > 0.0 ?  TMF2 : - ( TMF2 ) ; \
@@ -180,6 +180,7 @@ static double TMF1 , TMF2 , TMF3 , TMF4 ;
   }
 
 #define Fn_SU2( y , x , xmax , delta , dy_dx , dy_dxmax ) { \
+    double TMF1, TMF2; \
     TMF1 = ( xmax ) - ( x ) - ( delta ) ; \
     TMF2 = 4.0 * ( xmax ) * ( delta) ; \
     TMF2 = TMF2 > 0.0 ?  TMF2 : - ( TMF2 ) ; \
@@ -196,6 +197,7 @@ static double TMF1 , TMF2 , TMF3 , TMF4 ;
 *-----------------*/
 
 #define Fn_SL( y , x , xmin , delta , dx ) { \
+    double TMF1, TMF2; \
     TMF1 = ( x ) - ( xmin ) - ( delta ) ; \
     TMF2 = 4.0 * ( xmin ) * ( delta ) ; \
     TMF2 = TMF2 > 0.0 ?  TMF2 : - ( TMF2 ) ; \
@@ -210,6 +212,7 @@ static double TMF1 , TMF2 , TMF3 , TMF4 ;
 *-----------------*/
 
 #define Fn_SZ( y , x , delta , dx ) { \
+    double TMF2; \
     TMF2 = sqrt ( ( x ) *  ( x ) + 4.0 * ( delta ) * ( delta) ) ; \
     dx = 0.5 * ( 1.0 + ( x ) / TMF2 ) ; \
     y = 0.5 * ( ( x ) + TMF2 ) ; \
@@ -322,6 +325,7 @@ static double CeilingPow
 *-----------------*/
 
 #define Fn_DclPoly4( y , x , dx ) { \
+  double TMF2, TMF3, TMF4; \
   TMF2 = (x) * (x) ; \
   TMF3 = TMF2 * (x) ; \
   TMF4 = TMF2 * TMF2 ; \
@@ -334,6 +338,7 @@ static double CeilingPow
 *-----------------*/
 
 #define Fn_SUPoly4( y , x , xmax , dx ) { \
+ double TMF1; \
  TMF1 = (x) / xmax ; \
  Fn_DclPoly4( y , TMF1 , dx ) ; \
  y = xmax * ( 1.0 - y ) ; \
@@ -346,6 +351,7 @@ static double CeilingPow
 
 #define Fn_SymAdd( y , x , add0 , dx ) \
 { \
+    double TMF1, TMF2, TMF3; \
     TMF1 = 2.0 * ( x ) / ( add0 ) ; \
     TMF2 = 1.0 + TMF1 * ( (1.0/2) + TMF1 * ( (1.0/6) \
                + TMF1 * ( (1.0/24) + TMF1 * ( (1.0/120) \
