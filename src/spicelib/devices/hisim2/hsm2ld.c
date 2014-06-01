@@ -190,14 +190,15 @@ int HSM2load(
     int idx;
     HSM2model *model = (HSM2model*)inModel;
     int good = 0;
-    HSM2instance *here;
     HSM2instance **InstArray;
     InstArray = model->HSM2InstanceArray;
 
-#pragma omp parallel for private(here)
+#pragma omp parallel for
     for (idx = 0; idx < model->HSM2InstCount; idx++) {
-        here = InstArray[idx];
-        good = HSM2LoadOMP(here, ckt);
+        HSM2instance *here = InstArray[idx];
+        int local_good = HSM2LoadOMP(here, ckt);
+        if (local_good)
+            good = local_good;
     }
 
     HSM2LoadRhsMat(inModel, ckt);

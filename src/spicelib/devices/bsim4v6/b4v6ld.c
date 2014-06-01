@@ -77,14 +77,15 @@ CKTcircuit *ckt)
     int idx;
     BSIM4v6model *model = (BSIM4v6model*)inModel;
     int good = 0;
-    BSIM4v6instance *here;
     BSIM4v6instance **InstArray;
     InstArray = model->BSIM4v6InstanceArray;
 
-#pragma omp parallel for private(here)
+#pragma omp parallel for
     for (idx = 0; idx < model->BSIM4v6InstCount; idx++) {
-        here = InstArray[idx];
-        good = BSIM4v6LoadOMP(here, ckt);
+        BSIM4v6instance *here = InstArray[idx];
+        int local_good = BSIM4v6LoadOMP(here, ckt);
+        if (local_good)
+            good = local_good;
     }
 
     BSIM4v6LoadRhsMat(inModel, ckt);

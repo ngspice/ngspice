@@ -110,14 +110,15 @@ B4SOIload(
     int idx;
     B4SOImodel *model = (B4SOImodel*)inModel;
     int good = 0;
-    B4SOIinstance *here;
     B4SOIinstance **InstArray;
     InstArray = model->B4SOIInstanceArray;
 
-#pragma omp parallel for private(here)
+#pragma omp parallel for
     for (idx = 0; idx < model->B4SOIInstCount; idx++) {
-        here = InstArray[idx];
-        good = B4SOILoadOMP(here, ckt);
+        B4SOIinstance *here = InstArray[idx];
+        int local_good = B4SOILoadOMP(here, ckt);
+        if (local_good)
+            good = local_good;
     }
 
     B4SOILoadRhsMat(inModel, ckt);
