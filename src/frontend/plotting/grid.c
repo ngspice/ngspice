@@ -16,7 +16,7 @@ Modified: 2001 AlansFixes
 #include "../display.h"
 
 #define RAD_TO_DEG      (180.0 / M_PI)
-#define LABEL_CHARS     20
+#define LABEL_CHARS     16
 
 typedef enum { x_axis, y_axis } Axis;
 
@@ -365,9 +365,9 @@ lingrid(GRAPH *graph, double lo, double hi, double delta, int type, Axis axis)
     }
 
     if ((s = ft_typabbrev(type)) != NULL)
-        (void) strncat(buf, s, sizeof(buf) - 1);
+        (void) strncat(buf, s, sizeof(buf) - strlen(buf) - 1);
     else
-        (void) strncat(buf, "Units", sizeof(buf) - 1);
+        (void) strncat(buf, "Units", sizeof(buf) - strlen(buf) - 1);
 
     if (delta == 0.0) {
         int     i;
