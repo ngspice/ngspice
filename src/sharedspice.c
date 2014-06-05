@@ -610,7 +610,7 @@ ngSpice_Init(SendChar* printfcn, SendStat* statusfcn, ControlledExit* ngspiceexi
         struct passwd *pw;
         pw = getpwuid(getuid());
 
-        s = tprintf("%s%s", pw->pw_dir, INITSTR);
+        s = tprintf("%s" DIR_PATHSEP "%s", pw->pw_dir, INITSTR);
 
         if (access(s, 0) == 0)
             inp_source(s);

@@ -2522,7 +2522,7 @@ Spice_Init(Tcl_Interp *interp)
             struct passwd *pw;
             pw = getpwuid(getuid());
 
-            s = tprintf("%s%s", pw->pw_dir, INITSTR);
+            s = tprintf("%s" DIR_PATHSEP "%s", pw->pw_dir, INITSTR);
 
             if (access(s, 0) == 0)
                 inp_source(s);
