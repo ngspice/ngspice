@@ -23,11 +23,11 @@ libbsim4v7_la_SOURCES =	\
 	b4v7soachk.c	\
 	b4v7temp.c	\
 	b4v7trunc.c	\
-	bsim4v7def.h.	\
-	bsim4v7ext.h.	\
+	bsim4v7def.h	\
+	bsim4v7ext.h	\
 	bsim4v7init.c	\
-	bsim4v7init.h.	\
-	bsim4v7itf.h.
+	bsim4v7init.h	\
+	bsim4v7itf.h
 
 
 

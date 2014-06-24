@@ -2,7 +2,7 @@
 Copyright 2004 Regents of the University of California.  All rights reserved.
 Author: 2000 Weidong Liu
 Author: 2001- Xuemei Xi
-File: bsim4v7ext.h.
+File: bsim4v7ext.h
 **********/
 
 extern int BSIM4v7acLoad(GENmodel *,CKTcircuit*);

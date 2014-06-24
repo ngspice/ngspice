@@ -2,7 +2,7 @@
 
 /**********
 Copyright 2006 Regents of the University of California.  All rights reserved.
-File: bsim4v7def.h.
+File: bsim4v7def.h
 Author: 2000 Weidong Liu.
 Authors: 2001- Xuemei Xi, Mohan Dunga, Ali Niknejad, Chenming Hu.
 Authors: 2006- Mohan Dunga, Ali Niknejad, Chenming Hu
