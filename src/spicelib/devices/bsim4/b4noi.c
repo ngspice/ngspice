@@ -7,7 +7,7 @@
  * Authors: 2001- Xuemei Xi, Mohan Dunga, Ali Niknejad, Chenming Hu.
  * Authors: 2006- Mohan Dunga, Ali Niknejad, Chenming Hu
  * Authors: 2007- Mohan Dunga, Wenwei Yang, Ali Niknejad, Chenming Hu
- * Authors: 2008- Wenwei Yang,  Ali Niknejad, Chenming Hu 
+  * Authors: 2008- Wenwei Yang,  Ali Niknejad, Chenming Hu
  * Project Director: Prof. Chenming Hu.
  * Modified by Xuemei Xi, 04/06/2001.
  * Modified by Xuemei Xi, 10/05/2001.
@@ -394,7 +394,7 @@ double m;
                                   Lvsat = Leff * (1.0 + here->BSIM4Vdseff / here->BSIM4EsatL);
                                   T6 = Leff / Lvsat;
                                   /*Unwanted code for T5 commented*/
-                                  /*T5 = here->BSIM4Vgsteff / here->BSIM4EsatL; 
+                                  /*T5 = here->BSIM4Vgsteff / here->BSIM4EsatL;
                                   T5 = T5 * T5;
                                   */
                                   gamma = T6 * (0.5 * T1 + T0 * T0 / (6.0 * T2));

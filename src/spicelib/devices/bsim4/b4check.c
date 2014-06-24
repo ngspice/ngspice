@@ -671,50 +671,50 @@ FILE *fplog;
                      printf("Warning: xrcrg1 should be positive for rgateMod = 3.\n");
          }
          
-         /* Check body resistance parameters */ 
+         /* Check body resistance parameters */
         if (model->BSIM4rbps0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBPS0 = %g is not positive.\n",
                 model->BSIM4rbps0 );
             printf("Fatal: RBPS0 = %g is not positive.\n", model->BSIM4rbps0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbpd0 <= 0.0)
+        if (model->BSIM4rbpd0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBPD0 = %g is not positive.\n",
                 model->BSIM4rbpd0 );
             printf("Fatal: RBPD0 = %g is not positive.\n", model->BSIM4rbpd0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbpbx0 <= 0.0)
+        if (model->BSIM4rbpbx0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBPBX0 = %g is not positive.\n",
                 model->BSIM4rbpbx0);
             printf("Fatal: RBPBX0 = %g is not positive.\n", model->BSIM4rbpbx0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbpby0 <= 0.0)
+        if (model->BSIM4rbpby0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBPBY0 = %g is not positive.\n",
                 model->BSIM4rbpby0);
             printf("Fatal: RBPBY0 = %g is not positive.\n", model->BSIM4rbpby0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbdbx0 <= 0.0)
+        if (model->BSIM4rbdbx0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBDBX0 = %g is not positive.\n",
                 model->BSIM4rbdbx0);
             printf("Fatal: RBDBX0 = %g is not positive.\n", model->BSIM4rbdbx0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbdby0 <= 0.0)
+        if (model->BSIM4rbdby0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBDBY0 = %g is not positive.\n",
                 model->BSIM4rbdby0);
             printf("Fatal: RBDBY0 = %g is not positive.\n", model->BSIM4rbdby0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbsbx0 <= 0.0)
+        if (model->BSIM4rbsbx0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBSBX0 = %g is not positive.\n",
                 model->BSIM4rbsbx0);
             printf("Fatal: RBSBX0 = %g is not positive.\n", model->BSIM4rbsbx0);
             Fatal_Flag = 1;
         }
-            if (model->BSIM4rbsby0 <= 0.0)
+        if (model->BSIM4rbsby0 <= 0.0)
         {   fprintf(fplog, "Fatal: RBSBY0 = %g is not positive.\n",
                 model->BSIM4rbsby0);
             printf("Fatal: RBSBY0 = %g is not positive.\n", model->BSIM4rbsby0);

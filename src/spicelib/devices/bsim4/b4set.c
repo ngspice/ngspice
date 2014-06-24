@@ -19,8 +19,8 @@
  * Modified by Mohan Dunga, Wenwei Yang, 05/18/2007.
  * Modified by Wenwei Yang, 07/31/2008.
  * Modified by Tanvir Morshed, Darsen Lu 03/27/2011
- * Modified by Pankaj Kumar Thakur, 07//2012  
-*  Modified by Navid Paydavosi, 06/12/2013   
+ * Modified by Pankaj Kumar Thakur, 07//2012
+ * Modified by Navid Paydavosi, 06/12/2013
 **********/
 
 #include "ngspice/ngspice.h"
@@ -461,9 +461,9 @@ BSIM4instance **InstArray;
         if (!model->BSIM4kgidlGiven)          /* v4.7 New GIDL/GISL */
             model->BSIM4kgidl = 0.0;
         if (!model->BSIM4fgidlGiven)          /* v4.7 New GIDL/GISL */
-        /*model->BSIM4fgidl = 0.0;*/    
+        /*model->BSIM4fgidl = 0.0;*/
         /* Default value of fgdil set to 1 in BSIM4.8.0*/
-            model->BSIM4fgidl = 1.0;  
+            model->BSIM4fgidl = 1.0;
 
         /*if (!model->BSIM4agislGiven)
         {
@@ -471,47 +471,47 @@ BSIM4instance **InstArray;
                 model->BSIM4agisl = model->BSIM4agidl;
             else
                 model->BSIM4agisl = 0.0;
-        }*/                             
+        }*/
 
-        /*Default value of agidl being 0, agisl set as follows */              
-             
+        /*Default value of agidl being 0, agisl set as follows */
+
         /*if (!model->BSIM4bgislGiven)
         {
             if (model->BSIM4bgidlGiven)
                 model->BSIM4bgisl = model->BSIM4bgidl;
             else
-                model->BSIM4bgisl = 2.3e9; 
+                model->BSIM4bgisl = 2.3e9;
         }*/
 
-        /*Default value of bgidl being 2.3e9, bgisl set as follows */              
+        /*Default value of bgidl being 2.3e9, bgisl set as follows */
 
         /*if (!model->BSIM4cgislGiven)
         {
             if (model->BSIM4cgidlGiven)
                 model->BSIM4cgisl = model->BSIM4cgidl;
             else
-                model->BSIM4cgisl = 0.5; 
+                model->BSIM4cgisl = 0.5;
         }*/
 
-        /*Default value of cgidl being 0.5, cgisl set as follows */     
-      
+        /*Default value of cgidl being 0.5, cgisl set as follows */
+
         /*if (!model->BSIM4egislGiven)
         {
             if (model->BSIM4egidlGiven)
                 model->BSIM4egisl = model->BSIM4egidl;
             else
-                model->BSIM4egisl = 0.8; 
+                model->BSIM4egisl = 0.8;
         }*/
 
-        /*Default value of agisl, bgisl, cgisl, egisl, rgisl, kgisl, and fgisl are set as follows */     
+        /*Default value of agisl, bgisl, cgisl, egisl, rgisl, kgisl, and fgisl are set as follows */
         if (!model->BSIM4agislGiven)
-           model->BSIM4agisl = model->BSIM4agidl; 
+           model->BSIM4agisl = model->BSIM4agidl;
         if (!model->BSIM4bgislGiven)
            model->BSIM4bgisl = model->BSIM4bgidl;
         if (!model->BSIM4cgislGiven)
-           model->BSIM4cgisl = model->BSIM4cgidl; 
+           model->BSIM4cgisl = model->BSIM4cgidl;
         if (!model->BSIM4egislGiven)
-           model->BSIM4egisl = model->BSIM4egidl; 
+           model->BSIM4egisl = model->BSIM4egidl;
         if (!model->BSIM4rgislGiven)          /* v4.7 New GIDL/GISL */
             model->BSIM4rgisl = model->BSIM4rgidl;
         if (!model->BSIM4kgislGiven)          /* v4.7 New GIDL/GISL */
@@ -810,7 +810,7 @@ BSIM4instance **InstArray;
         if (!model->BSIM4lxtGiven)
             model->BSIM4lxt = 0.0;
         if (!model->BSIM4lk1Given)
-            model->BSIM4lk1 = 0.0; 
+            model->BSIM4lk1 = 0.0;
         if (!model->BSIM4lkt1Given)
             model->BSIM4lkt1 = 0.0; 
         if (!model->BSIM4lkt1lGiven)
@@ -1003,7 +1003,7 @@ BSIM4instance **InstArray;
                 model->BSIM4lfgisl = model->BSIM4lfgidl;
         }*/
 
-        /*Default value of lagisl, lbgisl, lcgisl, legisl, lrgisl, lkgisl, and lfgisl are set as follows */       
+        /*Default value of lagisl, lbgisl, lcgisl, legisl, lrgisl, lkgisl, and lfgisl are set as follows */
         if (!model->BSIM4lagislGiven)
            model->BSIM4lagisl = model->BSIM4lagidl;
         if (!model->BSIM4lbgislGiven)
@@ -1187,7 +1187,7 @@ BSIM4instance **InstArray;
         if (!model->BSIM4wxtGiven)
             model->BSIM4wxt = 0.0;
         if (!model->BSIM4wk1Given)
-            model->BSIM4wk1 = 0.0; 
+            model->BSIM4wk1 = 0.0;
         if (!model->BSIM4wkt1Given)
             model->BSIM4wkt1 = 0.0; 
         if (!model->BSIM4wkt1lGiven)
@@ -1381,7 +1381,7 @@ BSIM4instance **InstArray;
                 model->BSIM4wfgisl = model->BSIM4wfgidl;
         }*/
 
-        /*Default value of wagisl, wbgisl, wcgisl, wegisl, wrgisl, wkgisl, and wfgisl are set as follows */       
+        /*Default value of wagisl, wbgisl, wcgisl, wegisl, wrgisl, wkgisl, and wfgisl are set as follows */
         if (!model->BSIM4wagislGiven)
            model->BSIM4wagisl = model->BSIM4wagidl;
         if (!model->BSIM4wbgislGiven)
@@ -1396,7 +1396,7 @@ BSIM4instance **InstArray;
             model->BSIM4wkgisl = model->BSIM4wkgidl;
         if (!model->BSIM4wfgislGiven)	/* v4.7 New GIDL/GISL */
             model->BSIM4wfgisl = model->BSIM4wfgidl;
-        
+
         if (!model->BSIM4waigcGiven)
             model->BSIM4waigc = 0.0;
         if (!model->BSIM4wbigcGiven)
@@ -1565,7 +1565,7 @@ BSIM4instance **InstArray;
         if (!model->BSIM4pxtGiven)
             model->BSIM4pxt = 0.0;
         if (!model->BSIM4pk1Given)
-            model->BSIM4pk1 = 0.0; 
+            model->BSIM4pk1 = 0.0;
         if (!model->BSIM4pkt1Given)
             model->BSIM4pkt1 = 0.0; 
         if (!model->BSIM4pkt1lGiven)
@@ -1759,8 +1759,8 @@ BSIM4instance **InstArray;
             if (model->BSIM4pfgidlGiven)
                 model->BSIM4pfgisl = model->BSIM4pfgidl;
         }*/
-        
-        /*Default value of pagisl, pbgisl, pcgisl, pegisl, prgisl, pkgisl, and pfgisl are set as follows */       
+
+        /*Default value of pagisl, pbgisl, pcgisl, pegisl, prgisl, pkgisl, and pfgisl are set as follows */
         if (!model->BSIM4pagislGiven)
             model->BSIM4pagisl = model->BSIM4pagidl;
         if (!model->BSIM4pbgislGiven)
@@ -2683,7 +2683,7 @@ do { if((here->ptr = SMPmakeElt(matrix,here->first,here->second))==(double *)NUL
         }
         /* set the array pointer and instance count into each model */
         model->BSIM4InstCount = InstCount;
-        model->BSIM4InstanceArray = InstArray;      
+        model->BSIM4InstanceArray = InstArray;		
     }
 #endif
 

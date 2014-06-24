@@ -19,8 +19,8 @@
  * Modified by Mohan Dunga, Wenwei Yang, 05/18/2007.
  * Modified by Wenwei Yang, 07/31/2008.
  * Modified by Tanvir Morshed, Darsen Lu 03/27/2011
- * Modified by Pankaj Kumar Thakur, 07/23/2012 
- * Modified by Navid Paydavosi, 08/21/2013    
+ * Modified by Pankaj Kumar Thakur, 07/23/2012
+ * Modified by Navid Paydavosi, 08/21/2013
  **********/
 
 
@@ -1497,7 +1497,7 @@ for (; model != NULL; model = model->BSIM4nextModel)
           {
               T0 = Vgsteff + here->BSIM4vtfbphi1 - T14;
               T2 = pParam->BSIM4ua + pParam->BSIM4uc * Vbseff;
-              T3 = T0 / toxe;	  
+              T3 = T0 / toxe;
               T12 = sqrt(here->BSIM4vtfbphi1*here->BSIM4vtfbphi1 + 0.0001);
               T9 = 1.0/(Vgsteff + 2*T12);
               T10 = T9*toxe;
@@ -1527,8 +1527,8 @@ for (; model != NULL; model = model->BSIM4nextModel)
                           / toxe;
               dDenomi_dVd = 0.0;
               dDenomi_dVb = pParam->BSIM4uc * T4;
-              dDenomi_dVg+= T7;	    	      	  
-          }  
+              dDenomi_dVg+= T7;
+          }
           else if (model->BSIM4mobMod == 6) /* Synopsys 08/30/2013 modify */
           {   T0 = (Vgsteff + here->BSIM4vtfbphi1) / toxe;
               T1 = exp(pParam->BSIM4eu * log(T0));
@@ -1541,11 +1541,11 @@ for (; model != NULL; model = model->BSIM4nextModel)
               T8 = pParam->BSIM4ud * T10 * T10 * here->BSIM4vtfbphi1;
               T6 = T8 * here->BSIM4vtfbphi1;
               T5 = T1 * T2 + T6;
-              T7 = - 2.0 * T6 * T9;        
-              dDenomi_dVg = T2 * dT1_dVg + T7;              
+              T7 = - 2.0 * T6 * T9;
+              dDenomi_dVg = T2 * dT1_dVg + T7;
               dDenomi_dVd = 0;
               dDenomi_dVb = T1 * pParam->BSIM4uc;
-          }  
+          }
 
           /*high K mobility*/
          else 
