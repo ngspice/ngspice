@@ -1,8 +1,8 @@
-/**** BSIM4v7.0 Released by Darsen Lu 04/08/2011 ****/
+/**** BSIM4.7.0 Released by Darsen Lu 04/08/2011 ****/
 
 /**********
  * Copyright 2006 Regents of the University of California. All rights reserved.
- * File: b4check.c of BSIM4v7.0.
+ * File: b4check.c of BSIM4.7.0.
  * Author: 2000 Weidong Liu
  * Authors: 2001- Xuemei Xi, Mohan Dunga, Ali Niknejad, Chenming Hu.
  * Authors: 2006- Mohan Dunga, Ali Niknejad, Chenming Hu
@@ -47,8 +47,8 @@ FILE *fplog;
         fprintf(fplog, "++++++++++ BSIM4v7 PARAMETER CHECKING BELOW ++++++++++\n");
 
         if ((strcmp(model->BSIM4v7version, "4.7.0")) && (strcmp(model->BSIM4v7version, "4.70")) && (strcmp(model->BSIM4v7version, "4.7")))
-        {  fprintf(fplog, "Warning: This model is BSIM4v7.0; you specified a wrong version number.\n");
-           printf("Warning: This model is BSIM4v7.0; you specified a wrong version number.\n");
+        {  fprintf(fplog, "Warning: This model is BSIM4.7.0; you specified a wrong version number.\n");
+           printf("Warning: This model is BSIM4.7.0; you specified a wrong version number.\n");
         }
         fprintf(fplog, "Model = %s\n", model->BSIM4v7modName);
 
