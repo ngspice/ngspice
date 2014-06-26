@@ -137,12 +137,81 @@ int add_udn(int,Evt_Udn_Info_t **);
 #include "ndev/ndevitf.h"
 #endif
 
-/*saj in xspice the DEVices size can be varied so DEVNUM is an int*/
-#if defined XSPICE
-   static int DEVNUM = 63;
-#else
-   #define DEVNUM 63
+static SPICEdev *(*static_devices[])(void) = {
+    /* URC device MUST precede both resistors and capacitors */
+    get_urc_info,
+    get_asrc_info,
+    get_bjt_info,
+    get_bsim1_info,
+    get_bsim2_info,
+    get_bsim3_info,
+    get_bsim3v0_info,
+    get_bsim3v1_info,
+    get_bsim3v32_info,
+    get_b4soi_info,
+    get_bsim4_info,
+    get_bsim4v5_info,
+    get_bsim4v6_info,
+    get_bsim4v7_info,
+    get_b3soipd_info,
+    get_b3soifd_info,
+    get_b3soidd_info,
+    get_cap_info,
+    get_cccs_info,
+    get_ccvs_info,
+    get_cpl_info,
+    get_csw_info,
+    get_dio_info,
+    get_hfeta_info,
+    get_hfet2_info,
+    get_hsm2_info,
+    get_hsmhv_info,
+    get_ind_info,
+    get_mut_info,
+    get_isrc_info,
+    get_jfet_info,
+    get_jfet2_info,
+    get_ltra_info,
+    get_mes_info,
+    get_mesa_info,
+    get_mos1_info,
+    get_mos2_info,
+    get_mos3_info,
+    get_mos6_info,
+    get_mos9_info,
+    get_res_info,
+    get_soi3_info,
+    get_sw_info,
+    get_tra_info,
+    get_txl_info,
+    get_vbic_info,
+    get_vccs_info,
+    get_vcvs_info,
+    get_vsrc_info,
+
+#ifdef CIDER
+    get_nbjt_info,
+    get_nbjt2_info,
+    get_numd_info,
+    get_numd2_info,
+    get_numos_info,
 #endif
+
+#ifdef ADMS
+    (SPICEdev *(*)(void)) get_hicum0_info,
+    (SPICEdev *(*)(void)) get_hicum2_info,
+    (SPICEdev *(*)(void)) get_bjt504t_info,
+    (SPICEdev *(*)(void)) get_ekv_info,
+    (SPICEdev *(*)(void)) get_psp102_info,
+#endif
+
+#ifdef NDEV
+    get_ndev_info,
+#endif
+
+};
+
+static int DEVNUM = NUMELEMS(static_devices);
 
 /*Make this dynamic for later attempt to make all devices dynamic*/
 SPICEdev **DEVices=NULL;
@@ -177,6 +246,8 @@ spice_destroy_devices(void)
 void
 spice_init_devices(void)
 {
+    int i;
+
 #ifdef XSPICE
     /*Initilise the structs and add digital node type */
     g_evt_udn_info = TMALLOC(Evt_Udn_Info_t  *, 1);
@@ -188,94 +259,9 @@ spice_init_devices(void)
 #endif
 
     DEVices = TMALLOC(SPICEdev *, DEVNUM);
-    /* URC device MUST precede both resistors and capacitors */
-    DEVices[ 0] = get_urc_info();
-    DEVices[ 1] = get_asrc_info();
-    DEVices[ 2] = get_bjt_info();
-    DEVices[ 3] = get_bsim1_info();
-    DEVices[ 4] = get_bsim2_info();
-    DEVices[ 5] = get_bsim3_info();
-    DEVices[ 6] = get_bsim3v0_info();
-    DEVices[ 7] = get_bsim3v1_info();
-    DEVices[ 8] = get_bsim3v32_info();
-    DEVices[ 9] = get_b4soi_info();
-    DEVices[10] = get_bsim4_info();
-    DEVices[11] = get_bsim4v5_info();
-    DEVices[12] = get_bsim4v6_info();
-    DEVices[13] = get_bsim4v7_info();
-    DEVices[14] = get_b3soipd_info();
-    DEVices[15] = get_b3soifd_info();
-    DEVices[16] = get_b3soidd_info();
-    DEVices[17] = get_cap_info();
-    DEVices[18] = get_cccs_info();
-    DEVices[19] = get_ccvs_info();
-    DEVices[20] = get_cpl_info();
-    DEVices[21] = get_csw_info();
-    DEVices[22] = get_dio_info();
-    DEVices[23] = get_hfeta_info();
-    DEVices[24] = get_hfet2_info();
-    DEVices[25] = get_hsm2_info();  
-    DEVices[26] = get_hsmhv_info();  
-    DEVices[27] = get_ind_info();
-    DEVices[28] = get_mut_info();
-    DEVices[29] = get_isrc_info();
-    DEVices[30] = get_jfet_info();
-    DEVices[31] = get_jfet2_info();
-    DEVices[32] = get_ltra_info();
-    DEVices[33] = get_mes_info();
-    DEVices[34] = get_mesa_info();
-    DEVices[35] = get_mos1_info();
-    DEVices[36] = get_mos2_info();
-    DEVices[37] = get_mos3_info();
-    DEVices[38] = get_mos6_info();
-    DEVices[39] = get_mos9_info();
-    DEVices[40] = get_res_info();
-    DEVices[41] = get_soi3_info();
-    DEVices[42] = get_sw_info();
-    DEVices[43] = get_tra_info();
-    DEVices[44] = get_txl_info();
-    DEVices[45] = get_vbic_info();
-    DEVices[46] = get_vccs_info();
-    DEVices[47] = get_vcvs_info();
-    DEVices[48] = get_vsrc_info();
-#ifdef CIDER
-    DEVices[49] = get_nbjt_info();
-    DEVices[50] = get_nbjt2_info();
-    DEVices[51] = get_numd_info();
-    DEVices[52] = get_numd2_info();
-    DEVices[53] = get_numos_info();   
-#else
-    DEVices[49] = NULL;
-    DEVices[50] = NULL;
-    DEVices[51] = NULL;
-    DEVices[52] = NULL;
-    DEVices[53] = NULL;  
-#endif
-          
-#ifdef ADMS
-    DEVices[54] = (SPICEdev*)get_hicum0_info();
-    DEVices[55] = (SPICEdev*)get_hicum2_info();
-    DEVices[56] = (SPICEdev*)get_bjt504t_info();
-    DEVices[57] = (SPICEdev*)get_ekv_info();
-    DEVices[58] = (SPICEdev*)get_psp102_info();
-#else
-    DEVices[54] = NULL;
-    DEVices[55] = NULL;
-    DEVices[56] = NULL;
-    DEVices[57] = NULL;
-    DEVices[58] = NULL;
-#endif
-   
-#ifdef NDEV    /* NDEV */
-   DEVices[59] = get_ndev_info();
-#else
-   DEVices[59] = NULL;
-#endif
-   DEVices[60] = NULL;
-   DEVices[61] = NULL;
 
-
-   return;
+    for (i = 0; i < DEVNUM; i++)
+        DEVices[i] = static_devices[i]();
 }
 
 int num_devices(void)
